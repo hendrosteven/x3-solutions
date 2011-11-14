@@ -1,0 +1,581 @@
+<?page title="Input Data Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window title="Detail Data Perusahaan" height="560px" width="850px" closable="true" border="normal" use="com.x3.monitoring.admin.EditPerusahaanWnd" id="editPerusahaanWnd">
+        <div style="height:100%;overflow:auto;padding:10px">
+
+            <div>
+                <label value="Detail Data Perusahaan"
+                       style="font-size:16;font-weight:bold">
+                </label>
+            </div>
+            <div>
+                <label
+                    value="Digunakan untuk melihat dan mengubah data Perusahaan">
+                </label>
+            </div>
+            <div style="padding:5px">
+                <tabbox>
+                    <tabs>
+                        <tab label="Biodata"></tab>
+                        <tab label="Perijinan Pusat"></tab>
+                        <tab label="Perijinan Daerah"></tab>
+                    </tabs>
+                    <tabpanels>
+                        <tabpanel>
+                            <div style="padding:3px">
+                                <grid>
+                                    <rows>
+                                        <row width="200px">
+                                            <label style="font-weight:bold"
+                                                   value="Tanggal Input">
+                                            </label>
+                                            <hbox>
+                                                <datebox width="100px" id="dateTanggalInput"/>
+                                            </hbox>
+                                        </row>
+                                        <row width="200px">
+                                            <label style="font-weight:bold"
+                                                   value="Nama Perusahaan">
+                                            </label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtNamaPerusahaan"></textbox>
+                                                <textbox id="txtIdPerusahaan" visible="false"/>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Nama Pimpinan/Penanggung Jawab Perusahaan">
+                                            </label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtNamaPimpinan"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Alamat Perusahaan">
+                                            </label>
+                                        </row>
+                                        <row>
+                                            <label value="Jalan"></label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtJalan"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Kelurahan"></label>
+                                            <hbox>
+
+                                                <combobox id="cmbKelurahan">
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                </combobox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Kecamatan"></label>
+                                            <hbox>
+
+                                                <combobox id="cmbKecamatan">
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                </combobox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Kota"></label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtKota"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor Telepon"></label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtTelp"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor Faximile"></label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtFax"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Luas Perusahaan"
+                                                   style="font-weight:bold">
+                                            </label>
+                                            <hbox>
+
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanah"></label>
+                                            <hbox>
+
+                                                <doublebox width="100px" id="intLuasTanah" value="0">
+                                                </doublebox>
+                                                <label
+                                                    value="Meter per segi">
+                                                </label>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Gedung"></label>
+                                            <hbox>
+
+                                                <doublebox width="100px" id="intLuasGedung" value="0"></doublebox>
+                                                <label
+                                                    value="Meter per segi">
+                                                </label>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label
+                                                value="Bentuk Badan Hukum" style="font-weight:bold">
+                                            </label>
+                                            <hbox>
+                                                <combobox id="cmbBadanHukum">
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                </combobox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label
+                                                value="Bentuk Penanaman Modal" style="font-weight:bold">
+                                            </label>
+                                            <hbox>
+
+                                                <combobox id="cmbBentukModal">
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                </combobox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Status Perusahaan"
+                                                   style="font-weight:bold">
+                                            </label>
+                                            <hbox>
+
+                                                <combobox id="cmbStatusPerusahaan">
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                    <comboitem label="">
+                                                    </comboitem>
+                                                </combobox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label
+                                                value="Bidang Usaha Pokok" style="font-weight:bold">
+                                            </label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtBidangUsaha" disabled="true"></textbox><intbox id="txtIdBidangUsaha" visible="false"/><button label="..." onClick="editPerusahaanWnd.browseBidangUsaha()"></button>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label
+                                                value="Produk yang Dihasilkan" style="font-weight:bold">
+                                            </label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtProduk"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nilai Investasi"
+                                                   style="font-weight:bold">
+                                            </label>
+                                        </row>
+                                        <row>
+                                            <label value="Modal Tetap"></label>
+                                            <hbox>
+                                                <doublebox format="#,##0.##" width="350px" id="dblModalTetap" value="0"></doublebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Modal Kerja"></label>
+                                            <hbox>
+
+                                                <doublebox format="#,##0.##" width="350px" id="dblModalKerja" value="0"></doublebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label
+                                                value="Jumlah Tenaga Kerja" style="font-weight:bold">
+                                            </label>
+                                        </row>
+                                        <row>
+                                            <label
+                                                value="Tenaga Kerja Indonesia">
+                                            </label>
+                                            <hbox>
+
+                                                (
+                                                <label value="L = "></label>
+                                                <intbox width="50px" id="intTKILaki" value="0" onChange="editPerusahaanWnd.hitungJmlTKI()">
+                                                </intbox>
+                                                ,
+                                                <label value="P = "></label>
+                                                <intbox width="50px" id="intTKIPerem" value="0" onChange="editPerusahaanWnd.hitungJmlTKI()">
+                                                </intbox>
+                                                )
+                                                <label value="Jumlah = "></label>
+                                                <intbox width="50px" id="intTKIJumlah" value="0" disabled="true">
+                                                </intbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label
+                                                value="Tenaga Kerja Asing">
+                                            </label>
+                                            <hbox>
+
+                                                (
+                                                <label value="L = "></label>
+                                                <intbox width="50px" id="intTKALaki" value="0" onChange="editPerusahaanWnd.hitungJmlTKA()">
+                                                </intbox>
+                                                ,
+                                                <label value="P = "></label>
+                                                <intbox width="50px" id="intTKAPerem" value="0" onChange="editPerusahaanWnd.hitungJmlTKA()">
+                                                </intbox>
+                                                )
+                                                <label value="Jumlah = "></label>
+                                                <intbox width="50px" id="intTKAJumlah" value="0" disabled="true">
+                                                </intbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Tahun Mulai Produksi/Kegiatan">
+                                            </label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtTahunProduksi"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Produksi dan Pemasaran">
+                                            </label>
+                                        </row>
+                                        <row>
+                                            <label value="Jenis Produksi"></label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtJenisProduksi"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label
+                                                value="Kapasitas Terpasang">
+                                            </label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtKapasitasTerpasang"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label
+                                                value="Realisasi Produksi">
+                                            </label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtRealisasi"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Export"></label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtExport"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nilai Export"></label>
+                                            <hbox>
+
+                                                <doublebox format="#,##0.##" width="350px" id="dblNilaiExport" value="0"></doublebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+
+
+                                            <label
+                                                value="Omset Per Tahun (3 Tahun Terakhir)"
+                                                style="font-weight:bold">
+                                            </label>
+
+                                            <hbox>
+                                                <grid>
+                                                    <columns>
+                                                        <column
+                                                            label="Tahun">
+                                                        </column>
+                                                        <column
+                                                            label="Nilai (Rp.)">
+                                                        </column>
+                                                    </columns>
+                                                    <rows>
+                                                        <row>
+                                                            <textbox id="txtTahun1"></textbox>
+                                                            <doublebox format="#,##0.##" id="dblNilaiTahun1" width="150px" value="0"></doublebox>
+                                                        </row>
+                                                        <row>
+                                                            <textbox id="txtTahun2"></textbox>
+                                                            <doublebox format="#,##0.##" id="dblNilaiTahun2" width="150px" value="0"></doublebox>
+                                                        </row>
+                                                        <row>
+                                                            <textbox id="txtTahun3"></textbox>
+                                                            <doublebox format="#,##0.##" id="dblNilaiTahun3" width="150px" value="0"></doublebox>
+                                                        </row>
+                                                    </rows>
+                                                </grid>
+                                            </hbox>
+                                        </row>
+                                        <row width="200px">
+                                            <label style="font-weight:bold"
+                                                   value="Dokumen Amdal yang dimiliki">
+                                            </label>
+                                            <hbox>
+
+                                                <textbox width="350px" id="txtDokAmdal"></textbox>
+                                            </hbox>
+                                        </row>
+                                    </rows>
+                                </grid>
+
+
+                            </div>
+                        </tabpanel>
+                        <tabpanel>
+                            <div style="padding:3px">
+                                <grid>
+                                    <rows>
+                                        <row>
+                                            <label value="Ijin"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtIjinPusat1"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtIjinPusatNomor1"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal"></label>
+                                            <hbox>
+                                                <datebox id="dateIjinPusatTanggal1"></datebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Ijin"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtIjinPusat2"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtIjinPusatNomor2"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal"></label>
+                                            <hbox>
+                                                <datebox id="dateIjinPusatTanggal2"></datebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Ijin"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtIjinPusat3"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtIjinPusatNomor3"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal" ></label>
+                                            <hbox>
+                                                <datebox id="dateIjinPusatTanggal3"></datebox>
+                                            </hbox>
+                                        </row>
+                                    </rows>
+                                </grid>
+                            </div>
+                        </tabpanel>
+                        <tabpanel>
+                            <div style="padding:3px">
+                                <grid>
+                                    <rows>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Ijin Lokasi">
+                                            </label>
+                                            <hbox></hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtIjinLokasiNomor"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal"></label>
+                                            <hbox>
+                                                <datebox id="dateIjinLokasi"></datebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Ijin Mendirikan Bangunan (IMB)">
+                                            </label>
+                                            <hbox></hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor" ></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtIMBNomor"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal"></label>
+                                            <hbox>
+                                                <datebox id="dateIMB"></datebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Tanda Daftar Gudang">
+                                            </label>
+                                            <hbox></hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtTandaDaftarGudangNomor"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal"></label>
+                                            <hbox>
+                                                <datebox id="dateTandaDaftarGudang"></datebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Ijin Gangguan (HO)">
+                                            </label>
+                                            <hbox></hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor" ></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtHONomor"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal"></label>
+                                            <hbox>
+                                                <datebox id="dateHO"></datebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Surat Ijin Usaha Perdagangan (SIUP)">
+                                            </label>
+                                            <hbox></hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtSIUPNomor"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal"></label>
+                                            <hbox>
+                                                <datebox id="dateSIUP"></datebox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Tanda Daftar Perusahaan (TDP)">
+                                            </label>
+                                            <hbox></hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtTDPNomor"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal"></label>
+                                            <hbox>
+                                                <datebox id="dateTDP"></datebox>
+                                            </hbox>
+                                        </row>
+
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Tanda Daftar Industri (TDI)">
+                                            </label>
+                                            <hbox></hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Nomor"></label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtTDINomor"></textbox>
+                                            </hbox>
+                                        </row>
+                                        <row>
+                                            <label value="Tanggal"></label>
+                                            <hbox>
+                                                <datebox id="dateTDI"></datebox>
+                                            </hbox>
+                                        </row>
+
+                                        <row>
+                                            <label style="font-weight:bold"
+                                                   value="Nomor Pokok Wajib Pajak (NPWP)">
+                                            </label>
+                                            <hbox>
+                                                <textbox width="350px" id="txtNPWP"></textbox>
+                                            </hbox>
+                                        </row>
+                                    </rows>
+                                </grid>
+                            </div>
+                        </tabpanel>
+                    </tabpanels>
+                </tabbox>
+            </div>
+            <div style="padding:15px">
+                <hbox>
+                    <button label="Simpan" onClick="editPerusahaanWnd.simpan()" width="95px" height="30px"></button>
+                    <button label="Batal" onClick="editPerusahaanWnd.batal()" width="95px" height="30px"></button>
+                </hbox>
+            </div>
+            
+        </div>
+    </window>
+
+</zk>

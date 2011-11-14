@@ -1,0 +1,118 @@
+<?page title="Monitoring" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="main" border="normal" width="100%" height="100%" use="com.x3.monitoring.admin.IndexWnd" >
+        <borderlayout style="background:#c5e6ef;">
+            <north size="100px" border="0" style="background:#c5e6ef;">
+                <div style="padding:5px">
+                    <hbox>
+                        <image src="/img/salatiga.png"></image>
+                        <vbox>
+                            <label style="font-size:20px;font-weight:bold"
+                                   value="PEMERINTAH KOTA SALATIGA">
+                            </label>
+                            <label style="font-size:15px;font-weight:bold"
+                                   value="KANTOR PENANAMAN MODAL">
+                            </label>
+                            <label style="font-size:15px"
+                                   value="Aplikasi Monitoring dan Pendataaan Perusahaan PMA/PMDN Kota Salatiga">
+                            </label>
+                            
+                        </vbox>
+                    </hbox>
+                </div>
+            </north>
+            <west width="150px" title="Navigasi" flex="true"
+                  margins="0,5,5,0" collapsible="true">
+                <div style="padding:5px" align="center">
+                    <vbox align="center">
+                        <toolbarbutton image="/img/perusahaan.png" popup="perusahaan"></toolbarbutton>
+                        <label value="Perusahaan" popup="perusahaan"></label>
+                        <space height="2px"></space>
+                        <toolbarbutton image="/img/pemerintah.png" popup="pemerintah"></toolbarbutton>
+                        <label value="Kegiatan Pemerintah" popup="pemerintah"></label>
+                        <space height="2px"></space>
+                        <toolbarbutton image="/img/search.png" popup="pencarian"></toolbarbutton>
+                        <label value="Pencarian" popup="pencarian"></label>
+                        <space height="2px"></space>
+                        <toolbarbutton image="/img/report.png" popup="laporan"></toolbarbutton>
+                        <label value="Laporan" popup="laporan"></label>
+                        <space height="2px"></space>
+                        <toolbarbutton image="/img/master.png" popup="master"></toolbarbutton>
+                        <label value="Master Data" popup="master"></label>
+
+                    </vbox>
+                </div>
+            </west>
+            <center flex="true">
+                <div id="contentDiv" style="height:200px;overflow:auto;padding:10px">
+                    <panel border="normal" title="Content" visible="false">
+                    </panel>
+                </div>
+            </center>
+            <south size="40px" border="0" style="background:#c5e6ef;">
+                <toolbar mold="panel" align="center">
+                    <toolbarbutton label="Admin Logout" onClick="main.logout()"/>
+                    <separator orient="vertical" bar="true" />
+                    Powered by
+                    <toolbarbutton label="X3 Solution" />
+                </toolbar>
+            </south>
+        </borderlayout>
+
+        <popup id="perusahaan">
+            <vbox>
+                <hbox><toolbarbutton tooltiptext="Menampilkan daftar perusahaan" image="/img/list_perusahaan.png" onClick="main.showDaftarPerusahaan()"/><label value="Daftar Perusahaan" onClick="main.showDaftarPerusahaan()"/></hbox>
+                <hbox><toolbarbutton tooltiptext="Input data perusahaan baru" image="/img/add_perusahaan.png" onClick="main.showInputPerusahaan()"/><label onClick="main.showInputPerusahaan()" value="Input Perusahaan"/></hbox>
+            </vbox>
+        </popup>
+        <popup id="pemerintah">
+            <vbox>
+                <hbox><toolbarbutton tooltiptext="Menampilkan daftar kegiatan Pemerintah" image="/img/list_perusahaan.png" onClick="main.showDaftarKegiatanPemerintah()"/><label value="Daftar Kegiatan Pemerintah" onClick="main.showDaftarKegiatanPemerintah()"/></hbox>
+                <hbox><toolbarbutton tooltiptext="Input data kegiatan pemerintah" image="/img/add_perusahaan.png" onClick="main.showInputKegiatanPemerintah()"/><label onClick="main.showInputKegiatanPemerintah()" value="Input Kegiatan Pemerintah"/></hbox>
+            </vbox>
+        </popup>
+        <popup id="pencarian">
+            <vbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariNamaPerusahaan()"/><label value="Berdasarkan Nama" onClick="main.showCariNamaPerusahaan()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariKecamatanPerusahaan()"/><label value="Berdasarkan Kecamatan" onClick="main.showCariKecamatanPerusahaan()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariBadanHukumPerusahaan()"/><label value="Berdasarkan Badan Hukum" onClick="main.showCariBadanHukumPerusahaan()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariBentukModalPerusahaan()"/><label value="Berdasarkan Bentuk Modal" onClick="main.showCariBentukModalPerusahaan()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariBidangUsahaPerusahaan()"/><label value="Berdasarkan Bidang Usaha" onClick="main.showCariBidangUsahaPerusahaan()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariStatusPerusahaan()"/><label value="Berdasarkan Status Perusahaan" onClick="main.showCariStatusPerusahaan()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariJumlahTenagaKerjaPerusahaan()"/><label value="Berdasarkan Jumlah Tenaga Kerja" onClick="main.showCariJumlahTenagaKerjaPerusahaan()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariJumlahKriteriaPerusahaan()"/><label value="Berdasarkan Kriteria Usaha" onClick="main.showCariJumlahKriteriaPerusahaan()"/></hbox>
+
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariTotalNilaiInvestasiPerKecamatan()"/><label value="Berdasarkan Total Nilai Investasi Per Kecamatan" onClick="main.showCariTotalNilaiInvestasiPerKecamatan()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariTotalNilaiInvestasiPerBidangUsaha()"/><label value="Berdasarkan Total Nilai Investasi Per Bidang Usaha" onClick="main.showCariTotalNilaiInvestasiPerBidangUsaha()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariTotalNilaiInvestasiPerBentukModal()"/><label value="Berdasarkan Total Nilai Investasi Per Bentuk Modal" onClick="main.showCariTotalNilaiInvestasiPerBentukModal()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariTotalNilaiInvestasi()"/><label value="Berdasarkan Total Nilai Investasi" onClick="main.showCariTotalNilaiInvestasi()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariLanjutPerusahaan()"/><label value="Berdasarkan Kriteria Lanjut" onClick="main.showCariLanjutPerusahaan()"/></hbox>
+                <hbox><toolbarbutton image="/img/search_ico.png" onClick="main.showCariKegiatanPemerintah()"/><label value="Kegiatan Pemerintah" onClick="main.showCariKegiatanPemerintah()"/></hbox>
+            </vbox>
+        </popup>
+        <popup id="laporan">
+            <vbox>
+                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportPerusahaanByKecamatan()"/><label value="Perusahaan Berdasarkan Kecamatan" onClick="main.showReportPerusahaanByKecamatan()"/></hbox>
+                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportPerusahaanByBentukModal()"/><label value="Perusahaan Berdasarkan Bentuk Modal" onClick="main.showReportPerusahaanByBentukModal()"/></hbox>
+                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportPerusahaanByBidangUsaha()"/><label value="Perusahaan Berdasarkan Bidang Usaha" onClick="main.showReportPerusahaanByBidangUsaha()"/></hbox>
+            </vbox>
+        </popup>
+        <popup id="master">
+            <vbox>
+                <hbox><toolbarbutton image="/img/user.png" onClick="main.showDaftarUser()"/><label value="Administrator" onClick="main.showDaftarUser()"/></hbox>
+                <hbox><toolbarbutton image="/img/lurah_camat.png" onClick="main.showDaftarKelurahan()"/><label value="Kelurahan" onClick="main.showDaftarKelurahan()"/></hbox>
+                <hbox><toolbarbutton image="/img/lurah_camat.png" onClick="main.showDaftarKecamatan()"/><label value="Kecamatan" onClick="main.showDaftarKecamatan()"/></hbox>
+                <hbox><toolbarbutton image="/img/badan_hukum.png" onClick="main.showDaftarBadanHukum()"/><label value="Badan Hukum" onClick="main.showDaftarBadanHukum()"/></hbox>
+                <hbox><toolbarbutton image="/img/bentuk_modal.png" onClick="main.showDaftarBentukModal()"/><label value="Bentuk Modal" onClick="main.showDaftarBentukModal()"/></hbox>
+                <hbox><toolbarbutton image="/img/status.png" onClick="main.showDaftarStatusPerusahaan()"/><label value="Status Perusahaan" onClick="main.showDaftarStatusPerusahaan()"/></hbox>
+                <hbox><toolbarbutton image="/img/bidang_usaha.png" onClick="main.showDaftarBidangUsaha()"/><label value="Bidang Usaha" onClick="main.showDaftarBidangUsaha()"/></hbox>
+                <hbox><toolbarbutton image="/img/kriteria_usaha.png" onClick="main.showDaftarKriteriaUsaha()"/><label value="Kriteria Usaha" onClick="main.showDaftarKriteriaUsaha()"/></hbox>
+                <hbox><toolbarbutton image="/img/bentuk_modal.png" onClick="main.showDaftarSumberDana()"/><label value="Sumber Dana Kegiatan Pemerintah" onClick="main.showDaftarSumberDana()"/></hbox>
+                <hbox><toolbarbutton image="/img/bidang_usaha.png" onClick="main.showDaftarBidangKegiatanPemerintah()"/><label value="Bidang Usaha Kegiatan Pemerintah" onClick="main.showDaftarBidangKegiatanPemerintah()"/></hbox>
+                <hbox><toolbarbutton image="/img/cms.png" onClick="main.showSelayangPandang()"/><label value="Konten Selayang Pandang" onClick="main.showSelayangPandang()"/></hbox>
+                <hbox><toolbarbutton image="/img/cms.png" onClick="main.showPotensi()"/><label value="Konten Potensi Invenstasi" onClick="main.showPotensi()"/></hbox>
+                <hbox><toolbarbutton image="/img/backup_restore.png" onClick="main.showBackupAndRestore()"/><label value="Backup dan Restore Database" onClick="main.showBackupAndRestore()"/></hbox>
+            </vbox>
+        </popup>
+    </window>
+</zk>

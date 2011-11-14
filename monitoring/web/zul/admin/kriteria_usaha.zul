@@ -1,0 +1,88 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" width="700px" use="com.x3.monitoring.admin.KriteriaUsahaWnd" id="kriteriaUsahaWnd">
+        <div>
+            <label value="Daftar Kriteria Usaha"
+                   style="font-size:18;font-weight:bold">
+            </label>
+        </div>
+        <div>
+            <label
+                value="Berikut adalah Daftar Kriteria Usaha Berdasarkan Jumlah Tenaga Kerja yang ada dalam database">
+            </label>
+        </div>
+        <space height="10px"/>
+        <groupbox>
+            <caption label="Data Kriteria Usaha"></caption>
+            <div style="padding:3px">
+                <grid>
+                    <rows>
+                        <row>
+                            <label value="Keterangan"></label>
+                            <hbox>
+                                <textbox width="250px" id="txtKeterangan"></textbox>
+                                <textbox id="txtId" visible="false"/>
+                            </hbox>
+                        </row>
+                        <row>
+                            <label value="Operator"></label>
+                            <hbox>
+                                <combobox id="cmbOperator1">
+                                    <comboitem label="&lt;"/>
+                                    <comboitem label="&lt;="/>
+                                    <comboitem label="&gt;"/>
+                                    <comboitem label="&gt;="/>
+                                </combobox>
+                            </hbox>
+                        </row>
+                        <row>
+                            <label value="Jml Tenaga Kerja"/>
+                            <hbox>
+                                <intbox width="100px" id="txtNilai1"/>
+                            </hbox>
+                        </row>
+                        <row>
+                            <label value="Operator"></label>
+                            <hbox>
+                                <combobox id="cmbOperator2">
+                                    <comboitem label="&lt;"/>
+                                    <comboitem label="&lt;="/>
+                                    <comboitem label="&gt;"/>
+                                    <comboitem label="&gt;="/>
+                                </combobox>
+                            </hbox>
+                        </row>
+                        <row>
+                            <label value="Jml Tenaga Kerja"/>
+                            <hbox>
+                                <intbox width="100px" id="txtNilai2"/>
+                            </hbox>
+                        </row>
+                    </rows>
+                </grid>
+            </div>
+        </groupbox>
+        <groupbox style="border:0px">
+            <div style="padding:3px;" align="right">
+                <hbox>
+                    <button label="Simpan" onClick="kriteriaUsahaWnd.simpan()" height="25px"></button>
+                    <button label="Batal" onClick="kriteriaUsahaWnd.batal()" height="25px"></button>
+                </hbox>
+            </div>
+        </groupbox>
+        <groupbox>
+            <caption label="Daftar Kriteria Usaha"></caption>
+            <div style="padding:3px">
+                <listbox id="lstKriteriaUsaha" rows="10">
+                    <listhead>
+                        <listheader label="Keterangan" width="200px"></listheader>
+                        <listheader label="Operator" width="80px" align="center"></listheader>
+                        <listheader label="Jml Tenaga Kerja" width="120px" align="center"></listheader>
+                        <listheader label="Operator" width="80px" align="center"></listheader>
+                        <listheader label="Jml Tenaga Kerja" width="120px" align="center"></listheader>
+                        <listheader label="" align="center" width="80px"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+    </groupbox></div>
+</zk>

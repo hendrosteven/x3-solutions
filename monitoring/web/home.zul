@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+
+    <borderlayout style="background:#ffffff;border:0px">
+        <north style="background:#ffffff;border:0px"></north>
+        <center style="background:#ffffff;border:0px">
+            <div align="center" style="background:#ffffff;padding:0px"
+                 use="com.x3.monitoring.operator.HomeWnd" id="homeWnd">
+                <space height="70px" />
+                <div>
+                    <image src="/img/salatiga.jpg"></image>
+                </div>
+                <div>
+                    <label value="INVESTASI KOTA SALATIGA"
+                           style="font-size:20px;font-weight:bold" />
+                </div>
+                <space height="5px" />
+                <div>
+                    <button label="Selayang Pandang" width="200px"
+                            height="30px" onClick="homeWnd.selayangPandang()">
+                    </button>
+                </div>
+                <space height="5px" />
+                <div>
+                    <button label="Potensi Investasi" width="200px"
+                            height="30px" onClick="homeWnd.potensiInvestasi()">
+                    </button>
+                </div>
+                <space height="5px" />
+                <div>
+                    <button label="Data Investasi" width="200px"
+                            height="30px" onClick="homeWnd.dataInvestasi()">
+                    </button>
+                </div>
+                <space height="5px" />
+                <div>
+                    <button label="Peta Salatiga" width="200px"
+                            height="30px" onClick="homeWnd.petaSalatiga()">
+                    </button>
+                </div>
+                <space height="50px" />
+                <div>
+                    <label value="KANTOR PENANAMAN MODAL KOTA SALATIGA"
+                           style="font-size:16px;font-weight:bold" />
+                </div>
+            </div>
+        </center>
+        <south style="background:#ffffff;border:0px"></south>
+        <west style="background:#ffffff;border:0px;">
+            <div>
+                <space height="40px"/>
+                <div align="center">
+                    <image src="/img/leftbar.png"></image>
+                </div>
+            </div>
+        </west>
+        <east style="background:#ffffff;border:0px">
+            <div>
+                <space height="40px"/>
+                <div>
+                    <image src="/img/rigthbar.png"></image>
+                </div>
+            </div>
+        </east>
+    </borderlayout>
+</zk>

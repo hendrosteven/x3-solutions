@@ -1,0 +1,75 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.operator.CariTotalInvestasiPerusahaanWnd" id="cariTotalInvestasiPerusahaanWnd">
+        <div>
+            <label value="Pencarian Perusahaan"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <space />
+        <groupbox>
+            <caption label="Berdasarkan Total Investasi"></caption>
+            <vbox>
+                <radiogroup id="rdPilihan">
+                    <div style="padding:5px">
+                        <grid>
+                            <rows>
+                                <row>
+                                    <radio value="1" selected="true"/>
+                                    <label value="Lebih dari" />
+                                    <hbox>
+                                        <doublebox id="dblNilaiLebih" width="150px" />
+                                    </hbox>
+                                </row>
+                                <row>
+                                    <radio value="2"/>
+                                    <label value="Kurang dari" />
+                                    <hbox>
+                                        <doublebox id="dblNilaiKurang" width="150px" />
+                                    </hbox>
+                                </row>
+                                <row>
+                                    <radio value="3"/>
+                                    <label value="Antara" />
+                                    <hbox>
+                                        <doublebox id="dblNilaiA" width="150px"/>
+                                        <label value="s/d"/>
+                                        <doublebox id="dblNilaiB" width="150px"/>
+                                    </hbox>
+                                </row>
+                            </rows>
+                        </grid>
+                    </div>
+                </radiogroup>
+                <div style="padding:3px">
+                    <button label="Cari" onClick="cariTotalInvestasiPerusahaanWnd.cari()" width="70px" height="25px"></button>
+                </div>
+            </vbox>
+        </groupbox>
+        <space></space>
+        <groupbox>
+            <caption label="Hasil Pencarian"></caption>
+            <div style="padding:5px">
+                <listbox id="lstHasil" rows="20" mold="paging">
+                    <listhead>
+                        <listheader label="Nama Perusahaan" width="250px">
+                        </listheader>
+                        <listheader label="Nama Pimpinan" width="200px">
+                        </listheader>
+                        <listheader label="Alamat"></listheader>
+                        <listheader label="Nilai Investasi" align="right" width="150px"/>
+                        <listheader label="" align="center" width="80px"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+            <div align="right" style="padding:5px">
+                <hbox>
+                    <label value="Total Investasi:" style="font-weight:bold"/>
+                    <textbox width="150px" id="txtTotal" style="font-align:right"/>
+                </hbox>
+            </div>
+
+        </groupbox>
+
+    </div>
+</zk>

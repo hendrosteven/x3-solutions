@@ -1,0 +1,60 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:zk="http://www.zkoss.org/2005/zk">
+    <div style="padding:5px" width="700px" use="com.x3.monitoring.admin.BackupRestoreWnd" id="backupRestoreWnd">
+        <div>
+            <label value="Backup dan Restore Database"
+                   style="font-size:18;font-weight:bold">
+            </label>
+        </div>
+        <div>
+            <label
+                value="Berikut tools untuk melakukan backup dan restore database">
+            </label>
+        </div>
+        <space height="10px"/>
+        <groupbox>
+            <caption label="Backup Database"></caption>
+            <div style="padding:3px">
+                <grid>
+                    <rows>
+                        <row>
+                            <label value="Output File"></label>
+                            <hbox>
+                                <textbox width="300px" id="txtOutputFile"></textbox>
+                            </hbox>
+
+                        </row>
+                    </rows>
+                </grid>
+            </div>
+            <div style="padding:3px;" align="right">
+                <hbox>
+                    <button label="Mulai Backup" onClick="backupRestoreWnd.backup()" height="25px"></button>
+                </hbox>
+            </div>
+        </groupbox>
+        <space height="5px"/>
+        <groupbox>
+            <caption label="Restore Database"></caption>
+            <div style="padding:3px">
+                <grid>
+                    <rows>
+                        <row>
+                            <label value="Input File"></label>
+                            <hbox>                                                                
+                                <textbox width="300px" id="txtInputFile"></textbox>
+                                
+                            </hbox>
+
+                        </row>
+                    </rows>
+                </grid>
+            </div>
+            <div style="padding:3px;" align="right">
+                <hbox>
+                    <button label="Mulai Restore" onClick="backupRestoreWnd.restore()" height="25px"></button>
+                </hbox>
+            </div>
+        </groupbox>
+    </div>
+</zk>

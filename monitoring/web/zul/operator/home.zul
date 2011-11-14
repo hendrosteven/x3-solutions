@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div align="center" style="padding:1px" use="com.x3.monitoring.operator.HomeWnd" id="homeWnd">
+        <space height="100px"/>
+        <div>
+            <image src="/img/salatiga.jpg"></image>
+        </div>
+    </div>
+</zk>

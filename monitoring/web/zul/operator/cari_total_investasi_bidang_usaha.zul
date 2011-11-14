@@ -1,0 +1,49 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.operator.CariTotalInvestasiPerBidangUsahaWnd" id="cariCariTotalInvestasiPerBidangUsahaWnd">
+        <div>
+            <label value="Pencarian Perusahaan"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <space />
+        <groupbox>
+            <caption label="Berdasarkan Bidang Usaha"></caption>
+            <div style="padding:5px">
+                <vbox>
+                    <hbox>
+                        <label value="Bidang Usaha"></label>
+                        <textbox width="500px" id="txtBidangUsaha"></textbox><intbox id="txtIdBidangUsaha" visible="false"/><button label="..." onClick="cariCariTotalInvestasiPerBidangUsahaWnd.browseBidangUsaha()"></button>
+                    </hbox>
+                    <button label="Cari" onClick="cariCariTotalInvestasiPerBidangUsahaWnd.cari()" width="70px" height="25px"></button>
+                </vbox>
+            </div>
+        </groupbox>
+        <space></space>
+        <groupbox>
+            <caption label="Hasil Pencarian"></caption>
+            <div style="padding:5px">
+                <listbox id="lstHasil" rows="20" mold="paging">
+                    <listhead>
+                        <listheader label="Nama Perusahaan" width="250px">
+                        </listheader>
+                        <listheader label="Nama Pimpinan" width="200px">
+                        </listheader>
+                        <listheader label="Alamat"></listheader>
+                        <listheader label="Nilai Investasi" align="right" width="150px"/>
+                        <listheader label="" align="center" width="80px"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+            <div align="right" style="padding:5px">
+                <hbox>
+                    <label value="Total Investasi:" style="font-weight:bold"/>
+                    <textbox width="150px" id="txtTotal" style="font-align:right"/>
+                </hbox>
+            </div>
+        </groupbox>
+
+        
+
+    </div>
+</zk>

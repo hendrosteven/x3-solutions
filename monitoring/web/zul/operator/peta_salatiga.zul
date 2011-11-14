@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window title="Peta Salatiga" closable="true" width="850px" height="555px" border="normal" use="" id="potensiWnd">
+        <div style="height:96%;width:97%;overflow:auto;padding:10px">
+            <html id="html"><![CDATA[
+            <img src="img/peta-salatiga.jpg"/>
+            ]]>
+            
+            </html>
+        </div>
+    </window>
+</zk>

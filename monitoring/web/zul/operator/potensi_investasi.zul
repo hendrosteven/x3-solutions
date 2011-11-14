@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window title="Potensi Investasi" closable="true" width="850px" height="550px" border="normal" use="com.x3.monitoring.operator.PotensiInvestasiWnd" id="potensiWnd">
+        <div style="height:100%;overflow:auto;padding:10px">
+            <html id="html"><![CDATA[  ]]>
+            </html>
+        </div>
+    </window>
+</zk>

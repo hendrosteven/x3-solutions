@@ -1,0 +1,30 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.admin.InputPotensiInvestasiWnd" id="inputPotensiWnd">
+        <div>
+            <label value="Konten Potensi Investasi"
+                   style="font-size:18;font-weight:bold">
+            </label>
+        </div>
+        <div>
+            <label
+                value="Silahkan input data potensi investasi pada form di bawah ini">
+            </label>
+        </div>
+        <space height="10px"/>
+        <groupbox>
+            <div style="padding:3px">
+                <fckeditor id="fckPotensi" height="500px"/>
+            </div>
+        </groupbox>
+        <groupbox style="border:0px">
+            <div style="padding:3px;" align="left">
+                <hbox>
+                    <button label="Simpan" onClick="inputPotensiWnd.simpan()" height="25px"></button>
+                    <button label="Lihat" onClick="inputPotensiWnd.lihat()" height="25px"></button>
+                </hbox>
+            </div>
+        </groupbox>
+
+    </div>
+</zk>

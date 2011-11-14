@@ -1,0 +1,51 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" width="400px" use="com.x3.monitoring.admin.BidangUsahaPemerintahWnd" id="bidangPemerintahWnd">
+        <div>
+            <label value="Daftar Bidang Kegiatan Pemerintah"
+                   style="font-size:18;font-weight:bold">
+            </label>
+        </div>
+        <div>
+            <label
+                value="Berikut adalah daftar Bidang Kegiatan Pemerintah yang ada dalam database">
+            </label>
+        </div>
+        <space height="10px"/>
+        <groupbox>
+            <caption label="Bidang Kegiatan Pemerintah"></caption>
+            <div style="padding:3px">
+                <grid>
+                    <rows>
+                        <row>
+                            <label value="Nama Bidang Kegiatan"></label>
+                            <hbox>
+                                <textbox width="200px" id="txtNama"></textbox>
+                                <textbox id="txtId" visible="false"/>
+                            </hbox>
+
+                        </row>
+                    </rows>
+                </grid>
+            </div>
+        </groupbox>
+        <groupbox style="border:0px">
+            <div style="padding:3px;" align="right">
+                <hbox>
+                    <button label="Simpan" onClick="bidangPemerintahWnd.simpan()" height="25px"></button>
+                    <button label="Batal" onClick="bidangPemerintahWnd.batal()" height="25px"></button>
+                </hbox>
+            </div>
+        </groupbox>
+        <groupbox>
+            <caption label="Daftar Bidang Kegiatan"></caption>
+            <div style="padding:3px">
+                <listbox id="lstBidangKegiatan" rows="10">
+                    <listhead>
+                        <listheader label="Nama Bidang Kegiatan" width="300px"></listheader>
+                        <listheader label="" align="center" ></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+    </groupbox></div>
+</zk>

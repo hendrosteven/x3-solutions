@@ -1,0 +1,51 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" width="400px" use="com.x3.monitoring.admin.KelurahanWnd" id="kelurahanWnd">
+        <div>
+            <label value="Daftar Kelurahan"
+                   style="font-size:18;font-weight:bold">
+            </label>
+        </div>
+        <div>
+            <label
+                value="Berikut adalah daftar kelurahan yang ada dalam database">
+            </label>
+        </div>
+        <space height="10px"/>
+        <groupbox>
+            <caption label="Data Kelurahan"></caption>
+            <div style="padding:3px">
+                <grid>
+                    <rows>
+                        <row>
+                            <label value="Nama Kelurahan"></label>
+                            <hbox>
+                                <textbox width="200px" id="txtNamaKelurahan"></textbox>
+                                <textbox id="txtIdKelurahan" visible="false"/>
+                            </hbox>
+
+                        </row>
+                    </rows>
+                </grid>
+            </div>
+        </groupbox>
+        <groupbox style="border:0px">
+            <div style="padding:3px;" align="right">
+                <hbox>
+                    <button label="Simpan" onClick="kelurahanWnd.simpan()" height="25px"></button>
+                    <button label="Batal" onClick="kelurahanWnd.batal()" height="25px"></button>
+                </hbox>
+            </div>
+        </groupbox>
+        <groupbox>
+            <caption label="Daftar Kelurahan"></caption>
+            <div style="padding:3px">
+                <listbox id="lstKelurahan" rows="10">
+                    <listhead>
+                        <listheader label="Nama Kelurahan" width="300px"></listheader>
+                        <listheader label="" align="center" ></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+    </groupbox></div>
+</zk>
