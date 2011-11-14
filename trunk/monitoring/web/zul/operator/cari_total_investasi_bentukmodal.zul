@@ -1,0 +1,54 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.operator.CariTotalInvestasiPerBentukModalWnd" id="cariTotalInvestasiWnd">
+        <div>
+            <label value="Pencarian Perusahaan"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <space />
+        <groupbox>
+            <caption label="Berdasarkan Bentuk Modal"></caption>
+            <div style="padding:5px">
+                <hbox>
+                    <label value="Bentuk Modal"></label>
+                    <combobox id="cmbBentukModal">
+                        <comboitem label="">
+                        </comboitem>
+                        <comboitem label="">
+                        </comboitem>
+                    </combobox>
+                    <button label="Cari" onClick="cariTotalInvestasiWnd.cari()" height="25px"></button>
+                </hbox>
+            </div>
+        </groupbox>
+        <space></space>
+        <groupbox>
+            <caption label="Hasil Pencarian"></caption>
+            <div style="padding:5px">
+                <listbox id="lstHasil" rows="20" mold="paging">
+                    <listhead>
+                        <listheader label="Nama Perusahaan" width="250px">
+                        </listheader>
+                        <listheader label="Nama Pimpinan" width="200px">
+                        </listheader>
+                        <listheader label="Alamat"></listheader>
+                        <listheader label="Nilai Investasi" align="right" width="150px"/>
+                        <listheader label="" align="center" width="80px"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+            <div align="right" style="padding:5px">
+                <hbox>
+                    <label value="Total Investasi:" style="font-weight:bold"/>
+                    <textbox width="150px" id="txtTotal" style="font-align:right"/>
+                </hbox>
+            </div>
+        </groupbox>
+
+        <div style="padding:3px">
+            <button label="Cetak" onClick="cariTotalInvestasiWnd.cetak()" height="25px"></button>
+        </div>
+
+    </div>
+</zk>

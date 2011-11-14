@@ -1,0 +1,29 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.operator.DaftarKegiatanPemerintahWnd" id="daftarKegiatanPemerintahWnd">
+
+        <div>
+            <label value="Daftar Kegiatan Pemerintah"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <div>
+            <label
+                value="Berikut adalah daftar kegiatan pemerintah yang ada dalam database kami">
+            </label>
+        </div>
+        <div style="padding:5px">
+            <listbox id="lstKegiatanPemerintah" rows="20" mold="paging">
+                <listhead>
+                    <listheader label="Nama Kegiatan" width="250px"></listheader>
+                    <listheader label="Lokasi Kegiatan"></listheader>
+                    <listheader label="Sumber Dana" width="120px"></listheader>
+                    <listheader align="center" label="Tahun" width="60px"></listheader>
+                    <listheader label="Bidang Kegiatan" width="150px"></listheader>
+                    <listheader align="right" label="Nilai Investasi" width="150px"></listheader>
+                </listhead>
+            </listbox>
+        </div>
+
+    </div>
+</zk>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/monitoring">
+    <Resource auth="Container"
+    driverClassName="com.mysql.jdbc.Driver"
+    maxActive="100" maxIdle="20" maxWait="10"
+    name="jdbc/monitoring"
+    password="admin"
+    type="javax.sql.DataSource"
+    url="jdbc:mysql://localhost:3306/monitoring"
+    username="root"/>
+</Context>

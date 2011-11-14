@@ -1,0 +1,69 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" width="600px" use="com.x3.monitoring.admin.UserWnd" id="adminWnd">
+        <div>
+            <label value="Daftar Administrator"
+                   style="font-size:18;font-weight:bold">
+            </label>
+        </div>
+        <div>
+            <label
+                value="Berikut adalah daftar administrator yang ada dalam database">
+            </label>
+        </div>
+        <space height="10px"/>
+        <groupbox>
+            <caption label="Data Administrator"></caption>
+            <div style="padding:3px">
+                <grid>
+                    <rows>
+                        <row>
+                            <label value="User Name"></label>
+                            <hbox>
+                                <textbox width="200px" id="txtUserName"></textbox>
+                                <textbox id="txtIdUser" visible="false"/>
+                            </hbox>
+                        </row>
+                        <row>
+                            <label value="Password"></label>
+                            <hbox>
+                                <textbox width="200px" id="txtPassword" type="password"></textbox>
+                            </hbox>
+                        </row>
+                        <row>
+                            <label value="Nama Lengkap"></label>
+                            <hbox>
+                                <textbox width="200px" id="txtNama"></textbox>                                
+                            </hbox>
+                        </row>
+                        <row>
+                            <label value="Email"></label>
+                            <hbox>
+                                <textbox width="200px" id="txtEmail"></textbox>                               
+                            </hbox>
+                        </row>
+                    </rows>
+                </grid>
+            </div>
+        </groupbox>
+        <groupbox style="border:0px">
+            <div style="padding:3px;" align="right">
+                <hbox>
+                    <button label="Simpan" onClick="adminWnd.simpan()" height="25px"></button>
+                    <button label="Batal" onClick="adminWnd.batal()" height="25px"></button>
+                </hbox>
+            </div>
+        </groupbox>
+        <groupbox>
+            <caption label="Daftar Administrator"></caption>
+            <div style="padding:3px">
+                <listbox id="lstAdmin" rows="10">
+                    <listhead>
+                        <listheader label="Nama Admin" width="300px"></listheader>
+                        <listheader label="Email" width="200px"></listheader>
+                        <listheader label="" align="center" ></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+    </groupbox></div>
+</zk>

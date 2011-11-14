@@ -1,0 +1,45 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.admin.CariNamaPerusahaanWnd" id="cariNamaPerusahaanWnd">
+        <div>
+            <label value="Pencarian Perusahaan"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <space />
+        <groupbox>
+            <caption label="Berdasarkan Nama"></caption>
+            <div style="padding:5px">
+                <hbox>
+                    <label value="Kunci Pencarian"></label>
+                    <textbox width="350px" id="txtKeyWord"></textbox>
+                    <button label="Cari" onClick="cariNamaPerusahaanWnd.cari()" height="25px"></button>
+                </hbox>
+            </div>
+        </groupbox>
+        <space></space>
+        <groupbox>
+            <caption label="Hasil Pencarian"></caption>
+            <div style="padding:5px">
+                <listbox id="lstHasil" rows="20" mold="paging">
+                    <listhead>
+                        <listheader label="Nama Perusahaan"
+                                    width="300px">
+                        </listheader>
+                        <listheader label="Nama Pimpinan"
+                                    width="300px">
+                        </listheader>
+                        <listheader label="Alamat" width="350px"></listheader>
+                        <listheader label="" align="center"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+
+        </groupbox>
+        
+        <div style="padding:3px">
+            <button label="Cetak" onClick="cariNamaPerusahaanWnd.cetak()" height="25px"></button>
+        </div>
+        
+    </div>
+</zk>

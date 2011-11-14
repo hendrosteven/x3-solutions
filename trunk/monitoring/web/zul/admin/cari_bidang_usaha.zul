@@ -1,0 +1,47 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.admin.CariBidangUsahaPerusahaanWnd" id="cariBidangUsahaPerusahaanWnd">
+        <div>
+            <label value="Pencarian Perusahaan"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <space />
+        <groupbox>
+            <caption label="Berdasarkan Bidang Usaha"></caption>
+            <div style="padding:5px">
+                <vbox>
+                    <hbox>
+                        <label value="Bidang Usaha"></label>
+                        <textbox width="500px" id="txtBidangUsaha"></textbox><intbox id="txtIdBidangUsaha" visible="false"/><button label="..." onClick="cariBidangUsahaPerusahaanWnd.browseBidangUsaha()"></button>
+                    </hbox>
+                    <button label="Cari" onClick="cariBidangUsahaPerusahaanWnd.cari()" width="70px" height="25px"></button>
+                </vbox>
+            </div>
+        </groupbox>
+        <space></space>
+        <groupbox>
+            <caption label="Hasil Pencarian"></caption>
+            <div style="padding:5px">
+                <listbox id="lstHasil" rows="20" mold="paging">
+                    <listhead>
+                        <listheader label="Nama Perusahaan"
+                                    width="300px">
+                        </listheader>
+                        <listheader label="Nama Pimpinan"
+                                    width="300px">
+                        </listheader>
+                        <listheader label="Alamat" width="350px"></listheader>
+                        <listheader label="" align="center"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+
+        </groupbox>
+
+        <div style="padding:3px">
+            <button label="Cetak" onClick="cariBidangUsahaPerusahaanWnd.cetak()" height="25px"></button>
+        </div>
+
+    </div>
+</zk>

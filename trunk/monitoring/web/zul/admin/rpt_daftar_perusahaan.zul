@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window use="com.x3.monitoring.admin.ReportDaftarPerusahaanWnd" id="rptDaftarPerusahaan" border="normal" height="560px" width="850px" closable="true" title="Cetak Daftar Perusahaan">
+        <div style="padding:5px" width="98" height="98%"  >
+            <textbox id="sql" visible="false"/>
+            <jasperreport id="jasper"/>
+        </div>
+    </window>
+</zk>

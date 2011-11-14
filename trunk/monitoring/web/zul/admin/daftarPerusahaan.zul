@@ -1,0 +1,27 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div id="daftarPerusahaanWnd" use="com.x3.monitoring.admin.DaftarPerusahaanWnd">
+        <div>
+            <label value="Daftar Perusahaan"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <div>
+            <label
+                value="Berikut adalah daftar perusahaan yang ada dalam database">
+            </label>
+        </div>
+        <div style="padding:5px">
+            <listbox id="lstPerusahaan" rows="20" mold="paging">
+                <listhead>
+                    <listheader label="Nama Perusahaan" width="300px"></listheader>
+                    <listheader label="Nama Pimpinan" width="300px"></listheader>
+                    <listheader label="Alamat"></listheader>
+                    <listheader label="" align="center" width="100px"></listheader>
+                </listhead>
+
+            </listbox>
+        </div>
+
+    </div>
+</zk>

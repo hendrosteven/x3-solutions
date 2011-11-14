@@ -1,0 +1,93 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window title="Detail Kegiatan Pemerintah" height="450px" width="630px" closable="true" border="normal" use="com.x3.monitoring.admin.EditKegiatanPemerintahWnd" id="editKegiatanWnd">
+        <div style="height:100%;overflow:auto;padding:10px">
+            <div>
+                <label value="Detail Kegiatan Pemerintah"
+                       style="font-size:18;font-weight:bold">
+                </label>
+            </div>
+            <div>
+                <label
+                    value="Digunakan untuk melihat dan mengubah data kegiatan pemerintah">
+                </label>
+            </div>
+            <space height="10px"/>
+            <groupbox>
+                <caption label="Data Kegiatan Pemerintah"></caption>
+                <div style="padding:3px">
+                    <grid>
+                        <rows>
+                            <row>
+                                <label style="font-weight:bold" value="Nama Kegiatan"></label>
+                                <hbox>
+                                    <textbox width="400px" id="txtNama"></textbox>
+                                    <textbox id="txtId" visible="false"/>
+                                </hbox>
+                            </row>
+                            <row>
+                                <label style="font-weight:bold" value="Lokasi"></label>
+                            </row>
+                            <row>
+                                <label value="Jalan"/>
+                                <hbox>
+                                    <textbox width="400px" id="txtJalan"></textbox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <label value="Kelurahan"/>
+                                <hbox>
+                                    <combobox id="cmbKelurahan"></combobox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <label value="Kecamatan"/>
+                                <hbox>
+                                    <combobox id="cmbKecamatan"></combobox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <label value="Kota"/>
+                                <hbox>
+                                    <textbox width="150" id="txtKota"></textbox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <label style="font-weight:bold" value="Sumber Dana"></label>
+                                <hbox>
+                                    <combobox id="cmbSumberDana"/>
+                                </hbox>
+                            </row>
+                            <row>
+                                <label style="font-weight:bold" value="Tahun Kegiatan"></label>
+                                <hbox>
+                                    <textbox width="100px" id="txtTahun"></textbox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <label style="font-weight:bold" value="Bidang Kegiatan"></label>
+                                <hbox>
+                                    <combobox id="cmbBidangKegiatan"/>
+                                </hbox>
+                            </row>
+                            <row>
+                                <label style="font-weight:bold" value="Nilai Investasi"></label>
+                                <hbox>
+                                    <doublebox format="#,##0.##" width="200px" id="dblNilaiInvestasi"/>
+                                </hbox>
+                            </row>
+                        </rows>
+                    </grid>
+                </div>
+            </groupbox>
+            <groupbox style="border:0px">
+                <div style="padding:3px;" align="left">
+                    <hbox>
+                        <button label="Simpan" onClick="editKegiatanWnd.simpan()" height="25px"></button>
+                        <button label="Batal" onClick="editKegiatanWnd.batal()" height="25px"></button>
+                    </hbox>
+                </div>
+            </groupbox>
+        </div>
+    </window>
+</zk>

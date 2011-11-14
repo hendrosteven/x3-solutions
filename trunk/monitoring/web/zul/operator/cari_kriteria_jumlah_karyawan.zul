@@ -1,0 +1,55 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.operator.CariKriteriaTenagaKerjaPerusahaanWnd" id="cariPerusahaanWnd">
+        <div>
+            <label value="Pencarian Perusahaan"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <space />
+        <groupbox>
+            <caption label="Berdasarkan Kriteria Jumlah Tenaga Kerja"></caption>
+            <vbox>
+                <div style="padding:5px">
+                    <grid>
+                        <rows>
+                            <row>                                
+                                <label value="Kriteria Jenis Usaha"/>
+                                <hbox>
+                                    <combobox id="cmbKriteriaUsaha"/>
+                                </hbox>
+                            </row>                            
+
+                        </rows>
+                    </grid>
+                </div>
+                <div style="padding:3px">
+                    <button label="Cari" onClick="cariPerusahaanWnd.cari()" width="70px" height="25px"></button>
+                </div>
+            </vbox>
+        </groupbox>
+        <space></space>
+        <groupbox>
+            <caption label="Hasil Pencarian"></caption>
+            <div style="padding:5px">
+                <listbox id="lstHasil" rows="20" mold="paging">
+                    <listhead>
+                        <listheader label="Nama Perusahaan"
+                                    width="200px">
+                        </listheader>
+                        <listheader label="Nama Pimpinan"
+                                    width="200px">
+                        </listheader>
+                        <listheader label="Alamat"></listheader>
+                        <listheader label="Jml TKI" width="120px" align="center"/>
+                        <listheader label="Jml TKA" width="120px" align="center"/>
+                        <listheader label="" align="center" width="60px"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+
+        </groupbox>
+
+       
+    </div>
+</zk>

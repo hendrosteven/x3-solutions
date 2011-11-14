@@ -1,0 +1,121 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.operator.CariKegiatanPemerintahWnd" id="cariKegiatanPemerintahWnd">
+        <div>
+            <label value="Pencarian Kegiatan Pemerintah"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <space />
+        <groupbox>
+            <caption label="Berdasarkan Pencarian Lanjut"></caption>
+            <vbox>
+                <div style="padding:5px">
+                    <grid>
+                        <rows>
+                            <row>
+                                <checkbox id="chkNama"/>
+                                <label value="Nama Kegiatan"/>
+                                <hbox>
+                                    <textbox id="txtNama" width="350px"/>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkKelurahan"/>
+                                <label value="Kelurahan"/>
+                                <hbox>
+                                    <combobox id="cmbKelurahan">
+                                        <comboitem label="">
+                                        </comboitem>
+                                        <comboitem label="">
+                                        </comboitem>
+                                    </combobox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkKecamatan"/>
+                                <label value="Kecamatan"/>
+                                <hbox>
+                                    <combobox id="cmbKecamatan">
+                                        <comboitem label="">
+                                        </comboitem>
+                                        <comboitem label="">
+                                        </comboitem>
+                                    </combobox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkKota"/>
+                                <label value="Kota"/>
+                                <hbox>
+                                    <textbox id="txtKota" width="200px"/>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkSumberDana"/>
+                                <label value="Sumber Dana"/>
+                                <hbox>
+                                    <combobox id="cmbSumberDana">
+                                        <comboitem label="">
+                                        </comboitem>
+                                        <comboitem label="">
+                                        </comboitem>
+                                    </combobox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkTahun"/>
+                                <label value="Tahun"/>
+                                <hbox>
+                                    <textbox id="txtTahun" width="100px"/>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkBidang"/>
+                                <label value="Bidang Kegiatan"/>
+                                <hbox>
+                                    <combobox id="cmbBidangKegiatan">
+                                        <comboitem label="">
+                                        </comboitem>
+                                        <comboitem label="">
+                                        </comboitem>
+                                    </combobox>
+                                </hbox>
+                            </row>
+                        </rows>
+                    </grid>
+                </div>
+                <div style="padding:3px">
+                    <button label="Cari" onClick="cariKegiatanPemerintahWnd.cari()" width="70px" height="25px"></button>
+                </div>
+            </vbox>
+        </groupbox>
+        <space></space>
+        <groupbox>
+            <caption label="Hasil Pencarian"></caption>
+            <div style="padding:5px">
+                <listbox id="lstHasil" rows="20" mold="paging">
+                    <listhead>
+                        <listheader label="Nama Kegiatan" width="250px"></listheader>
+                        <listheader label="Lokasi Kegiatan"></listheader>
+                        <listheader label="Sumber Dana" width="120px"></listheader>
+                        <listheader align="center" label="Tahun" width="60px"></listheader>
+                        <listheader label="Bidang Kegiatan" width="150px"></listheader>
+                        <listheader align="right" label="Nilai Investasi" width="150px"></listheader>
+                        
+                    </listhead>
+                </listbox>
+            </div>
+            <div align="right" style="padding:5px">
+                <hbox>
+                    <label value="Total Investasi:" style="font-weight:bold"/>
+                    <textbox width="150px" id="txtTotal" style="font-align:right"/>
+                </hbox>
+            </div>
+
+        </groupbox>
+
+
+
+    </div>
+</zk>

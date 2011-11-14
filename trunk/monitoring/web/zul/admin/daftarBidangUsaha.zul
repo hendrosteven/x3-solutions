@@ -1,0 +1,21 @@
+<?page title="Daftar Bidang Usaha" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window title="Daftar Bidang Usaha" border="normal" width="500px"
+            closable="true" id="daftarBidangUsahaWnd" use="com.x3.monitoring.admin.DaftarBidangUsahaWnd">
+
+        <div style="padding:5px">
+            <hbox>
+                <label value="Pencarian" ></label><textbox width="300px" id="keyword" onChange="daftarBidangUsahaWnd.loadBidangUsahaKey()"></textbox>
+            </hbox>
+        </div>
+        <div style="padding:5px">
+            <listbox id="lstBidangUsaha" rows="20" onSelect="daftarBidangUsahaWnd.onSelectLstBox()">
+                <listhead>
+                    <listheader label="KBLI" width="100px"></listheader>
+                    <listheader label="JENIS KOMODITI"></listheader>
+                </listhead>                
+            </listbox>
+        </div>
+
+    </window>
+</zk>

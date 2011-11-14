@@ -1,0 +1,48 @@
+<?page title="Login System" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window title="Login Sistem" border="normal" width="350px"
+     closable="false" id="loginWindow" use="com.x3.monitoring.admin.LoginWnd">
+
+        <div style="padding:7px">
+            <groupbox>
+                <div style="padding:10px" align="center">
+                    <hbox>
+                    <image src="/img/login.png"/>
+                    <label value="Login Administrator" style="font-weight:bold;font-size:12pt"></label>
+                    </hbox>
+                </div>
+            </groupbox>
+            <space height="2px"></space>
+            <groupbox>
+                <div style="padding:7px">
+                    <grid style="border:0">
+                        <columns>
+                            <column label=""></column>
+                            <column label=""></column>
+                        </columns>
+                        <rows>
+                            <row style="border:0">
+                                <label value="User Name"></label>
+                                <hbox>
+                                    <textbox width="200px" id="txtboxUserName"></textbox>
+                                </hbox>
+                            </row>
+                            <row style="border:0">
+                                <label value="Password"></label>
+                                <hbox>
+                                    <textbox width="200px" id="txtboxPassword" type="password"></textbox>
+                                </hbox>
+                        </row></rows>
+                    </grid>
+                </div>
+            </groupbox>
+            <space height="2px"></space>
+            <groupbox>
+                <div style="padding:7px" align="right">
+
+                    <hbox><button label="Login" id="btnLogin" onClick="loginWindow.btnLoginOnClick()" width="90px" height="35px"></button>
+                    <button label="Batal" onClick="loginWindow.btnBatalOnClick()" width="90px" height="35px" id="btnBatal"></button></hbox>
+                </div>
+        </groupbox></div>
+    </window>
+</zk>

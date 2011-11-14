@@ -1,0 +1,118 @@
+<?page title="Daftar Perusahaan" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <div style="padding:5px" use="com.x3.monitoring.operator.CariLanjutPerusahaanWnd" id="cariLanjutPerusahaanWnd">
+        <div>
+            <label value="Pencarian Perusahaan"
+                   style="font-size:16;font-weight:bold">
+            </label>
+        </div>
+        <space />
+        <groupbox>
+            <caption label="Berdasarkan Pencarian Lanjut"></caption>
+            <vbox>
+                <div style="padding:5px">
+                    <grid>
+                        <rows>
+                            <row>
+                                <checkbox id="chkTanggalInput"/>
+                                <label value="Bulan dan Tahun Input"/>
+                                <hbox>
+                                    <combobox id="cmbBulanInput"/>
+                                    <label value="Tahun"/>
+                                    <textbox id="txtTahunInput" width="80px"/>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkNama"/>
+                                <label value="Nama Perusahaan"/>
+                                <hbox>
+                                    <textbox id="txtNama" width="350px"/>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkKecamatan"/>
+                                <label value="Kecamatan"/>
+                                <hbox>
+                                    <combobox id="cmbKecamatan">
+                                        <comboitem label="">
+                                        </comboitem>
+                                        <comboitem label="">
+                                        </comboitem>
+                                    </combobox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkBadanHukum"/>
+                                <label value="Badan Hukum"/>
+                                <hbox>
+                                    <combobox id="cmbBadanHukum">
+                                        <comboitem label="">
+                                        </comboitem>
+                                        <comboitem label="">
+                                        </comboitem>
+                                    </combobox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkBentukModal"/>
+                                <label value="Bentuk Modal"/>
+                                <hbox>
+                                    <combobox id="cmbBentukModal">
+                                        <comboitem label="">
+                                        </comboitem>
+                                        <comboitem label="">
+                                        </comboitem>
+                                    </combobox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkStatusPerusahaan"/>
+                                <label value="Status Perusahaan"/>
+                                <hbox>
+                                    <combobox id="cmbStatusPerusahaan">
+                                        <comboitem label="">
+                                        </comboitem>
+                                        <comboitem label="">
+                                        </comboitem>
+                                    </combobox>
+                                </hbox>
+                            </row>
+                            <row>
+                                <checkbox id="chkBidangUsaha"/>
+                                <label value="Bidang Usaha"></label>
+                                <hbox>
+                                    <textbox width="500px" id="txtBidangUsaha"></textbox><intbox id="txtIdBidangUsaha" visible="false"/><button label="..." onClick="cariLanjutPerusahaanWnd.browseBidangUsaha()"></button>
+                                </hbox>
+                            </row>
+                        </rows>
+                    </grid>
+                </div>
+                <div style="padding:3px">
+                    <button label="Cari" onClick="cariLanjutPerusahaanWnd.cari()" width="70px" height="25px"></button>
+                </div>
+            </vbox>
+        </groupbox>
+        <space></space>
+        <groupbox>
+            <caption label="Hasil Pencarian"></caption>
+            <div style="padding:5px">
+                <listbox id="lstHasil" rows="20" mold="paging">
+                    <listhead>
+                        <listheader label="Nama Perusahaan"
+                                    width="300px">
+                        </listheader>
+                        <listheader label="Nama Pimpinan"
+                                    width="300px">
+                        </listheader>
+                        <listheader label="Alamat" width="350px"></listheader>
+                        <listheader label="" align="center"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+
+        </groupbox>
+
+
+
+    </div>
+</zk>
