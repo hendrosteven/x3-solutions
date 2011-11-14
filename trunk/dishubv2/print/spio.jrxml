@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="spio"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="nomor" isForPrompting="true" class="java.lang.String"/>
+	<queryString><![CDATA[SELECT
+     spio.`NOMORSURATPERMOHONAN` AS spio_NOMORSURATPERMOHONAN,
+     spio.`TYPEJENIS` AS spio_TYPEJENIS,
+     spio.`SIFAT` AS spio_SIFAT,
+     spio.`TAHUNKENDARAAN` AS spio_TAHUNKENDARAAN,
+     spio.`TANGGALPENETAPAN` AS spio_TANGGALPENETAPAN,
+     spio.`JUMLAH` AS spio_JUMLAH,
+     spio.`TANGGALPERMOHONAN` AS spio_TANGGALPERMOHONAN,
+     spio.`LAINLAIN` AS spio_LAINLAIN,
+     spio.`PERIHAL` AS spio_PERIHAL,
+     spio.`NOMOR` AS spio_NOMOR,
+     spio.`TANGGALBERAKHIR` AS spio_TANGGALBERAKHIR,
+     merk.`NAMA` AS merk_NAMA,
+     trayek.`NAMA` AS trayek_NAMA,
+     trayek.`KODE` AS trayek_KODE,
+     trayek.`KETERANGAN` AS trayek_KETERANGAN,
+     perusahaan.`NAMAPIMPINAN` AS perusahaan_NAMAPIMPINAN,
+     perusahaan.`ALAMAT` AS perusahaan_ALAMAT
+FROM
+     `merk` merk INNER JOIN `spio` spio ON merk.`ID` = spio.`MERK_ID`
+     INNER JOIN `perusahaan` perusahaan ON spio.`PERUSAHAAN_ID` = perusahaan.`ID`
+     INNER JOIN `trayek` trayek ON spio.`TRAYEK_ID` = trayek.`ID`
+WHERE
+     spio.`NOMOR` = $P{nomor}]]></queryString>
+
+	<field name="spio_NOMORSURATPERMOHONAN" class="java.lang.String"/>
+	<field name="spio_TYPEJENIS" class="java.lang.String"/>
+	<field name="spio_SIFAT" class="java.lang.String"/>
+	<field name="spio_TAHUNKENDARAAN" class="java.lang.String"/>
+	<field name="spio_TANGGALPENETAPAN" class="java.sql.Date"/>
+	<field name="spio_JUMLAH" class="java.lang.Integer"/>
+	<field name="spio_TANGGALPERMOHONAN" class="java.sql.Date"/>
+	<field name="spio_LAINLAIN" class="java.lang.String"/>
+	<field name="spio_PERIHAL" class="java.lang.String"/>
+	<field name="spio_NOMOR" class="java.lang.String"/>
+	<field name="spio_TANGGALBERAKHIR" class="java.sql.Date"/>
+	<field name="merk_NAMA" class="java.lang.String"/>
+	<field name="trayek_NAMA" class="java.lang.String"/>
+	<field name="trayek_KODE" class="java.lang.String"/>
+	<field name="trayek_KETERANGAN" class="java.lang.String"/>
+	<field name="perusahaan_NAMAPIMPINAN" class="java.lang.String"/>
+	<field name="perusahaan_ALAMAT" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="132"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="504"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="332"
+						y="0"
+						width="53"
+						height="18"
+						key="staticText-1"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Surakarta, ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="16"
+						width="58"
+						height="16"
+						key="staticText-2"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Nomor :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="32"
+						width="58"
+						height="16"
+						key="staticText-3"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Sifat :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="48"
+						width="58"
+						height="16"
+						key="staticText-4"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Lampiran :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="64"
+						width="58"
+						height="16"
+						key="staticText-5"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Perihal :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="286"
+						y="64"
+						width="59"
+						height="16"
+						key="staticText-7"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Kepada:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="286"
+						y="80"
+						width="27"
+						height="16"
+						key="staticText-8"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Yth,]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="167"
+						width="145"
+						height="14"
+						key="staticText-9"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Melalui surat saudara Nomor : ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="294"
+						y="167"
+						width="51"
+						height="14"
+						key="staticText-10"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Tanggal :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="181"
+						width="535"
+						height="17"
+						key="staticText-11"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[perihal Permohonan Surat Ijin Trayek (SPIT, dengan ini kami berikan persetujuan ijin trayek sebagai berikut :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="6"
+						y="203"
+						width="92"
+						height="14"
+						key="staticText-12"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Merk Kendaraan :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="6"
+						y="218"
+						width="92"
+						height="14"
+						key="staticText-13"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Type / Jenis :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="6"
+						y="233"
+						width="92"
+						height="14"
+						key="staticText-14"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Tahun Kendaraan :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="6"
+						y="248"
+						width="92"
+						height="14"
+						key="staticText-15"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Jumlah :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="6"
+						y="263"
+						width="92"
+						height="14"
+						key="staticText-16"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Melayani Operasi :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="6"
+						y="278"
+						width="92"
+						height="14"
+						key="staticText-17"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Lain-lain :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="301"
+						width="535"
+						height="17"
+						key="staticText-18"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Sehubungan dengan hal di atas dapat kami sampaikan hal sebagai berikut :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="6"
+						y="318"
+						width="527"
+						height="17"
+						key="staticText-19"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[1.	Segera menyelesaikan kelengkapan administrasi perijinan Angkutan penumpang umum (Taksi)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="6"
+						y="336"
+						width="527"
+						height="17"
+						key="staticText-20"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[2.	Persetujuan ini diberikan dan berlaku 3 (tiga) bulan sejak tanggal ditetapkan.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="358"
+						width="499"
+						height="17"
+						key="staticText-21"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Demikian untuk menjadikan maklum dan guna seperlunya.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="286"
+						y="406"
+						width="249"
+						height="16"
+						key="staticText-22"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[KEPALA DINAS PERHUBUNGAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="286"
+						y="422"
+						width="249"
+						height="16"
+						key="staticText-23"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[KOTA SURAKARTA]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="385"
+						y="0"
+						width="150"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{spio_TANGGALPENETAPAN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="63"
+						y="16"
+						width="165"
+						height="16"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{spio_NOMOR}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="63"
+						y="32"
+						width="165"
+						height="16"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{spio_SIFAT}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="63"
+						y="64"
+						width="196"
+						height="45"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{spio_PERIHAL}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="313"
+						y="80"
+						width="220"
+						height="16"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{perusahaan_NAMAPIMPINAN}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="286"
+						y="96"
+						width="27"
+						height="16"
+						key="staticText-24"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[d/a.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="313"
+						y="96"
+						width="220"
+						height="37"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Top">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{perusahaan_ALAMAT}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="145"
+						y="167"
+						width="141"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{spio_NOMORSURATPERMOHONAN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="345"
+						y="167"
+						width="190"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{spio_TANGGALPERMOHONAN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="104"
+						y="203"
+						width="306"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{merk_NAMA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="104"
+						y="217"
+						width="306"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{spio_TYPEJENIS}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="104"
+						y="232"
+						width="100"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{spio_TAHUNKENDARAAN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="104"
+						y="247"
+						width="100"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{spio_JUMLAH}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="104"
+						y="263"
+						width="431"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{trayek_NAMA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="104"
+						y="277"
+						width="431"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{spio_LAINLAIN}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="204"
+						y="247"
+						width="92"
+						height="14"
+						key="staticText-25"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Unit Kendaraan]]></text>
+				</staticText>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

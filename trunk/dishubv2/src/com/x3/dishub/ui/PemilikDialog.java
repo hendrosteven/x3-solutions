@@ -1,0 +1,868 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/*
+ * PemilikDialog.java
+ *
+ * Created on Sep 26, 2011, 12:47:38 AM
+ */
+package com.x3.dishub.ui;
+
+import com.x3.dishub.dao.KabupatenKotaDAO;
+import com.x3.dishub.dao.KendaraanDAO;
+import com.x3.dishub.dao.PemilikDAO;
+import com.x3.dishub.dao.ProvinsiDAO;
+import com.x3.dishub.dao.WarnaDAO;
+import com.x3.dishub.entity.KabupatenKota;
+import com.x3.dishub.entity.Kendaraan;
+import com.x3.dishub.entity.Pemilik;
+import com.x3.dishub.entity.Provinsi;
+import com.x3.dishub.entity.Warna;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+/**
+ *
+ * @author Hendro Steven
+ */
+public class PemilikDialog extends javax.swing.JDialog {
+
+    private WarnaDAO wDao = (WarnaDAO) MainApps.appContext.getBean("warnaDAO");
+    private Warna headerColor;
+    private Warna backgroudColor;
+    private PemilikDAO pemilikDao = (PemilikDAO) MainApps.appContext.getBean("pemilikDAO");
+    private List<Pemilik> listPemilik;
+    private Pemilik selectedPemilik;
+    private KabupatenKotaDAO kabDao = (KabupatenKotaDAO) MainApps.appContext.getBean("kabKotaDAO");
+    private ProvinsiDAO provDao = (ProvinsiDAO) MainApps.appContext.getBean("provinsiDAO");
+    private KendaraanDAO kendaraanDAO = (KendaraanDAO) MainApps.appContext.getBean("kendaraanDAO");
+
+    /** Creates new form PemilikDialog */
+    public PemilikDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        loadWarna();
+        updateWarna();
+        //this.getContentPane().setBackground(new java.awt.Color(51, 102, 255));
+        loadPemilik();
+        loadKabKota();
+        loadProvinsi();
+    }
+
+    private void loadWarna() {
+        headerColor = wDao.getByNama("PemilikDialogHd");
+        if (headerColor == null) {
+            headerColor = new Warna();
+            headerColor.setName("PemilikDialogHd");
+            headerColor.setRgb(-16777012);
+            wDao.insert(headerColor);
+            loadWarna();
+        }
+        backgroudColor = wDao.getByNama("PemilikDialogBg");
+        if (backgroudColor == null) {
+            backgroudColor = new Warna();
+            backgroudColor.setName("PemilikDialogBg");
+            backgroudColor.setRgb(-13408513);
+            wDao.insert(backgroudColor);
+            loadWarna();
+        }
+    }
+
+    private void updateWarna() {
+        headerPanel.setBackground(new Color(headerColor.getRgb()));
+        this.getContentPane().setBackground(new Color(backgroudColor.getRgb()));
+    }
+
+    private void loadPemilik() {
+        try {
+            listPemilik = pemilikDao.getAllPemilik();
+            String[] title = {"Nama", "Alamat", "Telp", "Email"};
+            Object[][] data = new Object[listPemilik.size()][4];
+            int row = 0;
+            for (Pemilik p : listPemilik) {
+                data[row][0] = p.getNamaBelakang() + " " + p.getNamaDepan();
+                data[row][1] = p.getAlamat();
+                data[row][2] = p.getTlp();
+                data[row][3] = p.getEmail();
+                ++row;
+            }
+            TableModel model = new DefaultTableModel(data, title);
+            tblPemilik.setModel(model);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private void loadKabKota() {
+        try {
+            cmbKabKota.removeAllItems();
+            for (KabupatenKota kk : kabDao.getAllKabupatenKota()) {
+                cmbKabKota.addItem(kk);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private void loadProvinsi() {
+        try {
+            cmbProvinsi.removeAllItems();
+            for (Provinsi prov : provDao.getAllProvinsi()) {
+                cmbProvinsi.addItem(prov);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private int getCmbKabKotaIndex(KabupatenKota kabKota) {
+        int index = 0;
+        for (KabupatenKota tmp : kabDao.getAllKabupatenKota()) {
+            if (tmp.getId() == kabKota.getId()) {
+                break;
+            }
+            ++index;
+        }
+        return index;
+    }
+
+    private int getCmbProvinsiIndex(Provinsi prov) {
+        int index = 0;
+        for (Provinsi tmp : provDao.getAllProvinsi()) {
+            if (tmp.getId() == prov.getId()) {
+                break;
+            }
+            ++index;
+        }
+        return index;
+    }
+
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        browseKendaraan = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        txtCariNomorPolisi = new javax.swing.JTextField();
+        btnCariKendaraan = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblBrowseKendaraan = new javax.swing.JTable();
+        headerPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPemilik = new javax.swing.JTable();
+        btnTambahPemilik = new javax.swing.JButton();
+        btnHapusPemilik = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
+        btnCari = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        cmbKabKota = new javax.swing.JComboBox();
+        cmbProvinsi = new javax.swing.JComboBox();
+        txtNabaBelakang = new javax.swing.JTextField();
+        txtNamaDepan = new javax.swing.JTextField();
+        txtAlamat = new javax.swing.JTextField();
+        txtTelp = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        cmbSimpanPemilik = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblKendaraan = new javax.swing.JTable();
+        btnTambahKendaraan = new javax.swing.JButton();
+        btnHapusKendaraan = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mnuWarna = new javax.swing.JMenu();
+        mnuHeader = new javax.swing.JMenuItem();
+        mnuBack = new javax.swing.JMenuItem();
+        mnuDefault = new javax.swing.JMenuItem();
+
+        browseKendaraan.setBackground(new java.awt.Color(0, 51, 255));
+
+        jLabel10.setText("Nomor Polisi :");
+
+        btnCariKendaraan.setText("Cari");
+        btnCariKendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariKendaraanActionPerformed(evt);
+            }
+        });
+
+        tblBrowseKendaraan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblBrowseKendaraan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBrowseKendaraanMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblBrowseKendaraan);
+
+        javax.swing.GroupLayout browseKendaraanLayout = new javax.swing.GroupLayout(browseKendaraan.getContentPane());
+        browseKendaraan.getContentPane().setLayout(browseKendaraanLayout);
+        browseKendaraanLayout.setHorizontalGroup(
+            browseKendaraanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(browseKendaraanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(browseKendaraanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+                    .addGroup(browseKendaraanLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCariNomorPolisi, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCariKendaraan)))
+                .addContainerGap())
+        );
+        browseKendaraanLayout.setVerticalGroup(
+            browseKendaraanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(browseKendaraanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(browseKendaraanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtCariNomorPolisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCariKendaraan))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Data Pemilik Kendaraan");
+
+        headerPanel.setBackground(new java.awt.Color(0, 0, 204));
+        headerPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Data Pemilik Kendaraan");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Menambah, mengubah dan menghapus data pemilik kendaraan");
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2))
+                    .addComponent(jLabel1))
+                .addContainerGap(492, Short.MAX_VALUE))
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.setBackground(new java.awt.Color(0, 102, 255));
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
+
+        tblPemilik.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblPemilik.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPemilikMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblPemilik);
+
+        btnTambahPemilik.setText("Tambah Data Pemilik");
+        btnTambahPemilik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahPemilikActionPerformed(evt);
+            }
+        });
+
+        btnHapusPemilik.setText("Hapus Data Pemilik");
+        btnHapusPemilik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusPemilikActionPerformed(evt);
+            }
+        });
+
+        btnRefresh.setText("Refresh Data Tabel");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
+        btnCari.setText("Cari Berdasarkan Nama");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnCari)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
+                        .addComponent(btnRefresh)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHapusPemilik)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTambahPemilik)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTambahPemilik)
+                    .addComponent(btnHapusPemilik)
+                    .addComponent(btnRefresh)
+                    .addComponent(btnCari))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Daftar Pemilik Kendaraan", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(0, 102, 255));
+
+        jPanel4.setBackground(new java.awt.Color(0, 102, 255));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Nama Depan :");
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Nama Belakang :");
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Alamat :");
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Kabupaten / Kota :");
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Provinsi :");
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Telp :");
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Email :");
+
+        cmbKabKota.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cmbProvinsi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cmbSimpanPemilik.setText("Simpan Data Pemilik");
+        cmbSimpanPemilik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSimpanPemilikActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNabaBelakang)
+                                    .addComponent(txtNamaDepan, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE))
+                                .addGap(17, 17, 17)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbKabKota, 0, 263, Short.MAX_VALUE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(47, 47, 47)
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbProvinsi, 0, 263, Short.MAX_VALUE))))
+                            .addComponent(txtAlamat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtTelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap(673, Short.MAX_VALUE)
+                        .addComponent(cmbSimpanPemilik)))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtNamaDepan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtNabaBelakang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(cmbKabKota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbProvinsi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtTelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                .addComponent(cmbSimpanPemilik)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Profil Pemilik", jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(0, 102, 255));
+
+        tblKendaraan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblKendaraan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKendaraanMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblKendaraan);
+
+        btnTambahKendaraan.setText("Tambah Kendaraan Baru");
+        btnTambahKendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahKendaraanActionPerformed(evt);
+            }
+        });
+
+        btnHapusKendaraan.setText("Hapus Data Kendaraan");
+        btnHapusKendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusKendaraanActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnHapusKendaraan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTambahKendaraan)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTambahKendaraan)
+                    .addComponent(btnHapusKendaraan))
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Daftar Kendaraan", jPanel5);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Detail Pemilik Kendaraan", jPanel3);
+
+        mnuWarna.setText("Seting");
+
+        mnuHeader.setText("Warna Header");
+        mnuHeader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHeaderActionPerformed(evt);
+            }
+        });
+        mnuWarna.add(mnuHeader);
+
+        mnuBack.setText("Warna Background");
+        mnuBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuBackActionPerformed(evt);
+            }
+        });
+        mnuWarna.add(mnuBack);
+
+        mnuDefault.setText("Warna Default");
+        mnuDefault.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuDefaultActionPerformed(evt);
+            }
+        });
+        mnuWarna.add(mnuDefault);
+
+        jMenuBar1.add(mnuWarna);
+
+        setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTambahPemilikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPemilikActionPerformed
+        InputPemilikKendaraanDialog input = new InputPemilikKendaraanDialog(null, true);
+        input.setVisible(true);
+    }//GEN-LAST:event_btnTambahPemilikActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        loadPemilik();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        try {
+            String nama = JOptionPane.showInputDialog(this, "Nama :");
+            listPemilik = pemilikDao.getByName(nama);
+            String[] title = {"Nama", "Alamat", "Telp", "Email"};
+            Object[][] data = new Object[listPemilik.size()][4];
+            int row = 0;
+            for (Pemilik p : listPemilik) {
+                data[row][0] = p.getNamaBelakang() + " " + p.getNamaDepan();
+                data[row][1] = p.getAlamat();
+                data[row][2] = p.getTlp();
+                data[row][3] = p.getEmail();
+                ++row;
+            }
+            TableModel model = new DefaultTableModel(data, title);
+            tblPemilik.setModel(model);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void btnHapusPemilikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusPemilikActionPerformed
+        if (selectedPemilik != null) {
+            pemilikDao.delete(selectedPemilik);
+            selectedPemilik = null;
+            loadPemilik();
+        }
+    }//GEN-LAST:event_btnHapusPemilikActionPerformed
+
+    private void loadKendaraan() {
+        try {
+            if (selectedPemilik != null) {
+                List<Kendaraan> list = selectedPemilik.getKendaraans();
+                String title[] = {"No. Polisi", "No.Uji", "Merk/Type", "Tahun"};
+                Object[][] data = new Object[list.size()][4];
+                int row = 0;
+                for (Kendaraan k : list) {
+                    data[row][0] = k.getNomorPolisi();
+                    data[row][1] = k.getNomorUji();
+                    data[row][2] = k.getMerk() + k.getType();
+                    data[row][3] = k.getTahunPembuatan();
+                    ++row;
+                }
+                TableModel model = new DefaultTableModel(data, title);
+                tblKendaraan.setModel(model);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private void tblPemilikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPemilikMouseClicked
+        selectedPemilik = listPemilik.get(tblPemilik.getSelectedRow());
+        txtNamaDepan.setText(selectedPemilik.getNamaDepan());
+        txtNabaBelakang.setText(selectedPemilik.getNamaBelakang());
+        txtAlamat.setText(selectedPemilik.getAlamat());
+        txtTelp.setText(selectedPemilik.getTlp());
+        txtEmail.setText(selectedPemilik.getEmail());
+        cmbKabKota.setSelectedIndex(getCmbKabKotaIndex(selectedPemilik.getKabKota()));
+        cmbProvinsi.setSelectedIndex(getCmbProvinsiIndex(selectedPemilik.getProvinsi()));
+        loadKendaraan();
+    }//GEN-LAST:event_tblPemilikMouseClicked
+
+    private void cmbSimpanPemilikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSimpanPemilikActionPerformed
+        try {
+            if (selectedPemilik != null) {
+                selectedPemilik.setNamaDepan(txtNamaDepan.getText());
+                selectedPemilik.setNamaBelakang(txtNabaBelakang.getText());
+                selectedPemilik.setAlamat(txtAlamat.getText());
+                selectedPemilik.setTlp(txtTelp.getText());
+                selectedPemilik.setEmail(txtEmail.getText());
+                selectedPemilik.setKabKota((KabupatenKota) cmbKabKota.getSelectedItem());
+                selectedPemilik.setProvinsi((Provinsi) cmbProvinsi.getSelectedItem());
+                pemilikDao.update(selectedPemilik);
+                JOptionPane.showMessageDialog(this, "Data tersimpan");
+                loadPemilik();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_cmbSimpanPemilikActionPerformed
+
+    private void btnTambahKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahKendaraanActionPerformed
+        try {
+            if (selectedPemilik != null) {
+                listKendaraanBrowse = kendaraanDAO.getAll();
+                String title[] = {"No. Polisi", "No.Uji", "Merk/Type", "Tahun"};
+                Object[][] data = new Object[listKendaraanBrowse.size()][4];
+                int row = 0;
+                for (Kendaraan k : listKendaraanBrowse) {
+                    data[row][0] = k.getNomorPolisi();
+                    data[row][1] = k.getNomorUji();
+                    data[row][2] = k.getMerk() + k.getType();
+                    data[row][3] = k.getTahunPembuatan();
+                    ++row;
+                }
+                TableModel model = new DefaultTableModel(data, title);
+                tblBrowseKendaraan.setModel(model);
+                browseKendaraan.setSize(800, 600);
+                browseKendaraan.getContentPane().setBackground(new java.awt.Color(51, 102, 255));
+                browseKendaraan.setModal(true);
+                browseKendaraan.setVisible(true);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnTambahKendaraanActionPerformed
+    private List<Kendaraan> listKendaraanBrowse;
+    private void btnCariKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariKendaraanActionPerformed
+        try {
+            listKendaraanBrowse = kendaraanDAO.getByNomorPolisi(txtCariNomorPolisi.getText());
+            String title[] = {"No. Polisi", "No.Uji", "Merk/Type", "Tahun"};
+            Object[][] data = new Object[listKendaraanBrowse.size()][4];
+            int row = 0;
+            for (Kendaraan k : listKendaraanBrowse) {
+                data[row][0] = k.getNomorPolisi();
+                data[row][1] = k.getNomorUji();
+                data[row][2] = k.getMerk() + k.getType();
+                data[row][3] = k.getTahunPembuatan();
+                ++row;
+            }
+            TableModel model = new DefaultTableModel(data, title);
+            tblBrowseKendaraan.setModel(model);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnCariKendaraanActionPerformed
+
+    private void tblBrowseKendaraanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBrowseKendaraanMouseClicked
+        selectedPemilik.getKendaraans().add(listKendaraanBrowse.get(tblBrowseKendaraan.getSelectedRow()));
+        Kendaraan kend = (Kendaraan) listKendaraanBrowse.get(tblBrowseKendaraan.getSelectedRow());
+        kend.getPemilik().add(selectedPemilik);
+        kendaraanDAO.update(kend);
+        pemilikDao.update(selectedPemilik);
+        loadKendaraan();
+        browseKendaraan.setVisible(false);
+    }//GEN-LAST:event_tblBrowseKendaraanMouseClicked
+    private Kendaraan selectedKendaraan;
+    private void btnHapusKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusKendaraanActionPerformed
+        if (selectedPemilik != null) {
+            if (selectedKendaraan != null) {
+                selectedPemilik.getKendaraans().remove(selectedKendaraan);
+                selectedKendaraan.getPemilik().remove(selectedPemilik);
+                kendaraanDAO.update(selectedKendaraan);
+                pemilikDao.update(selectedPemilik);
+                selectedKendaraan = null;
+                loadKendaraan();
+            }
+        }
+    }//GEN-LAST:event_btnHapusKendaraanActionPerformed
+
+    private void tblKendaraanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKendaraanMouseClicked
+        if (selectedPemilik != null) {
+            selectedKendaraan = selectedPemilik.getKendaraans().get(tblKendaraan.getSelectedRow());
+        }
+    }//GEN-LAST:event_tblKendaraanMouseClicked
+
+    private void mnuHeaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHeaderActionPerformed
+        Color tmp = JColorChooser.showDialog(this, "Ganti Warna Header", headerPanel.getBackground());
+        headerColor.setRgb(tmp.getRGB());
+        wDao.update(headerColor);
+        updateWarna();
+    }//GEN-LAST:event_mnuHeaderActionPerformed
+
+    private void mnuBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBackActionPerformed
+        Color tmp = JColorChooser.showDialog(this, "Ganti Warna Backgroud", this.getContentPane().getBackground());
+        backgroudColor.setRgb(tmp.getRGB());
+        wDao.update(backgroudColor);
+        updateWarna();
+    }//GEN-LAST:event_mnuBackActionPerformed
+
+    private void mnuDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuDefaultActionPerformed
+        headerColor.setRgb(-16777012);
+        backgroudColor.setRgb(-13408513);
+        wDao.update(headerColor);
+        wDao.update(backgroudColor);
+        updateWarna();
+    }//GEN-LAST:event_mnuDefaultActionPerformed
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog browseKendaraan;
+    private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnCariKendaraan;
+    private javax.swing.JButton btnHapusKendaraan;
+    private javax.swing.JButton btnHapusPemilik;
+    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnTambahKendaraan;
+    private javax.swing.JButton btnTambahPemilik;
+    private javax.swing.JComboBox cmbKabKota;
+    private javax.swing.JComboBox cmbProvinsi;
+    private javax.swing.JButton cmbSimpanPemilik;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JMenuItem mnuBack;
+    private javax.swing.JMenuItem mnuDefault;
+    private javax.swing.JMenuItem mnuHeader;
+    private javax.swing.JMenu mnuWarna;
+    private javax.swing.JTable tblBrowseKendaraan;
+    private javax.swing.JTable tblKendaraan;
+    private javax.swing.JTable tblPemilik;
+    private javax.swing.JTextField txtAlamat;
+    private javax.swing.JTextField txtCariNomorPolisi;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNabaBelakang;
+    private javax.swing.JTextField txtNamaDepan;
+    private javax.swing.JTextField txtTelp;
+    // End of variables declaration//GEN-END:variables
+}

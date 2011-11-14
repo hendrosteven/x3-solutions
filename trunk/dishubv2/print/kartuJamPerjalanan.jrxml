@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="kartuJamPerjalanan"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="2" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="nomor" isForPrompting="true" class="java.lang.String"/>
+	<queryString><![CDATA[SELECT
+     kartujamperjalanan.`NOMOR` AS kartujamperjalanan_NOMOR,
+     kartujamperjalanan.`TANGGALMULAIBERLAKU` AS kartujamperjalanan_TANGGALMULAIBERLAKU,
+     kartujamperjalanan.`TANGGALMULAIBERAKHIR` AS kartujamperjalanan_TANGGALMULAIBERAKHIR,
+     jamperjalanan.`TEMPATSINGGAH` AS jamperjalanan_TEMPATSINGGAH,
+     jamperjalanan.`JAMTIBA` AS jamperjalanan_JAMTIBA,
+     jamperjalanan.`JAMBERANGKAT` AS jamperjalanan_JAMBERANGKAT
+FROM
+     `kartujamperjalanan` kartujamperjalanan INNER JOIN `kartujamperjalanan_jamperjalanan` kartujamperjalanan_jamperjalanan ON kartujamperjalanan.`ID` = kartujamperjalanan_jamperjalanan.`KartuJamPerjalanan_ID`
+     INNER JOIN `jamperjalanan` jamperjalanan ON kartujamperjalanan_jamperjalanan.`jamPerjalanan_ID` = jamperjalanan.`ID`
+where kartujamperjalanan.`NOMOR`=$P{nomor}]]></queryString>
+
+	<field name="kartujamperjalanan_NOMOR" class="java.lang.String"/>
+	<field name="kartujamperjalanan_TANGGALMULAIBERLAKU" class="java.sql.Date"/>
+	<field name="kartujamperjalanan_TANGGALMULAIBERAKHIR" class="java.sql.Date"/>
+	<field name="jamperjalanan_TEMPATSINGGAH" class="java.lang.String"/>
+	<field name="jamperjalanan_JAMTIBA" class="java.lang.String"/>
+	<field name="jamperjalanan_JAMBERANGKAT" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="106"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="108"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="6"
+						width="215"
+						height="19"
+						key="staticText-1"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[KARTU JAM PERJALANAN NOMOR :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="215"
+						y="6"
+						width="287"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{kartujamperjalanan_NOMOR}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="32"
+						width="71"
+						height="17"
+						key="staticText-2"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Mulai Tanggal ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="77"
+						y="32"
+						width="104"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{kartujamperjalanan_TANGGALMULAIBERLAKU}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="184"
+						y="32"
+						width="118"
+						height="17"
+						key="staticText-3"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[sampai dengan tanggal]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="302"
+						y="32"
+						width="197"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{kartujamperjalanan_TANGGALMULAIBERAKHIR}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="5"
+						y="80"
+						width="210"
+						height="22"
+						key="staticText-4"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Tempat Singgah]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="215"
+						y="80"
+						width="140"
+						height="22"
+						key="staticText-5"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Tiba]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="355"
+						y="80"
+						width="140"
+						height="22"
+						key="staticText-6"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Berangkat]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="78"
+						width="516"
+						height="2"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="102"
+						width="516"
+						height="2"
+						key="line-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="19"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="5"
+						y="0"
+						width="210"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{jamperjalanan_TEMPATSINGGAH}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="215"
+						y="0"
+						width="140"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{jamperjalanan_JAMTIBA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="355"
+						y="0"
+						width="140"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{jamperjalanan_JAMBERANGKAT}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="9"  isSplitAllowed="true" >
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="1"
+						width="516"
+						height="0"
+						key="line-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
