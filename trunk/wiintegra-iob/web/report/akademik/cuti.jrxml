@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="nama" class="java.lang.String"/>
+	<parameter name="nomorInduk" class="java.lang.String"/>
+	<parameter name="fakultas" class="java.lang.String"/>
+	<parameter name="semester" class="java.lang.String"/>
+	<parameter name="today" class="java.lang.String"/>
+	<field name="nama" class="java.lang.String"/>
+	<field name="kode" class="java.lang.String"/>
+	<field name="kapasitas" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="145">
+			<image>
+				<reportElement x="7" y="5" width="81" height="89"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="101" y="5" width="452" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EAST TIMOR INSTITUTE OF BUSINESS (IOB)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="102" width="550" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.75" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="3" y="107" width="550" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.75" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="84" y="111" width="397" height="27"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SURAT CUTI KULIAH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="42" width="458" height="52"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="11"/>
+				</textElement>
+				<text><![CDATA[Rua Praia dos Coqueiros Pertamina Dili Timor-Leste
+Telp : (+670) 7340208 e-mail : iob.tiles@yahoo.com
+Status : Akreditado (Diploma Ministerial do Ministeiro da Educação No :3/2009)
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="406">
+			<staticText>
+				<reportElement x="9" y="21" width="523" height="30"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Dengan hormat,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="107" width="96" height="20"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="147" width="11" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="127" width="96" height="20"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nomor Induk]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement stretchType="RelativeToTallestObject" x="153" y="127" width="344" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nomorInduk}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement stretchType="RelativeToTallestObject" x="153" y="147" width="344" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fakultas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="46" y="147" width="96" height="20"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fakultas/Progdi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="107" width="11" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="127" width="11" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement stretchType="RelativeToTallestObject" x="153" y="107" width="344" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nama}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="51" width="523" height="30"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Melalui surat ini kami menyatakan bahwa Mahasiswa yang tertera di bawah ini :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="228" width="523" height="21"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Atas perhatian dan kerjasama yang diberikan, kami mengucapkan terimakasih.]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="9" y="195" width="523" height="33"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["dinyatakan cuti dari kegiatan perkuliahan selama semester " + $P{semester} + ". Harap menjadi periksa."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="263" width="222" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Dili, " + $P{today}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="353" y="297" width="147" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kepala Akademik IOB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="280" width="116" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mengetahui,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="319" y="374" width="213" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[NURHUDA DA COSTA, SE.MM]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

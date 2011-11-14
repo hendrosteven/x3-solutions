@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="wii.edu.core.model.Matakuliah" table="MATAKULIAH">
+    <id column="MATAKULIAH_ID" name="id">
+      <generator class="native"/>
+    </id>
+    <property column="KODE" length="10" name="kode" type="string"/>
+    <property column="NAMA" length="150" name="nama" type="string"/>
+    <property column="SKS_AKDM" length="3" name="sksAkademik" type="integer"/>
+    <property column="SKS_BAYAR" length="3" name="sksBayar" type="integer"/>
+    <many-to-one class="wii.edu.core.model.Fakultas" column="FAK_ID" name="fakultas"/>
+    <many-to-one class="wii.edu.core.model.ProgramStudi" column="PROGDI_ID" name="progdi"/>
+    <many-to-one class="wii.edu.core.model.Matakuliah" column="PRASYARAT_ID" name="prasyarat"/>
+  </class>
+</hibernate-mapping>

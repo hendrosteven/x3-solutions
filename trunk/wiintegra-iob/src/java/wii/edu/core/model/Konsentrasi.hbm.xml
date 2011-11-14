@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="wii.edu.core.model.Konsentrasi" table="KONSENTRASI">
+    <id column="KONSEN_ID" name="id">
+      <generator class="native"/>
+    </id>
+    <property column="KODE" length="10" name="kode" type="string"/>
+    <property column="NAMA" length="200" name="nama" type="string"/>
+    <many-to-one class="wii.edu.core.model.Fakultas" column="FAKULTAS_ID" name="fakultas"/>
+  </class>
+</hibernate-mapping>

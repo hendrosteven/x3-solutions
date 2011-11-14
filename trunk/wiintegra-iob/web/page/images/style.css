@@ -1,0 +1,114 @@
+/* Provided by MyFreeTemplates.com */
+
+.add {
+  background-image:url(../images/icon_toolbar/plus.png) !important;
+}
+.remove {
+	background-image:url(../images/icon_toolbar/min.png) !important;
+}
+.search {
+	background-image:url(../images/icon_toolbar/search.png) !important;
+}
+.print{
+	background-image:url(../images/icon_toolbar/printer.png) !important;
+}
+.contact{
+	background-image:url(../images/icon_toolbar/contacts.png) !important;
+}
+.help{
+	background-image:url(../images/icon_toolbar/help.gif) !important;
+}
+.grid{
+	background-image:url(../images/icon_toolbar/grid.png) !important;
+}
+.form{
+	background-image:url(../images/icon_toolbar/form.png) !important;
+}
+.registrasi{
+	background-image:url(../images/icon_toolbar/registrasi.png) !important;
+}
+.excel{
+	background-image:url(../images/icon_toolbar/excel.png) !important;
+}
+.logout{
+	background-image:url(../images/icon_toolbar/logout.png) !important;
+}
+body {
+	margin:0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	text-decoration: none;
+	}
+
+.data-login{
+	margin:0px;
+	font-family: "Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
+	color: #000000;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	text-decoration: none;
+}
+
+.sidetable {
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #FFFFFF;
+	border-right-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+	border-left-color: #FFFFFF;
+}
+h1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-decoration: none;
+}
+h2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+}
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+h3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+.sidetable2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+.sidelinks {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FFBE00;
+	font-size: 12px;
+	font-weight: bold;
+}
+.baseline {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #555555;
+}
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}

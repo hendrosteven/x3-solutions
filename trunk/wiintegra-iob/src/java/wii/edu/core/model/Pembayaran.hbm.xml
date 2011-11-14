@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="wii.edu.core.model.Pembayaran" table="PEMBAYARAN">
+    <id column="PEMBAYARAN_ID" name="id">
+      <generator class="native"/>
+    </id>
+    <many-to-one class="wii.edu.core.model.Mahasiswa" column="MAHASISWA_ID" name="mahasiswa"/>
+    <many-to-one class="wii.edu.core.model.Semester" column="SEMESTER_ID" name="semester"/>
+    <property column="TANGGAL" name="tanggal" type="date"/>
+  </class>
+</hibernate-mapping>

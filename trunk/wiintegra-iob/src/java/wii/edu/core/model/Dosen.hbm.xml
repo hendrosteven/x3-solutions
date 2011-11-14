@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="wii.edu.core.model.Dosen" table="DOSEN">
+    <id column="DOSEN_ID" name="id">
+      <generator class="native"/>
+    </id>
+    <property column="NOMOR_PEG" length="20" name="nomorPegawai" type="string"/>
+    <property column="PASSWORD" length="20" name="password" type="string"/>
+    <property column="NAMA" length="200" name="nama" type="string"/>
+    <property column="JALAN" length="255" name="jalan" type="string"/>
+    <property column="KELURAHAN" length="200" name="kelurahan" type="string"/>
+    <property column="KECAMATAN" length="200" name="kecamatan" type="string"/>
+    <property column="SUBDISTRIK" length="100" name="subDistrik" type="string"/>
+    <many-to-one class="wii.edu.core.model.Distrik" column="DISTRIK_ID" name="distrik"/>
+    <property column="KODE_POS" length="10" name="kodePos" type="string"/>
+    <property column="TELEPON" length="50" name="telepon" type="string"/>
+    <property column="HANDPHONE" length="50" name="handphone" type="string"/>
+    <property column="EMAIL" length="100" name="email" type="string"/>
+    <property column="JENIS_KELAMIN" length="1" name="jenisKelamin" type="integer"/>
+    <property column="PENDIDIKAN_TERAKHIR" length="50" name="pendidikanTerakhir" type="string"/>
+    <property column="IS_LOGIN" length="1" name="isLogin" type="integer"/>
+  </class>
+</hibernate-mapping>

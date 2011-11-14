@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="wii.edu.core.model.User" table="USER">
+        <id column="USER_ID" name="id">
+            <generator class="native"/>
+        </id>
+        <property column="USERNAME" length="20" name="username" type="string"/>
+        <property column="PASSWORD" length="20" name="password" type="string"/>
+        <property column="REAL_NAME" length="150" name="realName" type="string"/>
+        <property column="LEVEL" length="1" name="level" type="integer"/>
+        <property column="DATE_LOGIN" name="lastLoginDate" type="date"/>
+        <property column="TIME_LOGIN" name="lastLoginTime" type="time"/>
+        <property column="IS_LOGIN" length="1" name="isLogin" type="integer"/>
+  
+    </class>
+</hibernate-mapping>
