@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!--data source -->
+    <property name="hibernate.connection.datasource">
+            java:/comp/env/jdbc/iob
+        </property>
+    <property name="dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+    <!-- Enable Hibernate's automatic session context management -->
+    <property name="current_session_context_class">
+            thread
+        </property>
+    <!-- Disable the second-level cache  -->
+    <property name="cache.provider_class">
+            org.hibernate.cache.NoCacheProvider
+        </property>
+    <!-- Echo all executed SQL to stdout -->
+    <property name="show_sql">
+            true
+        </property>
+    <!-- Drop and re-create the database schema on startup [create/update] -->
+    <property name="hbm2ddl.auto">
+            update
+    </property>
+    <mapping resource="wii/edu/core/model/Angkatan.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Dosen.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Fakultas.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Jadwal.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/KomponenBiaya.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Mahasiswa.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Distrik.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Matakuliah.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/RegistrasiMatakuliah.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Ruang.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Semester.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Tagihan.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/User.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/ProgramStudi.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/Pembayaran.hbm.xml"/>
+    <mapping resource="wii/edu/core/model/DataKelulusan.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

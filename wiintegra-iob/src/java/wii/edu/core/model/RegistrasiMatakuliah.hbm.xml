@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="wii.edu.core.model.RegistrasiMatakuliah" table="REGISTRASI_MTK">
+    <id column="REGISTRASI_ID" name="id">
+      <generator class="native"/>
+    </id>
+    <many-to-one class="wii.edu.core.model.Jadwal" column="JADWAL_ID" name="jadwal"/>
+    <many-to-one class="wii.edu.core.model.Matakuliah" column="MATAKULIAH_ID" name="matakuliah"/>
+    <many-to-one class="wii.edu.core.model.Mahasiswa" column="MAHASISWA_ID" name="mahasiswa"/>
+    <property column="NILAI" length="2" name="nilai" type="string"/>
+    <property column="STATUS" length="1" name="status" type="string"/>
+  </class>
+</hibernate-mapping>

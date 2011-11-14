@@ -1,0 +1,20 @@
+<p>
+Manual :
+1. Utk Login, ada 3 level user :
+	a. System Admin
+		- Administrator : admin/admin
+		- Keuangan	: finance/finance
+		- Akademik	: academic/academic
+	b. Dosen		: L001/1234
+	c. Mahasiswa	: 012008001/1234
+
+2. Jika menemui tabel, untuk menambahkan data dgn mengklik button Tambah.
+	Untuk menghapus data, klik row yg akan dihapus dan klik button Hapus.
+	Untuk mengubah data, klik pada cell yang ingin diubah. Setelah melakukan perubahan data, tekan enter atau klik di luar cell.
+
+3. Jika cell data tabel tidak dapat diubah, dan tidak ada button Tambah / Hapus pada tabel, maka user tidak dapat melakukan perubahan data.
+
+4. Akan terdapat fungsi-fungsi selain Tambah, Ubah, dan Hapus pada tabel data, seperti Print, Input Nilai, dll (pada tabel data tertentu).
+
+5. Jika ketika user mengklik submenu dan menampilan halaman kosong / data tidak keluar pada center panel, maka user diharapkan mengklik kembali submenu yang dipilih tadi.
+</p>

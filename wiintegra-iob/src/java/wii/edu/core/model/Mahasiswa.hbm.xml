@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="wii.edu.core.model.Mahasiswa" table="MAHASISWA">
+    <id column="MAHASISWA_ID" name="id">
+      <generator class="native"/>
+    </id>
+    <property column="NOMOR_INDUK" length="20" name="nomorInduk" type="string"/>
+    <property column="PASSWORD" length="20" name="password" type="string"/>
+    <property column="NAMA" length="200" name="nama" type="string"/>
+    <many-to-one class="wii.edu.core.model.Fakultas" column="FAKULTAS_ID" name="fakultas"/>
+    <many-to-one class="wii.edu.core.model.ProgramStudi" column="PROGDI_ID" name="progdi"/>
+    <property column="NAMA_AYAH" length="200" name="namaAyah" type="string"/>
+    <property column="NAMA_IBU" length="200" name="namaIbu" type="string"/>
+    <property column="ALAMAT_ORTU" length="255" name="alamatOrangTua" type="string"/>
+    <property column="JENIS_KELAMIN" length="1" name="jenisKelamin" type="integer"/>
+
+    <list name="biodatas" cascade="all" inverse="true">
+        <key column="MAHASISWA_ID"/>
+        <index column="ID"/>
+        <one-to-many class="wii.edu.core.model.Biodata"/>
+    </list>
+
+    <many-to-one class="wii.edu.core.model.Angkatan" column="ANGKATAN_ID" name="angkatan"/>
+    <many-to-one cascade="all" class="wii.edu.core.model.DataKelulusan" column="DATA_KELULUSAN_ID" name="dataKelulusan" unique="true"/>
+    <!-- <many-to-one name="bidangStudi" column="BIDANG_STUDI_ID" class="wii.edu.core.model.BidangStudi"/>-->
+    <property column="JENJANG" length="30" name="jenjang" type="string"/>
+    <property column="IS_LOGIN" length="1" name="isLogin" type="integer"/>
+  </class>
+    <class name="wii.edu.core.model.Biodata" table="BIODATA">
+        <id name="id" unsaved-value="0">
+            <generator class="native"/>
+        </id>
+        <property column="JALAN" length="255" name="jalan" type="string"/>
+        <property column="KELURAHAN" length="200" name="kelurahan" type="string"/>
+        <property column="KECAMATAN" length="200" name="kecamatan" type="string"/>
+        <property column="SUBDISTRIK" length="100" name="subDistrik" type="string"/>
+        <many-to-one class="wii.edu.core.model.Distrik" column="DISTRIK_ID" name="distrik"/>
+        <property column="KODE_POS" length="10" name="kodePos" type="string"/>
+        <property column="TELEPON" length="50" name="telepon" type="string"/>
+        <property column="HANDPHONE" length="50" name="handphone" type="string"/>
+        <property column="EMAIL" length="100" name="email" type="string"/>
+        <property column="TEMPAT_LAHIR" length="100" name="tempatLahir" type="string"/>
+        <property column="TANGGAL_LAHIR" name="tanggalLahir" type="date"/>
+        <many-to-one class="wii.edu.core.model.Semester" column="SEMESTER_ID" name="semester"/>
+        <many-to-one column="MAHASISWA_ID" name="mahasiswa"/>
+    </class>
+</hibernate-mapping>

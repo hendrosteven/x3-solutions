@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="wii.edu.core.model.Tagihan" table="Tagihan">
+    <id column="TAGIHAN_ID" name="id">
+      <generator class="native"/>
+    </id>
+    <many-to-one class="wii.edu.core.model.Mahasiswa" column="MAHASISWA_ID" name="mhs"/>
+    <many-to-one class="wii.edu.core.model.Semester" column="SEMESTER_ID" name="semester"/>
+    <list name="tagihanDetails" table="TAGIHAN_DETAIL">
+      <key column="TAGIHAN_ID"/>
+      <index column="ID"/>
+      <composite-element class="wii.edu.core.model.TagihanDetail">
+        <many-to-one class="wii.edu.core.model.KomponenBiaya" column="KOMPONEN_ID" name="komponen"/>
+        <property column="TAGIH" name="tagih" type="double"/>
+        <property column="SKS_AMBIL" length="2" name="sksAmbil" type="integer"/>
+      </composite-element>
+    </list>
+    <property column="BAYAR" length="12" name="bayar" type="double"/>
+    <property column="IS_DISPEN" length="1" name="isDispensasi" type="integer"/>
+    <property column="TGL_BYR" name="tanggalBayar" type="date"/>
+    <property column="PELUNASAN" length="12" name="pelunasan" type="double"/>
+    <property column="TGL_LUNAS" name="tanggalPelunasan" type="date"/>
+    <property column="IS_DISPEN_PELUNASAN" length="1" name="isDispensasiPelunasan" type="integer"/>
+    <property column="TOTAL_TAGIHAN" length="12" name="totalTagihan" type="double"/>
+  </class>
+</hibernate-mapping>

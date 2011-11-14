@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="wii.edu.core.model.Jadwal" table="JADWAL">
+    <id column="JADWAL_ID" name="id">
+      <generator class="native"/>
+    </id>
+    <many-to-one class="wii.edu.core.model.Ruang" column="RUANG_ID" name="ruang"/>
+    <many-to-one class="wii.edu.core.model.Semester" column="SEMESTER_ID" name="semester"/>
+    <many-to-one class="wii.edu.core.model.Matakuliah" column="MATAKULIAH_ID" name="matakuliah"/>
+    <many-to-one class="wii.edu.core.model.Dosen" column="DOSEN_ID" name="dosen"/>
+    <property column="AKSARA" length="2" name="aksara" type="string"/>
+    <property column="HARI" length="10" name="hari" type="string"/>
+    <property column="JAM_MULAI" length="10" name="jamMulai" type="string"/>
+    <property column="JAM_SELESAI" length="10" name="jamSelesai" type="string"/>
+    <property column="KAPASISTAS" length="3" name="kapasitas" type="integer"/>
+  </class>
+</hibernate-mapping>
