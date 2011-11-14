@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="suratKeterangan"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="nomor" isForPrompting="true" class="java.lang.String"/>
+	<queryString><![CDATA[SELECT suratketerangan.NOMOR, 
+ suratketerangan.TANGGAL, 
+  suratketerangan.LAINLAIN,
+  pemilik.NAMABELAKANG, 
+  pemilik.NAMADEPAN, pemilik.ALAMAT, pemilik1.NAMABELAKANG
+  AS NAMABELAKANG1, pemilik1.NAMADEPAN AS NAMADEPAN1, pemilik1.ALAMAT AS
+  ALAMAT1, merk.NAMA as Merk, jenis.NAMA AS jenis, kendaraan.NOMORPOLISI,
+  kendaraan.NOMORMESIN, kendaraan.TAHUNPEMBUATAN, kendaraan.NOMORRANGKA,
+  kendaraan.TYPE, kendaraan.NOMORUJI
+FROM suratketerangan INNER JOIN
+  kendaraan ON kendaraan.ID = suratketerangan.KENDARAAN_ID INNER JOIN
+  pemilik ON pemilik.ID = suratketerangan.PEMILIKBARU_ID INNER JOIN
+  pemilik pemilik1 ON pemilik1.ID = suratketerangan.PEMILIK_ID INNER JOIN
+  merk ON merk.ID = kendaraan.MERK_ID INNER JOIN
+  jenis ON jenis.ID = kendaraan.JENIS_ID]]></queryString>
+
+	<field name="NOMOR" class="java.lang.String"/>
+	<field name="TANGGAL" class="java.sql.Date"/>
+	<field name="LAINLAIN" class="java.lang.String"/>
+	<field name="NAMABELAKANG" class="java.lang.String"/>
+	<field name="NAMADEPAN" class="java.lang.String"/>
+	<field name="ALAMAT" class="java.lang.String"/>
+	<field name="NAMABELAKANG1" class="java.lang.String"/>
+	<field name="NAMADEPAN1" class="java.lang.String"/>
+	<field name="ALAMAT1" class="java.lang.String"/>
+	<field name="Merk" class="java.lang.String"/>
+	<field name="jenis" class="java.lang.String"/>
+	<field name="NOMORPOLISI" class="java.lang.String"/>
+	<field name="NOMORMESIN" class="java.lang.String"/>
+	<field name="TAHUNPEMBUATAN" class="java.lang.String"/>
+	<field name="NOMORRANGKA" class="java.lang.String"/>
+	<field name="TYPE" class="java.lang.String"/>
+	<field name="NOMORUJI" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="132"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="565"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="0"
+						width="534"
+						height="16"
+						key="staticText-1"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[SURAT - KETERANGAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="16"
+						width="256"
+						height="16"
+						key="staticText-2"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isUnderline="false"/>
+					</textElement>
+				<text><![CDATA[Nomor :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="257"
+						y="16"
+						width="124"
+						height="16"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{NOMOR}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="45"
+						width="534"
+						height="27"
+						key="staticText-3"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Kepada Dinas Perhubungan Kota Surakarta menerangkan bahwa kendaraan bermotor tersebut di bawah sebagai berikut :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="77"
+						width="128"
+						height="14"
+						key="staticText-4"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Nomor Kendaraan :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="92"
+						width="128"
+						height="14"
+						key="staticText-5"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Nomor Uji Kendaraan :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="107"
+						width="128"
+						height="14"
+						key="staticText-6"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Merk/Type/Jenis Kendr. :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="122"
+						width="128"
+						height="14"
+						key="staticText-7"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Nomor Chassis/Rangka :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="137"
+						width="128"
+						height="14"
+						key="staticText-8"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Nomor Mesin :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="152"
+						width="128"
+						height="14"
+						key="staticText-9"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Tahun Kendaraan :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="167"
+						width="128"
+						height="14"
+						key="staticText-10"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Nama Pemilik Lama :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="182"
+						width="128"
+						height="14"
+						key="staticText-11"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Alamat Pemilik Lama :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="226"
+						width="128"
+						height="14"
+						key="staticText-12"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Lain - lain :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="77"
+						width="399"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{NOMORPOLISI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="92"
+						width="399"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{NOMORUJI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="107"
+						width="106"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Merk}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="234"
+						y="107"
+						width="8"
+						height="14"
+						key="staticText-13"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[/]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="242"
+						y="107"
+						width="84"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{TYPE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="326"
+						y="107"
+						width="8"
+						height="14"
+						key="staticText-14"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[/]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="334"
+						y="107"
+						width="100"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{jenis}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="137"
+						width="238"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{NOMORMESIN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="122"
+						width="238"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{NOMORRANGKA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="152"
+						width="100"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{TAHUNPEMBUATAN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="167"
+						width="340"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{NAMADEPAN}+" "+$F{NAMABELAKANG}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="182"
+						width="399"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ALAMAT}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="226"
+						width="399"
+						height="70"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{LAINLAIN}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="304"
+						width="535"
+						height="40"
+						key="staticText-15"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Setelah dilakukan pengecekan administrasi sesuai data tersebut di atas dan sesuai dengan ketentuan yang berlaku kami dapat menyetujuai kendaraan bermotor tersebut dipergunakan sebagai alat angkutan orang umum/ plat kuning.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="344"
+						width="535"
+						height="27"
+						key="staticText-16"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Surat keterangan ini diberikan untuk kelengkapan permohonan mendapatkan Surat Tanda Nomor Kendaraan (STNK) sebagai Balik Nama Pemilik kepelimikan kendaraan.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="371"
+						width="535"
+						height="24"
+						key="staticText-17"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Demikian untuk menjadi periksa dan guna seperlunya]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="283"
+						y="430"
+						width="249"
+						height="16"
+						key="staticText-18"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[KEPALA DINAS PERHUBUNGAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="283"
+						y="446"
+						width="249"
+						height="16"
+						key="staticText-19"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[KOTA SURAKARTA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="324"
+						y="408"
+						width="56"
+						height="16"
+						key="staticText-20"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Surakarta, ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="381"
+						y="408"
+						width="152"
+						height="16"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{TANGGAL}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="196"
+						width="340"
+						height="14"
+						key="textField-1"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{NAMADEPAN1}+" "+$F{NAMABELAKANG1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="196"
+						width="128"
+						height="14"
+						key="staticText-21"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Nama Pemilik Baru :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="211"
+						width="128"
+						height="14"
+						key="staticText-22"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Alamat Pemilik Baru :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="211"
+						width="399"
+						height="14"
+						key="textField-2"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ALAMAT1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

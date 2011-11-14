@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="dishubv2PU" transaction-type="RESOURCE_LOCAL">
+    <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+    <class>com.x3.dishub.entity.KabupatenKota</class>
+    <class>com.x3.dishub.entity.Provinsi</class>
+    <class>com.x3.dishub.entity.BentukBadanUsaha</class>
+    <class>com.x3.dishub.entity.Kendaraan</class>
+    <class>com.x3.dishub.entity.BahanBakar</class>
+    <class>com.x3.dishub.entity.Merk</class>
+    <class>com.x3.dishub.entity.Jenis</class>
+    <class>com.x3.dishub.entity.Pemilik</class>
+    <class>com.x3.dishub.entity.Perusahaan</class>
+    <class>com.x3.dishub.entity.Trayek</class>
+    <class>com.x3.dishub.entity.Armada</class>
+    <class>com.x3.dishub.entity.IjinTrayek</class>
+    <class>com.x3.dishub.entity.Spit</class>
+    <class>com.x3.dishub.entity.Spio</class>
+    <class>com.x3.dishub.entity.IjinOperasi</class>
+    <class>com.x3.dishub.entity.IjinUsahaAngkutanBarang</class>
+    <class>com.x3.dishub.entity.IjinUsahaAngkutanOrang</class>
+    <class>com.x3.dishub.entity.SkPelaksanaanIjinTrayek</class>
+    <class>com.x3.dishub.entity.SkPelaksanaanIjinOperasi</class>
+    <class>com.x3.dishub.entity.KartuPengawasanOtobisUmum</class>
+    <class>com.x3.dishub.entity.KelasPelayanan</class>
+    <class>com.x3.dishub.entity.KartuPengawasanTaksi</class>
+    <class>com.x3.dishub.entity.KartuJamPerjalanan</class>
+    <class>com.x3.dishub.entity.JamPerjalanan</class>
+    <class>com.x3.dishub.entity.IjinInsidentil</class>
+    <!--
+    <properties>
+      <property name="toplink.jdbc.user" value="root"/>
+      <property name="toplink.jdbc.password" value="admin"/>
+      <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/dishubv2"/>
+      <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="toplink.ddl-generation" value="create-tables"/>
+    </properties>
+    -->
+    <class>com.x3.dishub.entity.SuratKeterangan</class>
+    <class>com.x3.dishub.entity.Warna</class>
+  </persistence-unit>
+</persistence>

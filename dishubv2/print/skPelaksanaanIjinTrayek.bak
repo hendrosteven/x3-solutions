@@ -1,0 +1,1187 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="skPelaksanaanIjinTrayek"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="1275"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="BlankPage"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="nomor" isForPrompting="true" class="java.lang.String"/>
+	<queryString><![CDATA[SELECT
+     perusahaan.`NAMA` AS perusahaan_NAMA,
+     perusahaan.`NAMAPIMPINAN` AS perusahaan_NAMAPIMPINAN,
+     perusahaan.`ALAMAT` AS perusahaan_ALAMAT,
+     skpelaksanaanijintrayek.`NOMOR` AS skpelaksanaanijintrayek_NOMOR,
+     skpelaksanaanijintrayek.`TANGGAL` AS skpelaksanaanijintrayek_TANGGAL,
+     ijintrayek.`NOMORSURATPERMOHONAN` AS ijintrayek_NOMORSURATPERMOHONAN,
+     ijintrayek.`TANGGALSURATPERMOHONAN` AS ijintrayek_TANGGALSURATPERMOHONAN,
+     ijintrayek.`MASABERLAKUMULAI` AS ijintrayek_MASABERLAKUMULAI,
+     ijintrayek.`NOMOR` AS ijintrayek_NOMOR,
+     ijintrayek.`MASABERLAKUSELESAI` AS ijintrayek_MASABERLAKUSELESAI
+FROM
+     `perusahaan` perusahaan INNER JOIN `ijintrayek` ijintrayek ON perusahaan.`ID` = ijintrayek.`PERUSAHAAN_ID`
+     INNER JOIN `skpelaksanaanijintrayek` skpelaksanaanijintrayek ON ijintrayek.`ID` = skpelaksanaanijintrayek.`IJINTRAYEK_ID`
+WHERE
+     skpelaksanaanijintrayek.`NOMOR` = $P{nomor}]]></queryString>
+
+	<field name="perusahaan_NAMA" class="java.lang.String"/>
+	<field name="perusahaan_NAMAPIMPINAN" class="java.lang.String"/>
+	<field name="perusahaan_ALAMAT" class="java.lang.String"/>
+	<field name="skpelaksanaanijintrayek_NOMOR" class="java.lang.String"/>
+	<field name="skpelaksanaanijintrayek_TANGGAL" class="java.sql.Date"/>
+	<field name="ijintrayek_NOMORSURATPERMOHONAN" class="java.lang.String"/>
+	<field name="ijintrayek_TANGGALSURATPERMOHONAN" class="java.sql.Date"/>
+	<field name="ijintrayek_MASABERLAKUMULAI" class="java.sql.Date"/>
+	<field name="ijintrayek_NOMOR" class="java.lang.String"/>
+	<field name="ijintrayek_MASABERLAKUSELESAI" class="java.sql.Date"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="133"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="1063"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="3"
+						width="535"
+						height="20"
+						key="staticText-1"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[KEPUTUSAN KEPADA DINAS PERHUBUNGAN KOTA SURAKARTA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="151"
+						y="23"
+						width="62"
+						height="18"
+						key="staticText-2"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[NOMOR :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="45"
+						width="535"
+						height="18"
+						key="staticText-3"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[TENTANG ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="63"
+						width="535"
+						height="18"
+						key="staticText-4"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[PELAKSANAAN KEPUTUSAN IJIN TRAYEK ANGKUTAN KOTA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="81"
+						width="535"
+						height="18"
+						key="staticText-5"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[SURAKARTA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="176"
+						width="64"
+						height="18"
+						key="staticText-6"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Membaca ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="176"
+						width="117"
+						height="18"
+						key="staticText-7"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Surat Permohonan dari]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="223"
+						y="176"
+						width="141"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{perusahaan_NAMAPIMPINAN}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="364"
+						y="176"
+						width="50"
+						height="18"
+						key="staticText-8"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[pimpinan ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="106"
+						y="194"
+						width="221"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{perusahaan_NAMA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="327"
+						y="194"
+						width="90"
+						height="15"
+						key="staticText-9"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[yang beralamat di ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="106"
+						y="209"
+						width="429"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{perusahaan_ALAMAT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="106"
+						y="224"
+						width="41"
+						height="17"
+						key="staticText-10"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Nomor :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="146"
+						y="224"
+						width="100"
+						height="17"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ijintrayek_NOMORSURATPERMOHONAN}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="246"
+						y="224"
+						width="46"
+						height="17"
+						key="staticText-11"/>
+					<box></box>
+					<textElement verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Tanggal]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="292"
+						y="224"
+						width="173"
+						height="17"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{ijintrayek_TANGGALSURATPERMOHONAN}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="106"
+						y="241"
+						width="429"
+						height="28"
+						key="staticText-12"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Surat Keputusan Walikota Surakarta, Nomor                               ,tanggal                                   tentang Izin Trayek Angkutan Penumpang Umum]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="176"
+						width="14"
+						height="15"
+						key="staticText-13"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[a.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="239"
+						width="14"
+						height="15"
+						key="staticText-14"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[b.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="272"
+						width="75"
+						height="18"
+						key="staticText-15"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Menimbang ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="274"
+						width="429"
+						height="50"
+						key="staticText-16"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Bahwa maksud dari permohonannya adalah]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="324"
+						width="429"
+						height="33"
+						key="staticText-17"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Bahwa pada lintas trayek yang akan dilayani masih dibutuhkan alat angkutan penumpang umum]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="357"
+						width="429"
+						height="26"
+						key="staticText-18"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Sehubungan dengan hal tersebut di atas dipandang perlu untuk menetapkan ijin trayek angkutan penumpang umum dengan Keputusan Walikota.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="274"
+						width="14"
+						height="15"
+						key="staticText-19"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[a.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="324"
+						width="14"
+						height="15"
+						key="staticText-20"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[b.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="357"
+						width="14"
+						height="15"
+						key="staticText-21"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[c.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="384"
+						width="75"
+						height="18"
+						key="staticText-22"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Mengingat]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="384"
+						width="429"
+						height="13"
+						key="staticText-23"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Undang Undang No. 22 Tahun 2009]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="397"
+						width="429"
+						height="13"
+						key="staticText-24"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Undang Undang No. 32 Tahun 2004]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="410"
+						width="429"
+						height="13"
+						key="staticText-25"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Peraturan Pemerintah No. 41 Tahun 1993]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="423"
+						width="429"
+						height="13"
+						key="staticText-26"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Peraturan Pemerintah No. 38 Tahun 2007]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="436"
+						width="429"
+						height="13"
+						key="staticText-27"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Keputusan Menteri Perhubungan No. 35 Tahun 2003]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="449"
+						width="429"
+						height="13"
+						key="staticText-28"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Peraturan Daerah Kota Surakarta No. 6 Tahun 2005]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="462"
+						width="429"
+						height="13"
+						key="staticText-29"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Peraturan Daerah Kota Surakarta No. 6 Tahun 2008]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="475"
+						width="429"
+						height="13"
+						key="staticText-30"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Peraturan Daerah Kota Surakarta No. 6 Tahun 2009]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="488"
+						width="429"
+						height="50"
+						key="staticText-31"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Peraturan bersama Kepala Daerah SUBOSUKA WONOSRATEN tanggal 30 Oktober 2006, Nomor 11/2006, Nomor 7847/2006, Nomor 36/2006, Nomor 26/2006, Nomor 8 Tahun 2006, Nomor 26.a Tahun 2006, Nomor 1/2006 tentang Kerjasama antar Daerah Kota Surakarta, Kab.Boyolali, Kab.Sukoharjo, Kab.Karanganyar, Kab.Wonogiri, Kab.Sragen.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="538"
+						width="429"
+						height="39"
+						key="staticText-32"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Perjanjian Kerjasama Antar Kepala Daerah Dinas Perhubungan Se SUBOSUKAWONOSRATEN tanggal 03 Maret 2009 Nomor 551.2/353B,550/139B/15/2009, 551.2/436/03/09, 551.2/543.16, 550/011-A, 551.2/86.C, 551.28284/30]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="106"
+						y="577"
+						width="429"
+						height="13"
+						key="staticText-33"/>
+					<box></box>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Keputusan Walikota Surakarta No. 15 Tahun 2004]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="384"
+						width="14"
+						height="14"
+						key="staticText-34"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[a.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="397"
+						width="14"
+						height="15"
+						key="staticText-35"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[b.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="410"
+						width="14"
+						height="15"
+						key="staticText-36"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[c.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="423"
+						width="14"
+						height="14"
+						key="staticText-37"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[d.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="436"
+						width="14"
+						height="15"
+						key="staticText-38"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[e.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="449"
+						width="14"
+						height="15"
+						key="staticText-39"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[f.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="462"
+						width="14"
+						height="15"
+						key="staticText-40"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[g.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="475"
+						width="14"
+						height="15"
+						key="staticText-41"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[h.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="488"
+						width="14"
+						height="15"
+						key="staticText-42"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[i.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="538"
+						width="14"
+						height="15"
+						key="staticText-43"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[j.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="91"
+						y="577"
+						width="14"
+						height="15"
+						key="staticText-44"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[k.]]></text>
+				</staticText>
+				<break>
+					<reportElement
+						x="0"
+						y="606"
+						width="535"
+						height="0"
+						key="element-1"/>
+				</break>
+				<staticText>
+					<reportElement
+						x="0"
+						y="617"
+						width="535"
+						height="18"
+						key="staticText-45"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[MEMUTUSKAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="640"
+						width="75"
+						height="15"
+						key="staticText-46"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Menetapkan :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="640"
+						width="460"
+						height="28"
+						key="staticText-47"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Keputusan Kepala Dinas Perhubungan Kota  Surakarta Tentang Pelaksanaan Keputusan Ijin Trayek Angkutan Kota]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="75"
+						y="668"
+						width="289"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Top">
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{perusahaan_NAMA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="689"
+						width="75"
+						height="15"
+						key="staticText-48"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Kesatu :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="689"
+						width="460"
+						height="15"
+						key="staticText-49"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Memberikan Ijin Trayek Angkutan Penumpang Umum kepada :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="704"
+						width="102"
+						height="15"
+						key="staticText-50"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Nama Perusahaan :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="719"
+						width="102"
+						height="15"
+						key="staticText-51"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Nama Pimpinan :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="734"
+						width="102"
+						height="15"
+						key="staticText-52"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Alamat :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="177"
+						y="704"
+						width="279"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{perusahaan_NAMA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="177"
+						y="719"
+						width="279"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{perusahaan_NAMAPIMPINAN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="177"
+						y="734"
+						width="358"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{perusahaan_ALAMAT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="754"
+						width="75"
+						height="15"
+						key="staticText-53"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Kedua :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="754"
+						width="164"
+						height="15"
+						key="staticText-54"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Keputusan ini berlaku dari tanggal ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="239"
+						y="754"
+						width="117"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{ijintrayek_MASABERLAKUMULAI}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="356"
+						y="754"
+						width="164"
+						height="15"
+						key="staticText-55"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[sampai dengan tanggal]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="75"
+						y="769"
+						width="202"
+						height="15"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{ijintrayek_MASABERLAKUSELESAI}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="788"
+						width="75"
+						height="15"
+						key="staticText-56"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Ketiga :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="788"
+						width="460"
+						height="27"
+						key="staticText-57"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Rincian Daftar Trayek, data kendaraan, dan jenis pelayanan yang dilayani sebagaimana tercantum dalam lampiran surat keputusan ini.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="819"
+						width="460"
+						height="43"
+						key="staticText-58"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Dalam pengoperasian kendaraan dimaksud dilengkapi dengan Kartu Pengawasan (KP) dan Kartu Jam Perjalanan (KJP) yang diterbitkan oleh Kepala Dinas Perhubungan Kota Surakarta yang berlaku satu tahun dan dapat diperpanjang kembali.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="819"
+						width="75"
+						height="15"
+						key="staticText-59"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Keempat :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="865"
+						width="460"
+						height="27"
+						key="staticText-60"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Pemegang Ijin Trayek sebagaimana dimaksud dictum pertama harus memenuhi kewajiban sebagaimana tercantum dibalik surat keputusan ini.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="865"
+						width="75"
+						height="15"
+						key="staticText-61"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Kelima :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="895"
+						width="75"
+						height="15"
+						key="staticText-62"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Keenam :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="895"
+						width="460"
+						height="27"
+						key="staticText-63"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Kepala Dinas Perhubungan Kota Surakarta mengatur pelaksanaan surat keputusan ini]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="925"
+						width="75"
+						height="15"
+						key="staticText-64"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Ketujuh: ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="75"
+						y="925"
+						width="460"
+						height="27"
+						key="staticText-65"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Apabila dikemudian hari terdapat kekeliruan dalam penetapannya akan diadakan perbaikan sebagaimana mestinya]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="310"
+						y="967"
+						width="225"
+						height="15"
+						key="staticText-66"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Ditetapkan di   : Surakarta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="310"
+						y="982"
+						width="72"
+						height="16"
+						key="staticText-67"/>
+					<box></box>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+				<text><![CDATA[Pada Tanggal :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="255"
+						y="1011"
+						width="277"
+						height="15"
+						key="staticText-68"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[AN. WALIKOTA SURAKARTA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="255"
+						y="1026"
+						width="277"
+						height="15"
+						key="staticText-69"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[KEPALA DINAS PERHUBUNGAN ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="255"
+						y="1041"
+						width="277"
+						height="15"
+						key="staticText-70"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[KOTA SURAKARTA]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="213"
+						y="23"
+						width="201"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{skpelaksanaanijintrayek_NOMOR}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="108"
+						width="535"
+						height="18"
+						key="staticText-71"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[KEPALA DINAS PERHUBUNGAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="126"
+						width="535"
+						height="18"
+						key="staticText-72"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[KOTA SURAKARTA]]></text>
+				</staticText>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

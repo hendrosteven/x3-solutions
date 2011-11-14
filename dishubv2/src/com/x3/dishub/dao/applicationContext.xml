@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="generalDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.GeneralDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+   
+    <bean id="armadaDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.ArmadaDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="bahanBakarDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.BahanBakarDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="bentukBadanUsahaDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.BentukBadanUsahaDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="ijinInsidentilDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.IjinInsidentilDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="ijinOperasiDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.IjinOperasiDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="ijinTrayekDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.IjinTrayekDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="ijinUsahaAngkutanBarangDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.IjinUsahaAngkutanBarangDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="ijinUsahaAngkutanOrangDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.IjinUsahaAngkutanOrangDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="jenisDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.JenisDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="kabKotaDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.KabupatenKotaDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="kartuJamPerjalananDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.KartuJamPerjalananDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="kartuPengawasanOtobisUmumDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.KartuPengawasanOtobisUmumDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="kartuPengawasanTaksiDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.KartuPengawasanTaksiDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="kelasPelayananDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.KelasPelayananDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="kendaraanDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.KendaraanDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="merkDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.MerkDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="pemilikDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.PemilikDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="perusahaanDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.PerusahaanDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="provinsiDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.ProvinsiDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="skPelaksanaanIjinOperasiDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.SkPelaksanaanIjinOperasiDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="skPelaksanaanIjinTrayekDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.SkPelaksanaanIjinTrayekDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="spioDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.SpioDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="spitDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.SpitDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="trayekDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.TrayekDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="suratKeteranganDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.SuratKeteranganDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="warnaDAO" parent="txProxyTemplate">
+        <property name="proxyTargetClass" value="true" />
+        <property name="target">
+            <bean class="com.x3.dishub.dao.jpa.WarnaDAOImpl">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </property>
+    </bean>
+   
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.TopLinkJpaVendorAdapter">
+                <property name="showSql" value="true"/>
+                <property name="generateDdl" value="true"/>
+                <property name="databasePlatform"
+                value="oracle.toplink.essentials.platform.database.MySQL4Platform"/>
+            </bean>
+        </property>
+        <property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+        </property>
+    </bean>
+
+
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/dishubv2"/>
+        <property name="username" value="root"/>
+        <property name="password" value="admin"/>
+    </bean>-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${pwd}"/>
+    </bean>
+
+    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <bean id="baseTransactionProxy"
+            class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="transactionAttributes">
+            <props>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="txProxyTemplate" abstract="true"
+        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="insert*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
