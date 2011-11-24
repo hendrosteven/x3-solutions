@@ -60,7 +60,7 @@ public class DaftarPerusahaanWnd extends ApplicationContext {
                     public void onEvent(Event event) throws Exception {
                         //panggil form edit
                         Window win = (Window) Executions.createComponents("/zul/admin/editPerusahaan.zul", null, null);
-                        Textbox txtIdPerusahaan = (Textbox)win.getFellow("txtIdPerusahaan");
+                        Textbox txtIdPerusahaan = (Textbox) win.getFellow("txtIdPerusahaan");
                         txtIdPerusahaan.setValue(p.getId());
                         win.doModal();
                         load();
@@ -101,5 +101,22 @@ public class DaftarPerusahaanWnd extends ApplicationContext {
         } finally {
             conn.close();
         }
+    }
+
+    public void cetak() throws Exception {
+        Window win = (Window) Executions.createComponents("/zul/admin/rpt_daftar_perusahaan_landscape.zul", null, null);
+        Textbox sql = (Textbox) win.getFellow("sql");
+        sql.setValue("SELECT perusahaan.id, perusahaan.nama_perusahaan, perusahaan.nama_pimpinan,"
+                + "perusahaan.alamat_jalan, kelurahan.nama_kel, kecamatan.nama_kec, "
+                + "perusahaan.kota, perusahaan.telp, perusahaan.fax, bidang_usaha.jenis, "
+                + "(perusahaan.modal_kerja+perusahaan.modal_tetap) AS investasi, (perusahaan.jml_tki_l+ "
+                + "perusahaan.jml_tki_p) AS tki, (perusahaan.jml_tka_l+perusahaan.jml_tka_p) AS tka, "
+                + "(perusahaan.jml_tki_l+perusahaan.jml_tki_p+perusahaan.jml_tka_l+perusahaan.jml_tka_p) AS total "
+                + "FROM perusahaan INNER JOIN "
+                + "kecamatan ON kecamatan.id = perusahaan.kecamatan_id INNER JOIN "
+                + "kelurahan ON kelurahan.id = perusahaan.kelurahan_id INNER JOIN "
+                + "bidang_usaha ON bidang_usaha.id = perusahaan.bidang_usaha_id "
+                + "ORDER BY perusahaan.nama_perusahaan");
+        win.doModal();
     }
 }

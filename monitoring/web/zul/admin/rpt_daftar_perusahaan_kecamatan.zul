@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window border="normal" height="100%">
+        <div style="padding:5px" width="98" height="98%" id="rptDaftarPerusahaanByKecamatan" use="com.x3.monitoring.admin.ReportDaftarPerusahaanByKecamatanWnd">
+            <jasperreport id="jasper"/>
+        </div>
+    </window>
+</zk>

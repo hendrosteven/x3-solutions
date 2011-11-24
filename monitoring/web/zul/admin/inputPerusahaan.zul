@@ -34,7 +34,7 @@
                                         </row>
                                         <row width="200px">
                                             <label style="font-weight:bold"
-                                                   value="Nama Perusahaan">
+                                                   value="Nama Perusahaan" >
                                             </label>
                                             <hbox>
                                                 <textbox width="350px" id="txtNamaPerusahaan"></textbox>

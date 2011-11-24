@@ -6,6 +6,7 @@ package com.x3.monitoring;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Date;
 import javax.sql.DataSource;
 import org.zkoss.zul.Div;
 
@@ -34,6 +35,7 @@ public class ApplicationContext extends Div {
             ex.printStackTrace();
             throw ex;
         }
+        
         return this.conn;
     }
 }

@@ -23,21 +23,15 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<queryString><![CDATA[SELECT kegiatan_pemerintah.`id`,kegiatan_pemerintah.`nama` AS nama,
- kegiatan_pemerintah.`jalan` AS jalan,
-kegiatan_pemerintah.`kota` AS kota,
-kegiatan_pemerintah.`tahun` AS tahun,
-kelurahan.`id` as kelurahan_id,
-kecamatan.`id` as kecamatan_id,
-sumber_dana.`id` as sumber_dana_id,
-bidang_usaha_pemerintah.`id` as bidang_usaha_pemerintah_id,
+	<queryString><![CDATA[SELECT kegiatan_pemerintah.`id`,kegiatan_pemerintah.`nama`,
+ kegiatan_pemerintah.`jalan`,
+kegiatan_pemerintah.`kota`,
+kegiatan_pemerintah.`tahun`,
 kegiatan_pemerintah.`nilai_investasi`,
-kelurahan.`nama` AS kelurahan_nama,
-kecamatan.`nama` AS kecamatan_nama,
-sumber_dana.`nama` AS sumber_dana,
-kegiatan_pemerintah.`bidang_usaha_pemerintah_id`,
-kegiatan_pemerintah.`sumber_dana_id`,
-bidang_usaha_pemerintah.`nama` AS bidang 
+kelurahan.`nama_kel`,
+kecamatan.`nama_kec`,
+sumber_dana.`nama_sumber`,
+bidang_usaha_pemerintah.`nama_bidang` 
 FROM `kecamatan` kecamatan 
 INNER JOIN `kegiatan_pemerintah` kegiatan_pemerintah ON kecamatan.`id` = kegiatan_pemerintah.`kecamatan_id` 
 INNER JOIN `kelurahan` kelurahan ON kegiatan_pemerintah.`kelurahan_id` = kelurahan.`id` 
@@ -49,15 +43,11 @@ INNER JOIN `bidang_usaha_pemerintah` bidang_usaha_pemerintah ON kegiatan_pemerin
 	<field name="jalan" class="java.lang.String"/>
 	<field name="kota" class="java.lang.String"/>
 	<field name="tahun" class="java.lang.String"/>
-	<field name="kelurahan_id" class="java.lang.Integer"/>
-	<field name="kecamatan_id" class="java.lang.Integer"/>
-	<field name="sumber_dana_id" class="java.lang.Integer"/>
-	<field name="bidang_usaha_pemerintah_id" class="java.lang.Integer"/>
 	<field name="nilai_investasi" class="java.lang.Double"/>
-	<field name="kelurahan_nama" class="java.lang.String"/>
-	<field name="kecamatan_nama" class="java.lang.String"/>
-	<field name="sumber_dana" class="java.lang.String"/>
-	<field name="bidang" class="java.lang.String"/>
+	<field name="nama_kel" class="java.lang.String"/>
+	<field name="nama_kec" class="java.lang.String"/>
+	<field name="nama_sumber" class="java.lang.String"/>
+	<field name="nama_bidang" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -282,9 +272,10 @@ INNER JOIN `bidang_usaha_pemerintah` bidang_usaha_pemerintah ON kegiatan_pemerin
 						x="194"
 						y="0"
 						width="219"
-						height="15"
+						height="33"
 						forecolor="#000000"
-						key="textField"/>
+						key="textField"
+						stretchType="RelativeToTallestObject"/>
 					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<bottomPen lineWidth="0.0" lineColor="#000000"/>
@@ -311,7 +302,7 @@ INNER JOIN `bidang_usaha_pemerintah` bidang_usaha_pemerintah ON kegiatan_pemerin
 					<textElement>
 						<font size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{kecamatan_nama}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{nama_kec}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -347,7 +338,7 @@ INNER JOIN `bidang_usaha_pemerintah` bidang_usaha_pemerintah ON kegiatan_pemerin
 					<textElement textAlignment="Left">
 						<font size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{sumber_dana}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{nama_sumber}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -383,7 +374,7 @@ INNER JOIN `bidang_usaha_pemerintah` bidang_usaha_pemerintah ON kegiatan_pemerin
 					<textElement textAlignment="Left">
 						<font size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{bidang}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{nama_bidang}]]></textFieldExpression>
 				</textField>
 				<line direction="TopDown">
 					<reportElement

@@ -939,4 +939,23 @@ public class PerusahaanDAOImpl implements PerusahaanDAO {
         }
         return list;
     }
+
+    public boolean cekNamaPerusahaan(String nama) throws Exception {
+        String sql = "SELECT id from perusahaan where nama_perusahaan=?";
+        PreparedStatement ps = null;
+        boolean isValid = false;
+        try{
+            ps = this.conn.prepareStatement(sql);
+            ps.setString(1,nama);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                isValid=false;
+            }else{
+                isValid=true;
+            }
+        }catch(Exception ex){
+            throw new Exception("Cek Nama Perusahaan gagal");
+        }
+        return isValid;
+    }
 }

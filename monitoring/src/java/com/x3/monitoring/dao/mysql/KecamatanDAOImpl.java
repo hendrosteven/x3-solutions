@@ -63,7 +63,7 @@ public class KecamatanDAOImpl implements KecamatanDAO {
     }
 
     public void insert(Kecamatan kec) throws Exception {
-        String sql = "INSERT INTO kecamatan(nama) VALUES(?)";
+        String sql = "INSERT INTO kecamatan(nama_kec) VALUES(?)";
         PreparedStatement ps = null;
         try {
             ps = this.conn.prepareStatement(sql);
@@ -75,7 +75,7 @@ public class KecamatanDAOImpl implements KecamatanDAO {
     }
 
     public void update(Kecamatan kec) throws Exception {
-        String sql = "UPDATE kecamatan SET nama=? WHERE id=?";
+        String sql = "UPDATE kecamatan SET nama_kec=? WHERE id=?";
         PreparedStatement ps = null;
         try{
             ps = this.conn.prepareStatement(sql);
@@ -88,7 +88,7 @@ public class KecamatanDAOImpl implements KecamatanDAO {
     }
 
     public void delete(int id) throws Exception {
-        String sql = "DELETE FROM kecamatan WHERE id=?";
+        String sql = "DELETE FROM kecamatan_kec WHERE id=?";
         PreparedStatement ps = null;
         try{
             ps = this.conn.prepareStatement(sql);

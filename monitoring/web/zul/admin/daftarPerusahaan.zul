@@ -22,6 +22,8 @@
 
             </listbox>
         </div>
-
+         <div style="padding:3px">
+            <button label="Cetak" onClick="daftarPerusahaanWnd.cetak()" height="25px"></button>
+        </div>
     </div>
 </zk>

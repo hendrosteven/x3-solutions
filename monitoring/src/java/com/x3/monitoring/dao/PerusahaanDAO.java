@@ -18,6 +18,8 @@ import java.util.List;
  */
 public interface PerusahaanDAO {
 
+    public boolean cekNamaPerusahaan(String nama)throws Exception;
+    
     public void insert(Perusahaan p) throws Exception;
 
     public void update(Perusahaan p) throws Exception;
