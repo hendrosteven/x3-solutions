@@ -25,7 +25,7 @@ public class SumberDanaDAOImpl implements SumberDanaDAO {
     }
 
     public void insert(SumberDana sd) throws Exception {
-        String sql = "INSERT INTO sumber_dana(nama) VALUES(?)";
+        String sql = "INSERT INTO sumber_dana(nama_sumber) VALUES(?)";
         PreparedStatement ps = null;
         try {
             ps = this.conn.prepareStatement(sql);
@@ -37,7 +37,7 @@ public class SumberDanaDAOImpl implements SumberDanaDAO {
     }
 
     public void update(SumberDana sd) throws Exception {
-        String sql = "UPDATE sumber_dana SET nama=? WHERE id=?";
+        String sql = "UPDATE sumber_dana SET nama_sumber=? WHERE id=?";
         PreparedStatement ps = null;
         try {
             ps = this.conn.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class SumberDanaDAOImpl implements SumberDanaDAO {
     }
 
     public SumberDana get(int id) throws Exception {
-        String sql = "SELECT id,nama FROM sumber_dana WHERE id=?";
+        String sql = "SELECT id,nama_sumber FROM sumber_dana WHERE id=?";
         PreparedStatement ps = null;
         SumberDana dn = null;
         try {
@@ -82,7 +82,7 @@ public class SumberDanaDAOImpl implements SumberDanaDAO {
 
     public List<SumberDana> gets() throws Exception {
         List<SumberDana> list = new ArrayList<SumberDana>();
-        String sql = "SELECT id,nama FROM sumber_dana";
+        String sql = "SELECT id,nama_sumber FROM sumber_dana";
         PreparedStatement ps = null;
         try {
             ps = this.conn.prepareStatement(sql);

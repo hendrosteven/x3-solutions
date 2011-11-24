@@ -164,6 +164,11 @@ public class IndexWnd extends Window {
         Executions.createComponents("/zul/admin/rpt_perusahaan_kecamatan.zul", contentDiv, null);
     }
 
+    public void showReportDaftarPerusahaanByKecamatan() {
+        contentDiv.getChildren().clear();
+        Executions.createComponents("/zul/admin/rpt_daftar_perusahaan_kecamatan.zul", contentDiv, null);
+    }
+
     public void showReportPerusahaanByBentukModal() {
         contentDiv.getChildren().clear();
         Executions.createComponents("/zul/admin/rpt_perusahaan_bentuk_modal.zul", contentDiv, null);

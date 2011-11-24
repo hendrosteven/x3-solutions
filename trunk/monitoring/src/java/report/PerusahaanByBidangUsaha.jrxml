@@ -43,11 +43,15 @@ ORDER BY bidang_usaha.id;]]></queryString>
 			</band>
 		</background>
 		<title>
-			<band height="103"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="24"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="3"
-						y="76"
+						y="3"
 						width="522"
 						height="19"
 						key="staticText-1"/>
@@ -55,72 +59,29 @@ ORDER BY bidang_usaha.id;]]></queryString>
 					<textElement textAlignment="Center">
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Jumlah Perusahan Per Bidang Usaha]]></text>
+				<text><![CDATA[Data Perusahaan Kota Salatiga]]></text>
 				</staticText>
-				<staticText>
-					<reportElement
-						x="3"
-						y="6"
-						width="281"
-						height="22"
-						key="staticText-5"/>
-					<box></box>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
-					</textElement>
-				<text><![CDATA[Pemerintah Kota Salatiga]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="3"
-						y="23"
-						width="274"
-						height="16"
-						key="staticText-6"/>
-					<box></box>
-					<textElement>
-						<font pdfFontName="Helvetica" size="12" isBold="false"/>
-					</textElement>
-				<text><![CDATA[Kantor Penanaman Modal]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="3"
-						y="39"
-						width="371"
-						height="16"
-						key="staticText-7"/>
-					<box></box>
-					<textElement>
-						<font/>
-					</textElement>
-				<text><![CDATA[Aplikasi Monitoring dan Pendataaan Perusahaan PMA/PMDN Kota Salatiga]]></text>
-				</staticText>
-			</band>
-		</title>
-		<pageHeader>
-			<band height="7"  isSplitAllowed="true" >
 			</band>
 		</pageHeader>
 		<columnHeader>
-			<band height="46"  isSplitAllowed="true" >
+			<band height="26"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="3"
-						y="20"
+						y="8"
 						width="82"
-						height="20"
+						height="16"
 						key="staticText-2"/>
 					<box></box>
 					<textElement verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
 					</textElement>
 				<text><![CDATA[KBLI]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="43"
+						y="25"
 						width="535"
 						height="0"
 						key="line-1"/>
@@ -129,7 +90,7 @@ ORDER BY bidang_usaha.id;]]></queryString>
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="15"
+						y="6"
 						width="535"
 						height="0"
 						key="line-2"/>
@@ -138,69 +99,69 @@ ORDER BY bidang_usaha.id;]]></queryString>
 				<staticText>
 					<reportElement
 						x="103"
-						y="20"
+						y="8"
 						width="171"
-						height="20"
+						height="16"
 						key="staticText-3"/>
 					<box></box>
 					<textElement verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
 					</textElement>
 				<text><![CDATA[JENIS]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="470"
-						y="20"
+						y="8"
 						width="63"
-						height="20"
+						height="16"
 						key="staticText-4"/>
 					<box></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
 					</textElement>
 				<text><![CDATA[JUMLAH]]></text>
 				</staticText>
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="23"  isSplitAllowed="true" >
+			<band height="20"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="3"
-						y="3"
+						y="1"
 						width="95"
 						height="18"
 						key="textField"/>
 					<box></box>
-					<textElement>
-						<font size="10"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{kbli}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="103"
-						y="3"
+						y="1"
 						width="362"
 						height="18"
 						key="textField"/>
 					<box></box>
-					<textElement>
-						<font size="10"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{jenis}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="470"
-						y="3"
+						y="1"
 						width="63"
 						height="18"
 						key="textField"/>
 					<box></box>
-					<textElement textAlignment="Center">
-						<font size="10"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{jml}]]></textFieldExpression>
 				</textField>
@@ -210,14 +171,14 @@ ORDER BY bidang_usaha.id;]]></queryString>
 			<band height="44"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
-						y="14"
-						width="535"
+						x="499"
+						y="8"
+						width="35"
 						height="18"
 						key="textField"/>
 					<box></box>
-					<textElement textAlignment="Center">
-						<font/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
@@ -230,18 +191,66 @@ ORDER BY bidang_usaha.id;]]></queryString>
 						key="line-3"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
+				<staticText>
+					<reportElement
+						x="416"
+						y="8"
+						width="82"
+						height="18"
+						key="staticText-9"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Hal.]]></text>
+				</staticText>
 			</band>
 		</columnFooter>
 		<pageFooter>
-			<band height="9"  isSplitAllowed="true" >
+			<band height="64"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="3"
+						y="0"
+						width="274"
+						height="16"
+						key="staticText-6"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Kantor Penanaman Modal Kota Salatiga]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="3"
+						y="16"
+						width="371"
+						height="16"
+						key="staticText-7"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<text><![CDATA[Aplikasi Monitoring dan Pendataaan PMA/PMDN Kota Salatiga]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="3"
+						y="32"
+						width="371"
+						height="16"
+						key="staticText-8"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<text><![CDATA[Kota Salatiga]]></text>
+				</staticText>
 			</band>
 		</pageFooter>
-		<lastPageFooter>
-			<band height="7"  isSplitAllowed="true" >
-			</band>
-		</lastPageFooter>
 		<summary>
-			<band height="7"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</summary>
 </jasperReport>

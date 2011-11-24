@@ -24,7 +24,7 @@ public class BidangUsahaPemerintahDAOImpl implements BidangUsahaPemerintahDAO{
     }
 
     public void insert(BidangUsahaPemerintah obj) throws Exception {
-        String sql = "INSERT INTO bidang_usaha_pemerintah(nama) VALUES(?)";
+        String sql = "INSERT INTO bidang_usaha_pemerintah(nama_bidang) VALUES(?)";
         PreparedStatement ps = null;
         try{
             ps = this.conn.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class BidangUsahaPemerintahDAOImpl implements BidangUsahaPemerintahDAO{
     }
 
     public void update(BidangUsahaPemerintah obj) throws Exception {
-        String sql = "UPDATE bidang_usaha_pemerintah SET nama=? WHERE id=?";
+        String sql = "UPDATE bidang_usaha_pemerintah SET nama_bidang=? WHERE id=?";
         PreparedStatement ps = null;
         try{
             ps = this.conn.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class BidangUsahaPemerintahDAOImpl implements BidangUsahaPemerintahDAO{
 
     public BidangUsahaPemerintah get(int id) throws Exception {
         BidangUsahaPemerintah obj = null;
-        String sql = "SELECT id,nama FROM bidang_usaha_pemerintah WHERE id=?";
+        String sql = "SELECT id,nama_bidang FROM bidang_usaha_pemerintah WHERE id=?";
         PreparedStatement ps = null;
         try{
             ps = this.conn.prepareStatement(sql);
@@ -81,7 +81,7 @@ public class BidangUsahaPemerintahDAOImpl implements BidangUsahaPemerintahDAO{
 
     public List<BidangUsahaPemerintah> gets() throws Exception {
         List<BidangUsahaPemerintah> list = new ArrayList<BidangUsahaPemerintah>();
-        String sql = "SELECT id,nama FROM bidang_usaha_pemerintah";
+        String sql = "SELECT id,nama_bidang FROM bidang_usaha_pemerintah";
         PreparedStatement ps = null;
         try{
             ps = this.conn.prepareStatement(sql);

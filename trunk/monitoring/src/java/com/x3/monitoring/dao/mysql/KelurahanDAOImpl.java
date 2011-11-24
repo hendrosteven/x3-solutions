@@ -63,7 +63,7 @@ public class KelurahanDAOImpl implements KelurahanDAO {
     }
 
     public void insert(Kelurahan kel) throws Exception {
-        String sql = "INSERT INTO kelurahan(nama) VALUES(?)";
+        String sql = "INSERT INTO kelurahan(nama_kel) VALUES(?)";
         PreparedStatement ps = null;
         try {
             ps = this.conn.prepareStatement(sql);
@@ -75,7 +75,7 @@ public class KelurahanDAOImpl implements KelurahanDAO {
     }
 
     public void update(Kelurahan kel) throws Exception {
-        String sql = "UPDATE kelurahan SET nama=? WHERE id=?";
+        String sql = "UPDATE kelurahan SET nama_kel=? WHERE id=?";
         PreparedStatement ps = null;
         try {
             ps = this.conn.prepareStatement(sql);

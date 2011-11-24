@@ -172,8 +172,8 @@ public class InputPerusahaanWnd extends ApplicationContext {
         dateTDP = (Datebox) getFellow("dateTDP");
         txtNPWP = (Textbox) getFellow("txtNPWP");
         dateTanggalInput = (Datebox) getFellow("dateTanggalInput");
-        txtTDINomor = (Textbox)getFellow("txtTDINomor");
-        dateTDI = (Datebox)getFellow("dateTDI");
+        txtTDINomor = (Textbox) getFellow("txtTDINomor");
+        dateTDI = (Datebox) getFellow("dateTDI");
 
         loadKelurahan();
         loadKecamatan();
@@ -285,11 +285,17 @@ public class InputPerusahaanWnd extends ApplicationContext {
         intTKAJumlah.setValue(intTKALaki.getValue() + intTKAPerem.getValue());
     }
 
+    
+
     public void simpan() throws Exception {
         Connection conn = getConn();
         conn.setAutoCommit(false);
         try {
             if (!txtNamaPerusahaan.getValue().isEmpty() && !txtNamaPimpinan.getValue().isEmpty() && !txtTelp.getValue().isEmpty()) {
+                PerusahaanDAO dao = new PerusahaanDAOImpl(conn);
+                if(!dao.cekNamaPerusahaan(txtNamaPerusahaan.getValue().trim())){
+                    throw new Exception("Nama Perusahaan sudah ada");
+                }
                 Perusahaan p = new Perusahaan();
                 p.setId(System.currentTimeMillis() + "");
                 p.setNamaPerusahaan(txtNamaPerusahaan.getValue());
@@ -346,7 +352,7 @@ public class InputPerusahaanWnd extends ApplicationContext {
                 p.setTdiNomor(txtTDINomor.getValue());
                 p.setTdiTanggal(dateTDI.getValue());
                 p.setNpwp(txtNPWP.getValue());
-                PerusahaanDAO dao = new PerusahaanDAOImpl(conn);
+                
                 dao.insert(p);
                 conn.commit();
 
@@ -414,65 +420,65 @@ public class InputPerusahaanWnd extends ApplicationContext {
     public void batal() throws Exception {
         txtNamaPerusahaan.setValue("");
         txtNamaPimpinan.setValue("");
-         txtJalan.setValue("");
-         cmbKelurahan.setValue("");
-         cmbKecamatan.setValue("");
-         txtKota.setValue("");
-         txtTelp.setValue("");
-         txtFax.setValue("");
-         intLuasTanah.setValue(0);
-         intLuasGedung.setValue(0);
-         cmbBadanHukum.setValue("");
-         cmbBentukModal.setValue("");
-         cmbStatusPerusahaan.setValue("");
-         txtBidangUsaha.setValue("");
-         txtIdBidangUsaha.setValue(0);
-         txtProduk.setValue("");
-         dblModalTetap.setValue(0);
-         dblModalKerja.setValue(0);
-         intTKILaki.setValue(0);
-         intTKIPerem.setValue(0);
-         intTKIJumlah.setValue(0);
-         intTKALaki.setValue(0);
-         intTKAPerem.setValue(0);
-         intTKAJumlah.setValue(0);
-         txtTahunProduksi.setValue("");
-         txtJenisProduksi.setValue("");
-         txtKapasitasTerpasang.setValue("");
-         txtRealisasi.setValue("");
-         txtExport.setValue("");
-         dblNilaiExport.setValue(0);
-         txtTahun1.setValue("");
-         dblNilaiTahun1.setValue(0);
-         txtTahun2.setValue("");
-         dblNilaiTahun2.setValue(0);
-         txtTahun3.setValue("");
-         dblNilaiTahun3.setValue(0);
-         txtDokAmdal.setValue("");
-         txtIjinPusat1.setValue("");
-         txtIjinPusatNomor1.setValue("");
-         dateIjinPusatTanggal1.setValue(new Date());
-         txtIjinPusat2.setValue("");
-         txtIjinPusatNomor2.setValue("");
-         dateIjinPusatTanggal2.setValue(new Date());
-         txtIjinPusat3.setValue("");
-         txtIjinPusatNomor3.setValue("");
-         dateIjinPusatTanggal3.setValue(new Date());
-         txtIjinLokasiNomor.setValue("");
-         dateIjinLokasi.setValue(new Date());
-         txtIMBNomor.setValue("");
-         dateIMB.setValue(new Date());
-         txtTandaDaftarGudangNomor.setValue("");
-         dateTandaDaftarGudang.setValue(new Date());
-         txtHONomor.setValue("");
-         dateHO.setValue(new Date());
-         txtSIUPNomor.setValue("");
-         dateSIUP.setValue(new Date());
-         txtTDPNomor.setValue("");
-         dateTDP.setValue(new Date());
-         txtTDINomor.setValue("");
-         dateTDI.setValue(new Date());
-         txtNPWP.setValue("");
-         dateTanggalInput.setValue(new Date());
+        txtJalan.setValue("");
+        cmbKelurahan.setValue("");
+        cmbKecamatan.setValue("");
+        txtKota.setValue("");
+        txtTelp.setValue("");
+        txtFax.setValue("");
+        intLuasTanah.setValue(0);
+        intLuasGedung.setValue(0);
+        cmbBadanHukum.setValue("");
+        cmbBentukModal.setValue("");
+        cmbStatusPerusahaan.setValue("");
+        txtBidangUsaha.setValue("");
+        txtIdBidangUsaha.setValue(0);
+        txtProduk.setValue("");
+        dblModalTetap.setValue(0);
+        dblModalKerja.setValue(0);
+        intTKILaki.setValue(0);
+        intTKIPerem.setValue(0);
+        intTKIJumlah.setValue(0);
+        intTKALaki.setValue(0);
+        intTKAPerem.setValue(0);
+        intTKAJumlah.setValue(0);
+        txtTahunProduksi.setValue("");
+        txtJenisProduksi.setValue("");
+        txtKapasitasTerpasang.setValue("");
+        txtRealisasi.setValue("");
+        txtExport.setValue("");
+        dblNilaiExport.setValue(0);
+        txtTahun1.setValue("");
+        dblNilaiTahun1.setValue(0);
+        txtTahun2.setValue("");
+        dblNilaiTahun2.setValue(0);
+        txtTahun3.setValue("");
+        dblNilaiTahun3.setValue(0);
+        txtDokAmdal.setValue("");
+        txtIjinPusat1.setValue("");
+        txtIjinPusatNomor1.setValue("");
+        dateIjinPusatTanggal1.setValue(new Date());
+        txtIjinPusat2.setValue("");
+        txtIjinPusatNomor2.setValue("");
+        dateIjinPusatTanggal2.setValue(new Date());
+        txtIjinPusat3.setValue("");
+        txtIjinPusatNomor3.setValue("");
+        dateIjinPusatTanggal3.setValue(new Date());
+        txtIjinLokasiNomor.setValue("");
+        dateIjinLokasi.setValue(new Date());
+        txtIMBNomor.setValue("");
+        dateIMB.setValue(new Date());
+        txtTandaDaftarGudangNomor.setValue("");
+        dateTandaDaftarGudang.setValue(new Date());
+        txtHONomor.setValue("");
+        dateHO.setValue(new Date());
+        txtSIUPNomor.setValue("");
+        dateSIUP.setValue(new Date());
+        txtTDPNomor.setValue("");
+        dateTDP.setValue(new Date());
+        txtTDINomor.setValue("");
+        dateTDI.setValue(new Date());
+        txtNPWP.setValue("");
+        dateTanggalInput.setValue(new Date());
     }
 }

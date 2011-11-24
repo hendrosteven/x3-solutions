@@ -31,7 +31,7 @@ public class ReportPerusahaanByKecamatanWnd extends ApplicationContext {
     private void loadReport() throws Exception {
         Connection conn = getConn();
         try{
-        String sql = "SELECT kecamatan.nama, COUNT(perusahaan.kecamatan_id)AS jml "
+        String sql = "SELECT kecamatan.nama_kec, COUNT(perusahaan.kecamatan_id)AS jml "
                 + "FROM monitoring.perusahaan RIGHT JOIN monitoring.kecamatan "
                 + "ON (perusahaan.kecamatan_id = kecamatan.id) GROUP BY kecamatan.id";
         jasper.setSrc("/report/PerusahaanByKecamatan.jasper");

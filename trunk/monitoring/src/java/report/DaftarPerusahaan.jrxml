@@ -23,7 +23,7 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<queryString><![CDATA[select nama_perusahaan,nama_pimpinan,alamat_jalan,kota,telp,fax from monitoring.perusahaan
+	<queryString><![CDATA[select nama_perusahaan,nama_pimpinan,alamat_jalan,kota,telp,fax from perusahaan
 order by nama_perusahaan]]></queryString>
 
 	<field name="nama_perusahaan" class="java.lang.String"/>

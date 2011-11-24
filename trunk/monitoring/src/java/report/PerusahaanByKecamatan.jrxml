@@ -5,10 +5,10 @@
 		 name="PerusahaanByKecamatan"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="595"
-		 pageHeight="842"
-		 columnWidth="535"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="782"
 		 columnSpacing="0"
 		 leftMargin="30"
 		 rightMargin="30"
@@ -24,7 +24,7 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 	<queryString><![CDATA[SELECT
-    kecamatan.nama
+    kecamatan.nama_kec
     , COUNT(perusahaan.kecamatan_id)AS jml
 FROM
     monitoring.perusahaan
@@ -32,7 +32,7 @@ FROM
         ON (perusahaan.kecamatan_id = kecamatan.id)
 GROUP BY kecamatan.id;]]></queryString>
 
-	<field name="nama" class="java.lang.String"/>
+	<field name="nama_kec" class="java.lang.String"/>
 	<field name="jml" class="java.lang.Long"/>
 
 		<background>
@@ -40,58 +40,19 @@ GROUP BY kecamatan.id;]]></queryString>
 			</band>
 		</background>
 		<title>
-			<band height="102"  isSplitAllowed="true" >
+			<band height="31"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="0"
-						y="75"
-						width="535"
+						y="8"
+						width="782"
 						height="20"
 						key="staticText-1"/>
 					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
 					</textElement>
-				<text><![CDATA[Jumlah Perusahaan Per Kecamatan]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="0"
-						y="0"
-						width="281"
-						height="22"
-						key="staticText-2"/>
-					<box></box>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
-					</textElement>
-				<text><![CDATA[Pemerintah Kota Salatiga]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="0"
-						y="17"
-						width="274"
-						height="16"
-						key="staticText-3"/>
-					<box></box>
-					<textElement>
-						<font pdfFontName="Helvetica" size="12" isBold="false"/>
-					</textElement>
-				<text><![CDATA[Kantor Penanaman Modal]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="0"
-						y="33"
-						width="371"
-						height="16"
-						key="staticText-4"/>
-					<box></box>
-					<textElement>
-						<font/>
-					</textElement>
-				<text><![CDATA[Aplikasi Monitoring dan Pendataaan Perusahaan PMA/PMDN Kota Salatiga]]></text>
+				<text><![CDATA[Data Perusahaan Kota Salatiga]]></text>
 				</staticText>
 			</band>
 		</title>
@@ -104,7 +65,7 @@ GROUP BY kecamatan.id;]]></queryString>
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="0"  isSplitAllowed="true" >
+			<band height="8"  isSplitAllowed="true" >
 			</band>
 		</detail>
 		<columnFooter>
@@ -112,18 +73,57 @@ GROUP BY kecamatan.id;]]></queryString>
 			</band>
 		</columnFooter>
 		<pageFooter>
-			<band height="0"  isSplitAllowed="true" >
+			<band height="63"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="6"
+						width="782"
+						height="16"
+						key="staticText-3"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Kantor Penanaman Modal Kota Salatiga]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="22"
+						width="782"
+						height="16"
+						key="staticText-4"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Aplikasi Monitoring dan Pendataaan PMA/PMDN ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="38"
+						width="782"
+						height="16"
+						key="staticText-5"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+				<text><![CDATA[Kota Salatiga]]></text>
+				</staticText>
 			</band>
 		</pageFooter>
 		<summary>
-			<band height="316"  isSplitAllowed="true" >
+			<band height="346"  isSplitAllowed="true" >
 				<pieChart>
 					<chart  hyperlinkTarget="Self" >
 					<reportElement
-						x="12"
-						y="12"
-						width="507"
-						height="289"
+						x="14"
+						y="7"
+						width="760"
+						height="327"
 						key="element-1"/>
 					<box></box>
 						<chartLegend textColor="#000000" backgroundColor="#FFFFFF" >
@@ -132,7 +132,7 @@ GROUP BY kecamatan.id;]]></queryString>
 					<pieDataset>
 						<dataset >
 						</dataset>
-						<keyExpression><![CDATA[$F{nama}]]></keyExpression>
+						<keyExpression><![CDATA[$F{nama_kec}]]></keyExpression>
 						<valueExpression><![CDATA[$F{jml}]]></valueExpression>
 						<labelExpression><![CDATA[$F{jml}.toString()]]></labelExpression>
 				<sectionHyperlink >

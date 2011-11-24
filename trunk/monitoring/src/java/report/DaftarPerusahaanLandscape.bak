@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="DaftarPerusahaanLandscape"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="927"
+		 pageHeight="595"
+		 columnWidth="867"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="def_value" isForPrompting="false" class="java.lang.Integer">
+		<defaultValueExpression ><![CDATA[new Integer("1")]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[SELECT perusahaan.id, perusahaan.nama_perusahaan, perusahaan.nama_pimpinan,
+  perusahaan.alamat_jalan, kelurahan.nama_kel, kecamatan.nama_kec,
+  perusahaan.kota, perusahaan.telp, perusahaan.fax, bidang_usaha.jenis,
+  (perusahaan.modal_kerja+perusahaan.modal_tetap) AS investasi, (perusahaan.jml_tki_l+
+  perusahaan.jml_tki_p) AS tki, (perusahaan.jml_tka_l+perusahaan.jml_tka_p) AS tka,
+  (perusahaan.jml_tki_l+perusahaan.jml_tki_p+perusahaan.jml_tka_l+perusahaan.jml_tka_p) AS total
+FROM perusahaan INNER JOIN
+  kecamatan ON kecamatan.id = perusahaan.kecamatan_id INNER JOIN
+  kelurahan ON kelurahan.id = perusahaan.kelurahan_id INNER JOIN
+  bidang_usaha ON bidang_usaha.id = perusahaan.bidang_usaha_id
+ORDER BY perusahaan.nama_perusahaan]]></queryString>
+
+	<field name="id" class="java.lang.String"/>
+	<field name="nama_perusahaan" class="java.lang.String"/>
+	<field name="nama_pimpinan" class="java.lang.String"/>
+	<field name="alamat_jalan" class="java.lang.String"/>
+	<field name="nama_kel" class="java.lang.String"/>
+	<field name="nama_kec" class="java.lang.String"/>
+	<field name="kota" class="java.lang.String"/>
+	<field name="telp" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="jenis" class="java.lang.String"/>
+	<field name="investasi" class="java.lang.Double"/>
+	<field name="tki" class="java.lang.Long"/>
+	<field name="tka" class="java.lang.Long"/>
+	<field name="total" class="java.lang.Long"/>
+
+	<variable name="nourut" class="java.lang.Integer" resetType="None" calculation="Count">
+		<variableExpression><![CDATA[$V{nourut}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(1)]]></initialValueExpression>
+	</variable>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="1"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="40"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="4"
+						y="6"
+						width="776"
+						height="25"
+						key="textField-1"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["DATA PERUSAHAAN KOTA SALATIGA TAHUN "+ (Calendar.getInstance().get(Calendar.YEAR))]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="41"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="45"
+						y="4"
+						width="132"
+						height="16"
+						key="staticText-1"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Nama Perusahaan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="182"
+						y="4"
+						width="103"
+						height="36"
+						key="staticText-2"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Nama Pemilik / Penanggung Jawa Perusahaan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="288"
+						y="4"
+						width="136"
+						height="16"
+						key="staticText-3"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Alamat Perusahaan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="435"
+						y="4"
+						width="66"
+						height="16"
+						key="staticText-4"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Nomor Telp]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="435"
+						y="20"
+						width="66"
+						height="16"
+						key="staticText-5"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Nomor Fax]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="503"
+						y="4"
+						width="142"
+						height="16"
+						key="staticText-6"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Kegiatan Usaha Pokok]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="647"
+						y="4"
+						width="74"
+						height="16"
+						key="staticText-7"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Nilai Investasi ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="721"
+						y="4"
+						width="102"
+						height="16"
+						key="staticText-8"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Tenaga Kerja]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="721"
+						y="20"
+						width="31"
+						height="16"
+						key="staticText-9"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[TKI ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="752"
+						y="20"
+						width="31"
+						height="16"
+						key="staticText-10"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[TKA ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="784"
+						y="20"
+						width="39"
+						height="16"
+						key="staticText-11"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Total ]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="40"
+						width="822"
+						height="0"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="4"
+						width="822"
+						height="0"
+						key="line-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="41"
+						y="4"
+						width="0"
+						height="37"
+						key="line-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="177"
+						y="4"
+						width="0"
+						height="37"
+						key="line-4"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="285"
+						y="4"
+						width="0"
+						height="37"
+						key="line-5"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="433"
+						y="4"
+						width="0"
+						height="37"
+						key="line-6"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="501"
+						y="4"
+						width="0"
+						height="37"
+						key="line-7"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="645"
+						y="4"
+						width="0"
+						height="37"
+						key="line-8"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="721"
+						y="4"
+						width="0"
+						height="37"
+						key="line-9"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="751"
+						y="20"
+						width="0"
+						height="20"
+						key="line-10"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="783"
+						y="20"
+						width="0"
+						height="20"
+						key="line-11"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="822"
+						y="4"
+						width="0"
+						height="37"
+						key="line-12"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="721"
+						y="20"
+						width="101"
+						height="0"
+						key="line-13"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="4"
+						y="5"
+						width="32"
+						height="16"
+						key="staticText-12"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[No.]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="4"
+						width="0"
+						height="37"
+						key="line-25"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="59"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="45"
+						y="0"
+						width="132"
+						height="58"
+						key="textField"
+						stretchType="RelativeToTallestObject"/>
+					<box></box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{nama_perusahaan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="181"
+						y="0"
+						width="104"
+						height="58"
+						key="textField"
+						stretchType="RelativeToTallestObject"/>
+					<box></box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{nama_pimpinan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="288"
+						y="0"
+						width="144"
+						height="58"
+						key="textField"
+						stretchType="RelativeToTallestObject"/>
+					<box></box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{alamat_jalan}+" "+$F{nama_kel}+" "+$F{nama_kec}+" "+$F{kota}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="436"
+						y="0"
+						width="64"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{telp}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="436"
+						y="18"
+						width="64"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{fax}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="503"
+						y="0"
+						width="142"
+						height="58"
+						key="textField"
+						stretchType="RelativeToBandHeight"/>
+					<box></box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{jenis}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="647"
+						y="0"
+						width="74"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{investasi}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="723"
+						y="0"
+						width="26"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{tki}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="754"
+						y="0"
+						width="28"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{tka}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="784"
+						y="0"
+						width="37"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{total}]]></textFieldExpression>
+				</textField>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="58"
+						width="822"
+						height="0"
+						key="line-14"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="41"
+						y="0"
+						width="0"
+						height="58"
+						key="line-15"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="177"
+						y="0"
+						width="0"
+						height="58"
+						key="line-16"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="285"
+						y="0"
+						width="0"
+						height="58"
+						key="line-17"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="433"
+						y="0"
+						width="0"
+						height="58"
+						key="line-18"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="501"
+						y="0"
+						width="0"
+						height="58"
+						key="line-19"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="645"
+						y="0"
+						width="0"
+						height="58"
+						key="line-20"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="721"
+						y="0"
+						width="0"
+						height="58"
+						key="line-21"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="751"
+						y="0"
+						width="0"
+						height="58"
+						key="line-22"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="783"
+						y="0"
+						width="0"
+						height="58"
+						key="line-23"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="822"
+						y="0"
+						width="0"
+						height="58"
+						key="line-24"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="0"
+						width="0"
+						height="58"
+						key="line-26"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="4"
+						y="1"
+						width="32"
+						height="20"
+						key="textField-2"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[(new Integer($V{nourut}.intValue()+$P{def_value}.intValue()))]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="7"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="87"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="770"
+						y="5"
+						width="51"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="4"
+						y="36"
+						width="274"
+						height="16"
+						key="staticText-13"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Kantor Penanaman Modal Kota Salatiga]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="4"
+						y="52"
+						width="371"
+						height="16"
+						key="staticText-14"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<text><![CDATA[Aplikasi Monitoring dan Pendataaan PMA/PMDN Kota Salatiga]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="4"
+						y="66"
+						width="371"
+						height="16"
+						key="staticText-15"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<text><![CDATA[Kota Salatiga]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="739"
+						y="5"
+						width="30"
+						height="18"
+						key="staticText-16"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<text><![CDATA[Hal.]]></text>
+				</staticText>
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

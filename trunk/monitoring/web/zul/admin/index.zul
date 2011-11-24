@@ -92,9 +92,10 @@
         </popup>
         <popup id="laporan">
             <vbox>
-                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportPerusahaanByKecamatan()"/><label value="Perusahaan Berdasarkan Kecamatan" onClick="main.showReportPerusahaanByKecamatan()"/></hbox>
-                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportPerusahaanByBentukModal()"/><label value="Perusahaan Berdasarkan Bentuk Modal" onClick="main.showReportPerusahaanByBentukModal()"/></hbox>
-                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportPerusahaanByBidangUsaha()"/><label value="Perusahaan Berdasarkan Bidang Usaha" onClick="main.showReportPerusahaanByBidangUsaha()"/></hbox>
+                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportDaftarPerusahaanByKecamatan()"/><label value="Daftar Perusahaan Berdasarkan Kecamatan" onClick="main.showReportDaftarPerusahaanByKecamatan()"/></hbox>
+                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportPerusahaanByKecamatan()"/><label value="Grafik Perusahaan Berdasarkan Kecamatan" onClick="main.showReportPerusahaanByKecamatan()"/></hbox>
+                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportPerusahaanByBentukModal()"/><label value="Grafik Perusahaan Berdasarkan Bentuk Modal" onClick="main.showReportPerusahaanByBentukModal()"/></hbox>
+                <hbox><toolbarbutton image="/img/report_ico.png" onClick="main.showReportPerusahaanByBidangUsaha()"/><label value="Daftar Perusahaan Berdasarkan Bidang Usaha" onClick="main.showReportPerusahaanByBidangUsaha()"/></hbox>
             </vbox>
         </popup>
         <popup id="master">
