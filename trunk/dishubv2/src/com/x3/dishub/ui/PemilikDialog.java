@@ -791,7 +791,7 @@ public class PemilikDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnHapusKendaraanActionPerformed
 
     private void tblKendaraanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKendaraanMouseClicked
-        if (selectedPemilik != null) {
+        if (selectedPemilik != null && selectedPemilik.getKendaraans().size()>0) {
             selectedKendaraan = selectedPemilik.getKendaraans().get(tblKendaraan.getSelectedRow());
         }
     }//GEN-LAST:event_tblKendaraanMouseClicked

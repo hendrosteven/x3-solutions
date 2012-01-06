@@ -17,6 +17,7 @@ import com.x3.dishub.dao.KartuPengawasanOtobisUmumDAO;
 import com.x3.dishub.dao.KartuPengawasanTaksiDAO;
 import com.x3.dishub.dao.KendaraanDAO;
 import com.x3.dishub.dao.MerkDAO;
+import com.x3.dishub.dao.PemilikDAO;
 import com.x3.dishub.dao.WarnaDAO;
 import com.x3.dishub.entity.BahanBakar;
 import com.x3.dishub.entity.Jenis;
@@ -41,12 +42,14 @@ import javax.swing.table.TableModel;
  */
 public class KendaraanDialog extends javax.swing.JDialog {
 
-    private WarnaDAO wDao = (WarnaDAO)MainApps.appContext.getBean("warnaDAO");
+    private WarnaDAO wDao = (WarnaDAO) MainApps.appContext.getBean("warnaDAO");
     private Warna headerColor;
     private Warna backgroudColor;
     private KendaraanDAO kendaraanDao = (KendaraanDAO) MainApps.appContext.getBean("kendaraanDAO");
+    private PemilikDAO pemilikDao = (PemilikDAO) MainApps.appContext.getBean("pemilikDAO");
     private List<Kendaraan> listKendaraan;
     private Kendaraan selectedKendaraan;
+    private Pemilik selectedPemilik;
     private Kendaraan peremajaan;
     private SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
     private MerkDAO merkDao = (MerkDAO) MainApps.appContext.getBean("merkDAO");
@@ -68,9 +71,9 @@ public class KendaraanDialog extends javax.swing.JDialog {
         loadBahanBakar();
     }
 
-    private void loadWarna(){
+    private void loadWarna() {
         headerColor = wDao.getByNama("KendaraanDialogHd");
-        if(headerColor==null){
+        if (headerColor == null) {
             headerColor = new Warna();
             headerColor.setName("KendaraanDialogHd");
             headerColor.setRgb(-16777012);
@@ -78,7 +81,7 @@ public class KendaraanDialog extends javax.swing.JDialog {
             loadWarna();
         }
         backgroudColor = wDao.getByNama("KendaraanDialogBg");
-        if(backgroudColor==null){
+        if (backgroudColor == null) {
             backgroudColor = new Warna();
             backgroudColor.setName("KendaraanDialogBg");
             backgroudColor.setRgb(-13408513);
@@ -87,7 +90,7 @@ public class KendaraanDialog extends javax.swing.JDialog {
         }
     }
 
-    private void updateWarna(){
+    private void updateWarna() {
         headerPanel.setBackground(new Color(headerColor.getRgb()));
         this.getContentPane().setBackground(new Color(backgroudColor.getRgb()));
     }
@@ -154,11 +157,17 @@ public class KendaraanDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        browseKendaraan = new javax.swing.JDialog();
+        browsePemilik = new javax.swing.JDialog();
         jLabel22 = new javax.swing.JLabel();
+        txtNamaPemilik = new javax.swing.JTextField();
+        btnCariPemilik = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblBrowsePemilik = new javax.swing.JTable();
+        browseKendaraan = new javax.swing.JDialog();
+        jLabel24 = new javax.swing.JLabel();
         txtCariNomorPolisi = new javax.swing.JTextField();
         btnCariKendaraan1 = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
         tblBrowseKendaraan = new javax.swing.JTable();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -236,7 +245,65 @@ public class KendaraanDialog extends javax.swing.JDialog {
         mnuWarnaBack = new javax.swing.JMenuItem();
         mnuWarnaDefault = new javax.swing.JMenuItem();
 
-        jLabel22.setText("Nomor Polisi :");
+        jLabel22.setText("Nama :");
+
+        btnCariPemilik.setText("Cari");
+        btnCariPemilik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariPemilikActionPerformed(evt);
+            }
+        });
+
+        tblBrowsePemilik.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblBrowsePemilik.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBrowsePemilikMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tblBrowsePemilik);
+
+        javax.swing.GroupLayout browsePemilikLayout = new javax.swing.GroupLayout(browsePemilik.getContentPane());
+        browsePemilik.getContentPane().setLayout(browsePemilikLayout);
+        browsePemilikLayout.setHorizontalGroup(
+            browsePemilikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(browsePemilikLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(browsePemilikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+                    .addGroup(browsePemilikLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNamaPemilik, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCariPemilik)))
+                .addContainerGap())
+        );
+        browsePemilikLayout.setVerticalGroup(
+            browsePemilikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(browsePemilikLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(browsePemilikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtNamaPemilik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCariPemilik))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        browseKendaraan.setBackground(new java.awt.Color(0, 51, 255));
+
+        jLabel24.setText("Nomor Polisi :");
 
         btnCariKendaraan1.setText("Cari");
         btnCariKendaraan1.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +328,7 @@ public class KendaraanDialog extends javax.swing.JDialog {
                 tblBrowseKendaraanMouseClicked(evt);
             }
         });
-        jScrollPane6.setViewportView(tblBrowseKendaraan);
+        jScrollPane7.setViewportView(tblBrowseKendaraan);
 
         javax.swing.GroupLayout browseKendaraanLayout = new javax.swing.GroupLayout(browseKendaraan.getContentPane());
         browseKendaraan.getContentPane().setLayout(browseKendaraanLayout);
@@ -270,9 +337,9 @@ public class KendaraanDialog extends javax.swing.JDialog {
             .addGroup(browseKendaraanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(browseKendaraanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
                     .addGroup(browseKendaraanLayout.createSequentialGroup()
-                        .addComponent(jLabel22)
+                        .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCariNomorPolisi, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -284,12 +351,12 @@ public class KendaraanDialog extends javax.swing.JDialog {
             .addGroup(browseKendaraanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(browseKendaraanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
+                    .addComponent(jLabel24)
                     .addComponent(txtCariNomorPolisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCariKendaraan1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -670,11 +737,26 @@ public class KendaraanDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblPemilik.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPemilikMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblPemilik);
 
         btnTambahPemilik.setText("Tambah Pemilik Baru");
+        btnTambahPemilik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahPemilikActionPerformed(evt);
+            }
+        });
 
         btnHapusPemilik.setText("Hapus Data Pemilik");
+        btnHapusPemilik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusPemilikActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -994,7 +1076,7 @@ public class KendaraanDialog extends javax.swing.JDialog {
                 selectedKendaraan.setPeremajaanUntuk(peremajaan);
                 selectedKendaraan.setIsAktif(chkAktif.isSelected());
                 kendaraanDao.update(selectedKendaraan);
-                peremajaan = null;                
+                peremajaan = null;
                 JOptionPane.showMessageDialog(this, "Data tersimpan");
                 loadKendaraan();
             }
@@ -1011,31 +1093,36 @@ public class KendaraanDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnHapusKendaraanActionPerformed
 
-    private void btnCariKendaraan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariKendaraan1ActionPerformed
+    private void btnCariPemilikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPemilikActionPerformed
         try {
-            listKendaraanBrowse = kendaraanDao.getByNomorPolisi(txtCariNomorPolisi.getText());
-            String title[] = {"No. Polisi", "No.Uji", "Merk/Type", "Tahun"};
-            Object[][] data = new Object[listKendaraanBrowse.size()][4];
+            listPemilikBrowse = pemilikDao.getByName(txtNamaPemilik.getText());
+            String title[] = {"Nama Depan", "Nama Belakang", "Alamat"};
+            Object[][] data = new Object[listPemilikBrowse.size()][3];
             int row = 0;
-            for (Kendaraan k : listKendaraanBrowse) {
-                data[row][0] = k.getNomorPolisi();
-                data[row][1] = k.getNomorUji();
-                data[row][2] = k.getMerk() + k.getType();
-                data[row][3] = k.getTahunPembuatan();
+            for (Pemilik p : listPemilikBrowse) {
+                data[row][0] = p.getNamaDepan();
+                data[row][1] = p.getNamaBelakang();
+                data[row][2] = p.getAlamat();
                 ++row;
             }
             TableModel model = new DefaultTableModel(data, title);
-            tblBrowseKendaraan.setModel(model);
+            tblBrowsePemilik.setModel(model);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-}//GEN-LAST:event_btnCariKendaraan1ActionPerformed
-
-    private void tblBrowseKendaraanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBrowseKendaraanMouseClicked
-        peremajaan = (Kendaraan) listKendaraanBrowse.get(tblBrowseKendaraan.getSelectedRow());
-        txtPeremajaanUntuk.setText(peremajaan.getNomorPolisi());
-        browseKendaraan.setVisible(false);
-}//GEN-LAST:event_tblBrowseKendaraanMouseClicked
+}//GEN-LAST:event_btnCariPemilikActionPerformed
+    private Pemilik pemilik;
+    private void tblBrowsePemilikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBrowsePemilikMouseClicked
+        if (listPemilikBrowse.size() > 0) {
+            pemilik = (Pemilik) listPemilikBrowse.get(tblBrowsePemilik.getSelectedRow());
+            selectedKendaraan.getPemilik().add(pemilik);
+            pemilik.getKendaraans().add(selectedKendaraan);
+            kendaraanDao.update(selectedKendaraan);
+            pemilikDao.update(pemilik);
+            loadPemilik();
+        }
+        browsePemilik.setVisible(false);
+}//GEN-LAST:event_tblBrowsePemilikMouseClicked
 
     private void btnBrowseKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseKendaraanActionPerformed
         try {
@@ -1063,14 +1150,14 @@ public class KendaraanDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBrowseKendaraanActionPerformed
 
     private void mnuWarnaHeaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuWarnaHeaderActionPerformed
-        Color tmp = JColorChooser.showDialog(this,"Ganti Warna Header",headerPanel.getBackground());
+        Color tmp = JColorChooser.showDialog(this, "Ganti Warna Header", headerPanel.getBackground());
         headerColor.setRgb(tmp.getRGB());
         wDao.update(headerColor);
         updateWarna();
     }//GEN-LAST:event_mnuWarnaHeaderActionPerformed
 
     private void mnuWarnaBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuWarnaBackActionPerformed
-        Color tmp = JColorChooser.showDialog(this,"Ganti Warna Background",this.getContentPane().getBackground());
+        Color tmp = JColorChooser.showDialog(this, "Ganti Warna Background", this.getContentPane().getBackground());
         backgroudColor.setRgb(tmp.getRGB());
         wDao.update(backgroudColor);
         updateWarna();
@@ -1083,6 +1170,76 @@ public class KendaraanDialog extends javax.swing.JDialog {
         wDao.update(backgroudColor);
         updateWarna();
     }//GEN-LAST:event_mnuWarnaDefaultActionPerformed
+
+    private void btnHapusPemilikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusPemilikActionPerformed
+        if (selectedKendaraan != null) {
+            if (selectedPemilik != null) {
+                selectedKendaraan.getPemilik().remove(selectedPemilik);
+                selectedPemilik.getKendaraans().remove(selectedKendaraan);
+                kendaraanDao.update(selectedKendaraan);
+                pemilikDao.update(selectedPemilik);
+                selectedPemilik = null;
+                loadPemilik();
+            }
+        }
+    }//GEN-LAST:event_btnHapusPemilikActionPerformed
+
+    private void tblPemilikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPemilikMouseClicked
+        if (selectedKendaraan != null && selectedKendaraan.getPemilik().size() > 0) {
+            selectedPemilik = selectedKendaraan.getPemilik().get(tblPemilik.getSelectedRow());
+        }
+    }//GEN-LAST:event_tblPemilikMouseClicked
+    private List<Pemilik> listPemilikBrowse;
+    private void btnTambahPemilikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahPemilikActionPerformed
+        try {
+            if (selectedKendaraan != null) {
+                listPemilikBrowse = pemilikDao.getAllPemilik();
+                String[] title = {"Nama Depan", "Nama Belakang", "Alamat"};
+                Object[][] data = new Object[listPemilikBrowse.size()][3];
+                int row = 0;
+                for (Pemilik p : listPemilikBrowse) {
+                    data[row][0] = p.getNamaDepan();
+                    data[row][1] = p.getNamaBelakang();
+                    data[row][2] = p.getAlamat();
+                    ++row;
+                }
+                TableModel model = new DefaultTableModel(data, title);
+                tblBrowsePemilik.setModel(model);
+                browsePemilik.setSize(800, 600);
+                browsePemilik.getContentPane().setBackground(new java.awt.Color(51, 102, 255));
+                browsePemilik.setModal(true);
+                browsePemilik.setVisible(true);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnTambahPemilikActionPerformed
+
+    private void btnCariKendaraan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariKendaraan1ActionPerformed
+        try {
+            listKendaraanBrowse = kendaraanDao.getByNomorPolisi(txtCariNomorPolisi.getText());
+            String title[] = {"No. Polisi", "No.Uji", "Merk/Type", "Tahun"};
+            Object[][] data = new Object[listKendaraanBrowse.size()][4];
+            int row = 0;
+            for (Kendaraan k : listKendaraanBrowse) {
+                data[row][0] = k.getNomorPolisi();
+                data[row][1] = k.getNomorUji();
+                data[row][2] = k.getMerk() + k.getType();
+                data[row][3] = k.getTahunPembuatan();
+                ++row;
+            }
+            TableModel model = new DefaultTableModel(data, title);
+            tblBrowseKendaraan.setModel(model);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+}//GEN-LAST:event_btnCariKendaraan1ActionPerformed
+
+    private void tblBrowseKendaraanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBrowseKendaraanMouseClicked
+        peremajaan = (Kendaraan) listKendaraanBrowse.get(tblBrowseKendaraan.getSelectedRow());
+        txtPeremajaanUntuk.setText(peremajaan.getNomorPolisi());
+        browseKendaraan.setVisible(false);
+}//GEN-LAST:event_tblBrowseKendaraanMouseClicked
 
     private void loadPemilik() {
         try {
@@ -1173,9 +1330,11 @@ public class KendaraanDialog extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog browseKendaraan;
+    private javax.swing.JDialog browsePemilik;
     private javax.swing.JButton btnBrowseKendaraan;
     private javax.swing.JButton btnCariKendaraan;
     private javax.swing.JButton btnCariKendaraan1;
+    private javax.swing.JButton btnCariPemilik;
     private javax.swing.JButton btnHapusKendaraan;
     private javax.swing.JButton btnHapusPemilik;
     private javax.swing.JButton btnRefresh;
@@ -1203,6 +1362,7 @@ public class KendaraanDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1224,6 +1384,7 @@ public class KendaraanDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JMenu mnuUbahWarna;
@@ -1231,6 +1392,7 @@ public class KendaraanDialog extends javax.swing.JDialog {
     private javax.swing.JMenuItem mnuWarnaDefault;
     private javax.swing.JMenuItem mnuWarnaHeader;
     private javax.swing.JTable tblBrowseKendaraan;
+    private javax.swing.JTable tblBrowsePemilik;
     private javax.swing.JTable tblKJP;
     private javax.swing.JTable tblKPT;
     private javax.swing.JTable tblKPU;
@@ -1241,6 +1403,7 @@ public class KendaraanDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtDayaAngkutOrang;
     private javax.swing.JTextField txtIsiSilinder;
     private javax.swing.JTextField txtModel;
+    private javax.swing.JTextField txtNamaPemilik;
     private javax.swing.JTextField txtNoBpkb;
     private javax.swing.JTextField txtNoMesin;
     private javax.swing.JTextField txtNoPol;
