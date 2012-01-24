@@ -490,8 +490,7 @@ public class MainApps extends javax.swing.JFrame {
 
         mnuKartuPengawasan.setText("Kartu Pengawasan");
 
-        mnuPengawasanUmum.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        mnuPengawasanUmum.setText("Bis Umum");
+        mnuPengawasanUmum.setText("Angkutan dan Bis Umum");
         mnuPengawasanUmum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuPengawasanUmumActionPerformed(evt);

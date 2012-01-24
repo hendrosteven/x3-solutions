@@ -42,7 +42,7 @@ public class PilihKartuPengawasanDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pilih Kartu Pengawasan");
 
-        btnOrang.setText("Kartu Pengawasan Otobis Umum");
+        btnOrang.setText("Kartu Pengawasan Angkutan Umum");
         btnOrang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOrangActionPerformed(evt);

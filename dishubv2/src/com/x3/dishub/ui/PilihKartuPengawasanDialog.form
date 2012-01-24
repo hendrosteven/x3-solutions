@@ -50,7 +50,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnOrang">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Kartu Pengawasan Otobis Umum"/>
+        <Property name="text" type="java.lang.String" value="Kartu Pengawasan Angkutan Umum"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrangActionPerformed"/>
