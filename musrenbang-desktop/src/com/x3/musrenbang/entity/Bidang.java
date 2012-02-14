@@ -7,10 +7,12 @@ package com.x3.musrenbang.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -28,7 +30,7 @@ public class Bidang implements Serializable {
     private String keterangan;
     @ManyToOne
     private Urusan urusan;
-    @OneToMany
+    @OneToMany   
     private List<Skpd> skpd;
 
     public Long getId() {
