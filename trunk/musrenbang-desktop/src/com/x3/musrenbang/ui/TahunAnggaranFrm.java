@@ -8,8 +8,15 @@
  *
  * Created on Feb 1, 2012, 9:45:02 PM
  */
-
 package com.x3.musrenbang.ui;
+
+import com.x3.musrenbang.dao.TahunAnggaranDAO;
+import com.x3.musrenbang.entity.TahunAnggaran;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,10 +24,36 @@ package com.x3.musrenbang.ui;
  */
 public class TahunAnggaranFrm extends javax.swing.JDialog {
 
+    private TahunAnggaranDAO thnAnggranDAO = (TahunAnggaranDAO) MainApp.appContext.getBean("tahunAnggaranDAO");
+    private TahunAnggaran selected;
+    private List<TahunAnggaran> list;
+    private SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+
     /** Creates new form TahunAnggaranFrm */
     public TahunAnggaranFrm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        loadTable();
+    }
+
+    private void loadTable() {
+        try {
+            list = thnAnggranDAO.gets();
+            String title[] = {"Tahun", "Input Mulai", "Input Selesai"};
+            Object data[][] = new Object[list.size()][3];
+            int row = 0;
+            for (TahunAnggaran ta : list) {
+                data[row][0] = ta.getTahun();
+                data[row][1] = f.format(ta.getInputMulai());
+                data[row][2] = f.format(ta.getInputSelesai());
+                ++row;
+            }
+            DefaultTableModel model = new DefaultTableModel(data, title);
+            tblTahunAnggaran.setModel(model);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }
 
     /** This method is called from within the constructor to
@@ -40,22 +73,26 @@ public class TahunAnggaranFrm extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
-        jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtTahun = new javax.swing.JTextField();
+        tglMulai = new org.jdesktop.swingx.JXDatePicker();
+        tglSelesai = new org.jdesktop.swingx.JXDatePicker();
+        txtKeterangan = new javax.swing.JTextField();
+        btnBatal = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnTambah = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnUbah = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblTahunAnggaran = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tahun Anggaran");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel1.setText("Tahun Anggaran");
 
         jLabel2.setText("Pengaturan data Tahun Anggaran ");
@@ -93,13 +130,52 @@ public class TahunAnggaranFrm extends javax.swing.JDialog {
 
         jLabel6.setText("Keterangan :");
 
-        jTextField1.setText("jTextField1");
+        txtTahun.setEnabled(false);
 
-        jTextField2.setText("jTextField2");
+        tglMulai.setEnabled(false);
 
-        jButton1.setText("Batal");
+        tglSelesai.setEnabled(false);
 
-        jButton2.setText("Simpan");
+        txtKeterangan.setEnabled(false);
+
+        btnBatal.setText("Batal");
+        btnBatal.setEnabled(false);
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
+
+        btnSimpan.setText("Simpan");
+        btnSimpan.setEnabled(false);
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
+        btnTambah.setText("Tambah");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
+
+        btnHapus.setText("Hapus");
+        btnHapus.setEnabled(false);
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        btnUbah.setText("Ubah");
+        btnUbah.setEnabled(false);
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -117,14 +193,20 @@ public class TahunAnggaranFrm extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jXDatePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                .addComponent(jXDatePicker2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)))
+                                .addComponent(txtTahun, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tglMulai, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                                .addComponent(tglSelesai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtKeterangan, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnTambah)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(btnUbah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHapus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSimpan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBatal)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -133,27 +215,30 @@ public class TahunAnggaranFrm extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tglMulai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtKeterangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnBatal)
+                    .addComponent(btnSimpan)
+                    .addComponent(btnHapus)
+                    .addComponent(btnTambah)
+                    .addComponent(btnUbah))
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTahunAnggaran.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -164,7 +249,12 @@ public class TahunAnggaranFrm extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblTahunAnggaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTahunAnggaranMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblTahunAnggaran);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,10 +284,138 @@ public class TahunAnggaranFrm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        setEnableForm(true);
+        clearForm();
+        txtTahun.requestFocus();
+        btnTambah.setEnabled(false);
+        btnHapus.setEnabled(false);
+        btnSimpan.setEnabled(true);
+        btnBatal.setEnabled(true);
+        btnUbah.setEnabled(false);
+    }//GEN-LAST:event_btnTambahActionPerformed
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        if (selected != null) {
+            setEnableForm(true);
+            txtTahun.requestFocus();
+            btnUbah.setEnabled(false);
+            btnTambah.setEnabled(false);
+            btnHapus.setEnabled(false);
+            btnSimpan.setEnabled(true);
+            btnBatal.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Silahkan pilih data pada tabel");
+        }
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        try {
+            if (selected != null) {
+                //konfirmasi dan proses hapus
+                if (JOptionPane.showConfirmDialog(this, "Hapus?", "Konfirmasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    thnAnggranDAO.delete(selected);
+                    loadTable();
+                    JOptionPane.showMessageDialog(this, "Data terhapus");
+                    clearForm();
+                }
+                setEnableForm(false);
+                clearForm();
+                btnTambah.setEnabled(true);
+                btnUbah.setEnabled(false);
+                btnHapus.setEnabled(false);
+                btnSimpan.setEnabled(false);
+                btnBatal.setEnabled(false);
+                selected = null;
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        try {
+            if (selected == null) { //insert
+                //insert data
+                TahunAnggaran ta = new TahunAnggaran();
+                ta.setTahun(txtTahun.getText());
+                ta.setInputMulai(tglMulai.getDate());
+                ta.setInputSelesai(tglSelesai.getDate());
+                ta.setKeterangan(txtKeterangan.getText());
+                thnAnggranDAO.insert(ta);
+                loadTable();
+                JOptionPane.showMessageDialog(this, "Data tersimpan");
+                setEnableForm(false);
+                clearForm();
+                btnSimpan.setEnabled(false);
+                btnBatal.setEnabled(false);
+                btnUbah.setEnabled(false);             
+                btnHapus.setEnabled(false);
+                btnTambah.setEnabled(true);
+            } else {
+                //update data
+                selected.setTahun(txtTahun.getText());
+                selected.setInputMulai(tglMulai.getDate());
+                selected.setInputSelesai(tglSelesai.getDate());
+                selected.setKeterangan(txtKeterangan.getText());
+                thnAnggranDAO.update(selected);                
+                loadTable();
+                setEnableForm(false);
+                btnTambah.setEnabled(false);
+                btnUbah.setEnabled(true);
+                btnHapus.setEnabled(true);
+                btnSimpan.setEnabled(false);
+                btnBatal.setEnabled(true);
+                 selected = null;
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        setEnableForm(false);
+        clearForm();
+        selected = null;
+        btnTambah.setEnabled(true);
+        btnHapus.setEnabled(false);
+        btnUbah.setEnabled(false);
+        btnSimpan.setEnabled(false);
+        btnBatal.setEnabled(false);
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void tblTahunAnggaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTahunAnggaranMouseClicked
+        selected = list.get(tblTahunAnggaran.getSelectedRow());
+        txtTahun.setText(selected.getTahun());
+        tglMulai.setDate(selected.getInputMulai());
+        tglSelesai.setDate(selected.getInputSelesai());
+        txtKeterangan.setText(selected.getKeterangan());
+        btnUbah.setEnabled(true);
+        btnHapus.setEnabled(true);
+        btnBatal.setEnabled(true);
+        btnTambah.setEnabled(false);
+        btnSimpan.setEnabled(false);
+    }//GEN-LAST:event_tblTahunAnggaranMouseClicked
+
+    private void setEnableForm(boolean status) {
+        txtTahun.setEnabled(status);
+        tglMulai.setEnabled(status);
+        tglSelesai.setEnabled(status);
+        txtKeterangan.setEnabled(status);
+    }
+
+    private void clearForm() {
+        this.txtTahun.setText("");
+        this.txtKeterangan.setText("");
+        this.tglMulai.setDate(new Date());
+        this.tglSelesai.setDate(new Date());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton btnTambah;
+    private javax.swing.JButton btnUbah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -207,11 +425,10 @@ public class TahunAnggaranFrm extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
+    private javax.swing.JTable tblTahunAnggaran;
+    private org.jdesktop.swingx.JXDatePicker tglMulai;
+    private org.jdesktop.swingx.JXDatePicker tglSelesai;
+    private javax.swing.JTextField txtKeterangan;
+    private javax.swing.JTextField txtTahun;
     // End of variables declaration//GEN-END:variables
-
 }

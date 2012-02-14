@@ -8,8 +8,18 @@
  *
  * Created on Feb 1, 2012, 10:52:32 PM
  */
-
 package com.x3.musrenbang.ui;
+
+import com.x3.musrenbang.dao.BidangDAO;
+import com.x3.musrenbang.dao.SkpdDAO;
+import com.x3.musrenbang.dao.UrusanDAO;
+import com.x3.musrenbang.entity.Bidang;
+import com.x3.musrenbang.entity.Skpd;
+import com.x3.musrenbang.entity.Urusan;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,10 +27,60 @@ package com.x3.musrenbang.ui;
  */
 public class BidangFrm extends javax.swing.JDialog {
 
+    private SkpdDAO skpdDAO = (SkpdDAO) MainApp.appContext.getBean("skpdDAO");
+    private UrusanDAO urusanDAO = (UrusanDAO) MainApp.appContext.getBean("urusanDAO");
+    private BidangDAO bidangDAO = (BidangDAO) MainApp.appContext.getBean("bidangDAO");
+    private Bidang selected;
+    private List<Bidang> list;
+
     /** Creates new form BidangFrm */
     public BidangFrm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        loadUrusan();
+        loadTableBidang();
+    }
+
+    private void loadTableBidang() {
+        try {
+            list = bidangDAO.gets();
+            String title[] = {"Urusan", "Rekening", "Bidang"};
+            Object data[][] = new Object[list.size()][3];
+            int row = 0;
+            for (Bidang b : list) {
+                data[row][0] = b.getUrusan().getKeterangan();
+                data[row][1] = b.getRekening();
+                data[row][2] = b.getKeterangan();
+                ++row;
+            }
+            DefaultTableModel model = new DefaultTableModel(data, title);
+            tblBidang.setModel(model);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private void loadUrusan() {
+        try {
+            DefaultComboBoxModel model = new DefaultComboBoxModel(urusanDAO.gets().toArray());
+            cmbUrusan.setModel(model);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private void setEnableForm(boolean status) {
+        cmbUrusan.setEnabled(status);
+        txtRekening.setEnabled(status);
+        txtKeterangan.setEnabled(status);
+    }
+
+    private void clearForm() {
+        cmbUrusan.setSelectedItem(null);
+        txtRekening.setText("");
+        txtKeterangan.setText("");
     }
 
     /** This method is called from within the constructor to
@@ -32,6 +92,9 @@ public class BidangFrm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        browseSkpd = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblBrowseSkpd = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -39,24 +102,64 @@ public class BidangFrm extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        cmbUrusan = new javax.swing.JComboBox();
+        txtRekening = new javax.swing.JTextField();
+        txtKeterangan = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tblSkpd = new javax.swing.JTable();
+        btnTambahSkpd = new javax.swing.JButton();
+        btnHapusSkpd = new javax.swing.JButton();
+        btnBatal = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnUbah = new javax.swing.JButton();
+        btnTambah = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblBidang = new javax.swing.JTable();
+
+        tblBrowseSkpd.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblBrowseSkpd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBrowseSkpdMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblBrowseSkpd);
+
+        javax.swing.GroupLayout browseSkpdLayout = new javax.swing.GroupLayout(browseSkpd.getContentPane());
+        browseSkpd.getContentPane().setLayout(browseSkpdLayout);
+        browseSkpdLayout.setHorizontalGroup(
+            browseSkpdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(browseSkpdLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        browseSkpdLayout.setVerticalGroup(
+            browseSkpdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(browseSkpdLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Bidang");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel1.setText("Bidang");
 
         jLabel2.setText("Pengaturan Bidang Kegiatan Pembangunan ");
@@ -92,28 +195,40 @@ public class BidangFrm extends javax.swing.JDialog {
 
         jLabel5.setText("Keterangan :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbUrusan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbUrusan.setEnabled(false);
 
-        jTextField1.setText("jTextField1");
+        txtRekening.setEnabled(false);
 
-        jTextField2.setText("jTextField2");
+        txtKeterangan.setEnabled(false);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("SKPD"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSkpd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode", "Nama Skpd"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblSkpd);
 
-        jButton3.setText("Tambah SKPD");
+        btnTambahSkpd.setText("Tambah SKPD");
+        btnTambahSkpd.setEnabled(false);
+        btnTambahSkpd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahSkpdActionPerformed(evt);
+            }
+        });
+
+        btnHapusSkpd.setText("Hapus SKPD");
+        btnHapusSkpd.setEnabled(false);
+        btnHapusSkpd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusSkpdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -123,7 +238,10 @@ public class BidangFrm extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(btnHapusSkpd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTambahSkpd)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -131,13 +249,50 @@ public class BidangFrm extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTambahSkpd)
+                    .addComponent(btnHapusSkpd))
                 .addContainerGap())
         );
 
-        jButton1.setText("Batal");
+        btnBatal.setText("Batal");
+        btnBatal.setEnabled(false);
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Simpan");
+        btnSimpan.setText("Simpan");
+        btnSimpan.setEnabled(false);
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
+        btnHapus.setText("Hapus");
+        btnHapus.setEnabled(false);
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        btnUbah.setText("Ubah");
+        btnUbah.setEnabled(false);
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
+
+        btnTambah.setText("Tambah");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,13 +309,19 @@ public class BidangFrm extends javax.swing.JDialog {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)))
+                            .addComponent(cmbUrusan, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRekening, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtKeterangan, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnTambah)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(btnUbah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHapus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSimpan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBatal)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -169,25 +330,28 @@ public class BidangFrm extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbUrusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtKeterangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btnSimpan)
+                    .addComponent(btnBatal)
+                    .addComponent(btnHapus)
+                    .addComponent(btnUbah)
+                    .addComponent(btnTambah))
                 .addContainerGap())
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblBidang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -198,7 +362,12 @@ public class BidangFrm extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tblBidang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBidangMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblBidang);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,13 +397,211 @@ public class BidangFrm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        setEnableForm(true);
+        clearForm();
+        txtRekening.requestFocus();
+        btnTambah.setEnabled(false);
+        btnHapus.setEnabled(false);
+        btnSimpan.setEnabled(true);
+        btnBatal.setEnabled(true);
+        btnUbah.setEnabled(false);
+    }//GEN-LAST:event_btnTambahActionPerformed
 
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        if (selected != null) {
+            setEnableForm(true);
+            cmbUrusan.requestFocus();
+            btnUbah.setEnabled(false);
+            btnTambah.setEnabled(false);
+            btnHapus.setEnabled(false);
+            btnSimpan.setEnabled(true);
+            btnBatal.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Silahkan pilih data pada tabel");
+        }
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        try {
+            if (selected != null) {
+                //konfirmasi dan proses hapus
+                if (JOptionPane.showConfirmDialog(this, "Hapus?", "Konfirmasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    bidangDAO.delete(selected);
+                    loadTableBidang();
+                    JOptionPane.showMessageDialog(this, "Data terhapus");
+                    clearForm();
+                }
+                setEnableForm(false);
+                clearForm();
+                btnTambah.setEnabled(true);
+                btnUbah.setEnabled(false);
+                btnHapus.setEnabled(false);
+                btnSimpan.setEnabled(false);
+                btnBatal.setEnabled(false);
+                btnHapusSkpd.setEnabled(false);
+                btnTambahSkpd.setEnabled(false);
+                selected = null;
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        try {
+            if (cmbUrusan.getSelectedItem() != null) {
+                if (selected == null) { //insert
+                    //insert data
+                    Bidang b = new Bidang();
+                    b.setRekening(txtRekening.getText());
+                    b.setKeterangan(txtKeterangan.getText());
+                    b.setUrusan((Urusan) cmbUrusan.getSelectedItem());
+                    bidangDAO.insert(b);
+                    loadTableBidang();
+                    JOptionPane.showMessageDialog(this, "Data tersimpan");
+                    setEnableForm(false);
+                    clearForm();
+                    btnSimpan.setEnabled(false);
+                    btnBatal.setEnabled(false);
+                    btnUbah.setEnabled(false);
+                    btnHapus.setEnabled(false);
+                    btnTambah.setEnabled(true);
+                } else {
+                    //update data
+                    selected.setRekening(txtRekening.getText());
+                    selected.setKeterangan(txtKeterangan.getText());
+                    selected.setUrusan((Urusan) cmbUrusan.getSelectedItem());
+                    bidangDAO.update(selected);
+                    loadTableBidang();
+                    setEnableForm(false);
+                    btnTambah.setEnabled(false);
+                    btnUbah.setEnabled(true);
+                    btnHapus.setEnabled(true);
+                    btnSimpan.setEnabled(false);
+                    btnBatal.setEnabled(true);
+                    btnTambahSkpd.setEnabled(false);
+                    btnHapusSkpd.setEnabled(false);
+                     selected = null;
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Input data dengan lengkap");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        setEnableForm(false);
+        clearForm();
+        selected = null;
+        btnTambah.setEnabled(true);
+        btnHapus.setEnabled(false);
+        btnUbah.setEnabled(false);
+        btnSimpan.setEnabled(false);
+        btnBatal.setEnabled(false);
+        btnTambahSkpd.setEnabled(false);
+        btnHapusSkpd.setEnabled(false);
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private int getIndex(Urusan u) {
+        int index = -1;
+        for (Urusan tmp : urusanDAO.gets()) {
+            ++index;
+            if (tmp.getId() == u.getId()) {
+                break;
+            }
+        }
+        return index;
+    }
+
+    private void loadSkpd() {
+        try {
+            String title[] = {"Kode", "Nama Skpd"};
+            Object data[][] = new Object[selected.getSkpd().size()][2];
+            int row = 0;
+            for (Skpd skpd : selected.getSkpd()) {
+                data[row][0] = skpd.getKode();
+                data[row][1] = skpd.getNama();
+                ++row;
+            }
+            DefaultTableModel model = new DefaultTableModel(data, title);
+            tblSkpd.setModel(model);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+    private void tblBidangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBidangMouseClicked
+        selected = list.get(tblBidang.getSelectedRow());
+        txtRekening.setText(selected.getRekening());
+        txtKeterangan.setText(selected.getKeterangan());
+        cmbUrusan.setSelectedIndex(getIndex(selected.getUrusan()));
+        loadSkpd();
+        btnTambahSkpd.setEnabled(true);
+        btnHapusSkpd.setEnabled(true);
+        btnUbah.setEnabled(true);
+        btnHapus.setEnabled(true);
+        btnBatal.setEnabled(true);
+        btnTambah.setEnabled(false);
+        btnSimpan.setEnabled(false);
+    }//GEN-LAST:event_tblBidangMouseClicked
+
+    private void btnTambahSkpdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahSkpdActionPerformed
+        try {
+            List<Skpd> listBrowse = skpdDAO.gets();
+            String title[] = {"Kode", "Nama Skpd"};
+            Object data[][] = new Object[listBrowse.size()][2];
+            int row = 0;
+            for (Skpd s : listBrowse) {
+                data[row][0] = s.getKode();
+                data[row][1] = s.getNama();
+                ++row;
+            }
+            DefaultTableModel model = new DefaultTableModel(data, title);
+            tblBrowseSkpd.setModel(model);
+
+            browseSkpd.setSize(600, 400);
+            browseSkpd.setTitle("Pilih SKPD");
+            browseSkpd.setModal(true);
+            browseSkpd.setLocationRelativeTo(null);
+            browseSkpd.setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnTambahSkpdActionPerformed
+
+    private void tblBrowseSkpdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBrowseSkpdMouseClicked
+        if (selected != null) {
+            Skpd skpd = skpdDAO.gets().get(tblBrowseSkpd.getSelectedRow());
+            selected.getSkpd().add(skpd);
+            bidangDAO.update(selected);
+            loadSkpd();
+            browseSkpd.setVisible(false);
+        }
+    }//GEN-LAST:event_tblBrowseSkpdMouseClicked
+
+    private void btnHapusSkpdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusSkpdActionPerformed
+        try {
+            if (tblSkpd.getSelectedRow() > -1) {
+                selected.getSkpd().remove(tblSkpd.getSelectedRow());
+                bidangDAO.update(selected);
+                loadSkpd();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnHapusSkpdActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JDialog browseSkpd;
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnHapusSkpd;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton btnTambah;
+    private javax.swing.JButton btnTambahSkpd;
+    private javax.swing.JButton btnUbah;
+    private javax.swing.JComboBox cmbUrusan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -245,10 +612,11 @@ public class BidangFrm extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tblBidang;
+    private javax.swing.JTable tblBrowseSkpd;
+    private javax.swing.JTable tblSkpd;
+    private javax.swing.JTextField txtKeterangan;
+    private javax.swing.JTextField txtRekening;
     // End of variables declaration//GEN-END:variables
-
 }
