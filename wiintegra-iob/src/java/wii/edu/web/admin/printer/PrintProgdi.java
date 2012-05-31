@@ -100,7 +100,7 @@ public class PrintProgdi extends HttpServlet {
 
             //List listFakultas = new FakultasDAO().getAllFakultasDanJumlahMahasiswa();
             HashMap parameters = new HashMap();
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             parameters.put("total", total);
 
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listProgdi);

@@ -72,7 +72,7 @@ public class PrintRuang extends HttpServlet {
             List listRuang = new RuangDAO().getAllRuang();
 
             HashMap parameters = new HashMap();
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
 
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listRuang);
             System.out.println("1 " + getServletContext().getRealPath("report/admin/ruang.jrxml"));

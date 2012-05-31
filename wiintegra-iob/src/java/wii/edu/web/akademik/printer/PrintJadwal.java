@@ -73,7 +73,7 @@ public class PrintJadwal extends HttpServlet {
 
             Semester semester = new SemesterDAO().getCurrentSemester();
             HashMap parameters = new HashMap();
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             parameters.put("semester", "Semester " + Integer.toString(semester.getNama()) + " Tahun Ajaran " + semester.getTahunAjaran());
             List listJadwal = new ArrayList();
             Fakultas fakultas = null;

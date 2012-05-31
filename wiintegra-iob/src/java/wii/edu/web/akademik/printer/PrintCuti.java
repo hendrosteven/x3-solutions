@@ -78,7 +78,7 @@ public class PrintCuti extends HttpServlet {
             String tahun = request.getParameter("tahun");
             HashMap parameters = new HashMap();
 
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             parameters.put("semester", namaSemester + " Tahun Ajaran " + tahun);
             parameters.put("nama", mhs.getNama());
             parameters.put("nomorInduk", mhs.getNomorInduk());

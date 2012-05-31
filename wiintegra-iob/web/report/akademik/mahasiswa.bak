@@ -179,7 +179,7 @@
 					<textElement>
 						<font fontName="Verdana" size="18" isBold="true"/>
 					</textElement>
-				<text><![CDATA[UNIVERSITAS PATTIMURA AMBON]]></text>
+				<text><![CDATA[Universitas Pattimura Ambon]]></text>
 				</staticText>
 				<staticText>
 					<reportElement

@@ -72,7 +72,7 @@ public class PrintDistrik extends HttpServlet {
             listDistrik.remove(0);
 
             HashMap parameters = new HashMap();
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
 
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listDistrik);
             System.out.println("1 " + getServletContext().getRealPath("report/admin/distrik.jrxml"));

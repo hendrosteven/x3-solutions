@@ -2,9 +2,8 @@
     <div id="center-div">
         <br><br>
         <p><center>
-            Selamat datang di Sistem Informasi Akademik Institute of Business Dili, Timor Leste. <br>
-            Sistem Informasi ini berfungsi untuk membantu kelancaran sistem akademik<br>
-            yang merupakan salah satu produk WIIntegra.
+            Selamat datang di Sistem Informasi Akademik Universitas Pattimura Ambon. <br>
+            
             <br><br>
             <br>
             Sys Admin,

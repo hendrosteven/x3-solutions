@@ -2,10 +2,10 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="mahasiswa"
+		 name="mhs_lulus"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Landscape"
+		 orientation="Portrait"
 		 pageWidth="1200"
 		 pageHeight="595"
 		 columnWidth="1160"
@@ -94,16 +94,16 @@
 				</rectangle>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="5"
-						y="11"
-						width="679"
+						x="4"
+						y="9"
+						width="538"
 						height="20"
 						key="textField"/>
 					<box></box>
 					<textElement>
 						<font fontName="Verdana" size="12"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Program Studi " + $F{namaProgdi}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[( $F{idProgdi}.longValue() == 1 ? "Umum" : "Program Studi " + $F{namaProgdi} )]]></textFieldExpression>
 				</textField>
 			</band>
 			</groupHeader>
@@ -117,11 +117,11 @@
 			</band>
 		</background>
 		<title>
-			<band height="191"  isSplitAllowed="true" >
+			<band height="187"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="380"
-						y="140"
+						x="376"
+						y="139"
 						width="397"
 						height="21"
 						key="textField"/>
@@ -133,8 +133,8 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="380"
-						y="161"
+						x="376"
+						y="160"
 						width="397"
 						height="21"
 						key="textField"/>
@@ -146,8 +146,8 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="259"
-						y="102"
+						x="255"
+						y="101"
 						width="636"
 						height="38"
 						key="textField"/>
@@ -157,57 +157,9 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{judul}]]></textFieldExpression>
 				</textField>
-				<line direction="TopDown">
-					<reportElement
-						x="8"
-						y="94"
-						width="1150"
-						height="1"
-						key="line"/>
-					<graphicElement stretchType="NoStretch">
-					<pen lineWidth="1.75" lineStyle="Double"/>
-</graphicElement>
-				</line>
-				<staticText>
-					<reportElement
-						x="105"
-						y="6"
-						width="529"
-						height="23"
-						key="staticText"/>
-					<box></box>
-					<textElement>
-						<font fontName="Verdana" size="18" isBold="true"/>
-					</textElement>
-				<text><![CDATA[UNIVERSITAS PATTIMURA AMBON]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="105"
-						y="29"
-						width="458"
-						height="52"
-						key="staticText"/>
-					<box></box>
-					<textElement>
-						<font fontName="Verdana" size="11"/>
-					</textElement>
-				<text><![CDATA[Jln. Ir. M. Putuhena Kampus Poka Unpatti - Ambon- Kode Pos 97116]]></text>
-				</staticText>
-				<line direction="TopDown">
-					<reportElement
-						x="8"
-						y="89"
-						width="1150"
-						height="1"
-						key="line"/>
-					<graphicElement stretchType="NoStretch">
-					<pen lineWidth="1.75" lineStyle="Double"/>
-</graphicElement>
-				</line>
 				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="14"
+						x="10"
 						y="5"
 						width="73"
 						height="76"
@@ -216,6 +168,57 @@
 					<graphicElement stretchType="NoStretch"/>
 					<imageExpression class="java.lang.String"><![CDATA[$P{logo}]]></imageExpression>
 				</image>
+				<staticText>
+					<reportElement
+						x="101"
+						y="6"
+						width="529"
+						height="23"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font fontName="Verdana" size="18" isBold="true"/>
+					</textElement>
+				<text><![CDATA[UNIVERSITAS PATTIMURA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="101"
+						y="29"
+						width="458"
+						height="52"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font fontName="Verdana" size="11"/>
+					</textElement>
+				<text><![CDATA[Rua Praia dos Coqueiros Pertamina Dili Timor-Leste
+Telp : (+670) 7340208 e-mail : iob.tiles@yahoo.com
+Status : Akreditado (Diploma Ministerial do Ministeiro da Educação No :3/2009)
+]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="4"
+						y="94"
+						width="1150"
+						height="1"
+						key="line"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="1.75" lineStyle="Double"/>
+</graphicElement>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="4"
+						y="89"
+						width="1150"
+						height="1"
+						key="line"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="1.75" lineStyle="Double"/>
+</graphicElement>
+				</line>
 			</band>
 		</title>
 		<pageHeader>
