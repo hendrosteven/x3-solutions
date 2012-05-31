@@ -87,7 +87,7 @@ public class PrintTranskripAction extends HttpServlet {
             SimpleDateFormat format = new SimpleDateFormat("d MMMM yyyy");
 
             HashMap parameters = new HashMap();
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             parameters.put("noInduk", mhs.getNomorInduk());
             parameters.put("nama", mhs.getNama());
             //parameters.put("ttl", "Salatiga, 2 Maret 1986");

@@ -77,7 +77,7 @@ public class PrintAbsensiAction extends HttpServlet {
             List source = new ArrayList();
 
             HashMap parameters = new HashMap();
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             //System.out.println("id : " + semester.getId() + ", nama : " + semester.getTahunAjaran());
             parameters.put("matkul", jadwal.getMatakuliah().getKode() + " " + jadwal.getAksara() + " " + jadwal.getMatakuliah().getNama() + " " + jadwal.getAksara());
             String fakultas = "Fakultas " + jadwal.getMatakuliah().getFakultas().getNama();

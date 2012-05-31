@@ -68,7 +68,7 @@ public class PrintNilai extends HttpServlet {
             List listNilai = new RegistrasiMatakuliahDAO().getRegistrasiMatakuliah(jadwal);
 
             HashMap parameters = new HashMap();
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             parameters.put("namaMatakuliah", "Matakuliah " + jadwal.getMatakuliah().getKode() + " " + jadwal.getMatakuliah().getNama() + " " + jadwal.getAksara());
             parameters.put("namaDosen", "Dosen Pengampu : " + jadwal.getDosen().getNama() + " (NP. " + jadwal.getDosen().getNomorPegawai() + ")");
             parameters.put("semester", "Semester " + jadwal.getSemester().getNama() + " Tahun Ajaran " + jadwal.getSemester().getTahunAjaran());

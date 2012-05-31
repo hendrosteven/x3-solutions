@@ -84,7 +84,7 @@ public class PrintKstExcelAction extends HttpServlet {
             List source = new ArrayList();
 
             HashMap parameters = new HashMap();
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             System.out.println("id : " + semester.getId() + ", nama : " + semester.getTahunAjaran());
             parameters.put("thnAjaran", semester.getTahunAjaran());
             parameters.put("noInduk", mhs.getNomorInduk());

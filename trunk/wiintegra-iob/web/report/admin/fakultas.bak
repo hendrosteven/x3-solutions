@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.Long"/>
+	<field name="nama" class="java.lang.String"/>
+	<field name="kode" class="java.lang.String"/>
+	<field name="jumlah" class="java.lang.Long"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="133">
+			<staticText>
+				<reportElement x="81" y="98" width="397" height="27"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DAFTAR FAKULTAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="7" width="407" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EAST TIMOR INSTITUTE OF BUSINESS (IOB)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="91" width="550" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.75" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement x="10" y="3" width="84" height="75"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="94" y="33" width="458" height="52"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="11"/>
+				</textElement>
+				<text><![CDATA[Rua Praia dos Coqueiros Pertamina Dili Timor-Leste
+Telp : (+670) 7340208 e-mail : iob.tiles@yahoo.com
+Status : Akreditado (Diploma Ministerial do Ministeiro da Educação No :3/2009)
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="86" width="550" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.75" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="37">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="1" width="25" height="36" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="157" y="1" width="297" height="36" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<text><![CDATA[Nama Fakultas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="26" y="1" width="131" height="36" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<text><![CDATA[Kode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="454" y="1" width="99" height="36" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<text><![CDATA[Jumlah Mahasiswa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<rectangle>
+				<reportElement x="1" y="0" width="26" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="0" width="131" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="454" y="0" width="99" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="3" y="0" width="23" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{REPORT_COUNT}+"."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="29" y="0" width="128" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{kode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement stretchType="RelativeToTallestObject" x="456" y="0" width="97" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{jumlah}.toString()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="157" y="0" width="297" height="20"/>
+			</rectangle>
+			<textField pattern="">
+				<reportElement stretchType="RelativeToTallestObject" x="160" y="0" width="294" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="22">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="366" y="0" width="187" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="24">
+			<textField pattern="">
+				<reportElement stretchType="RelativeToTallestObject" x="272" y="4" width="283" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Total Mahasiswa : " + $P{total}.toString() + " orang"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -114,7 +114,7 @@ public class PrintMahasiswaReg extends HttpServlet {
             System.out.println("pria : " + jum_laki);
 
             parameters.put("judul", "DAFTAR MAHASISWA YANG BELUM TERREGISTRASI");
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             parameters.put("jumWanita", jum_wanita);
             parameters.put("jumLaki", jum_laki);
             parameters.put("total", jum_laki + jum_wanita);

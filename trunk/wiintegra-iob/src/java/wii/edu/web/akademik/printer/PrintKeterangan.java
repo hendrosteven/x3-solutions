@@ -72,7 +72,7 @@ public class PrintKeterangan extends HttpServlet {
             Mahasiswa mhs = new MahasiswaDAO().getMahasiswa(idMahasiswa);
             HashMap parameters = new HashMap();
 
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             parameters.put("nama", mhs.getNama());
             parameters.put("nomorInduk", mhs.getNomorInduk());
             parameters.put("fakultas", mhs.getFakultas().getNama() + " / " + mhs.getProgdi().getNama());

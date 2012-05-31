@@ -15,8 +15,17 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>.: Academic Information System (DEMO) :.</title>
         <link href="page/images/style.css" rel="stylesheet" type="text/css">
+        <style>
+             .body{
+                background-image: url('page/images/bg.jpg');
+                background-size: cover;
+                font-family: sans-serif;
+                font-size: 11pt;
+            }
+        </style>
     </head>
-    <body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">        
+    <body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" class="body">        
+        <br><br><br><br><br>
         <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td width="35%">&nbsp;</td>
@@ -80,9 +89,9 @@ if(request.getAttribute("error") != null){
             <tr>
                 <td>&nbsp;</td>
                 <td align="center"><p>
-                        <small>WIINTEGRA - Academics Information System<br>
+                        <small>Sistem Informasi Akademik<br>
                             <br>
-                        &copy; X3-Solution 2009</small>
+                        &copy; Universitas Pattimura Ambon 2009</small>
                 </p></td>
                 <td>&nbsp;</td>
             </tr>

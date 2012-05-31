@@ -72,7 +72,7 @@ public class PrintMatakuliah extends HttpServlet {
             }
 
             HashMap parameters = new HashMap();
-            parameters.put("logo", getServletContext().getRealPath("page/images/logo-iob.png"));
+            parameters.put("logo", getServletContext().getRealPath("page/images/logo_unpatti.jpg"));
             List listMatkul = new ArrayList();
             Fakultas fakultas = null;
             if(request.getParameter("idFakultas") == null || request.getParameter("idFakultas").equals("")){
