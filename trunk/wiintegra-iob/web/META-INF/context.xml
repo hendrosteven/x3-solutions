@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/wiintegra-iob">
   <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" 
-  maxActive="50" maxIdle="10" maxWait="-1" name="jdbc/iob" password="" 
+  maxActive="50" maxIdle="10" maxWait="-1" name="jdbc/iob" password="admin" 
   type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/dbwiintegra" username="root"/>
 </Context>
 <!--<Context antiJARLocking="true" path="/wiintegra-iob">

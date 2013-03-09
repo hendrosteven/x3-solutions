@@ -2,7 +2,7 @@
     <div id="center-div">
         <br><br>
         <p><center>
-            Selamat datang di Sistem Informasi Akademik Universitas Pattimura Ambon. <br>
+            Selamat datang di Sistem Informasi Akademik Universitas Demo Version. <br>
             
             <br><br>
             <br>

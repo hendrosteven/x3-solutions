@@ -91,7 +91,7 @@ if(request.getAttribute("error") != null){
                 <td align="center"><p>
                         <small>Sistem Informasi Akademik<br>
                             <br>
-                        &copy; Universitas Pattimura Ambon 2009</small>
+                        &copy; Universitas Demo Version</small>
                 </p></td>
                 <td>&nbsp;</td>
             </tr>
