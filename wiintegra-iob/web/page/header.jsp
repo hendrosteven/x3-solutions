@@ -16,7 +16,7 @@
 </head>
 <body>
     <div id="north-div" align="right">
-        <img src="page/images/header-unpati.png" width="100%">
+        <img src="page/images/header-demo.png" width="100%">
     </div>
     <div id="west-div">
         <%@ include file="menu.jsp" %>
