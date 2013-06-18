@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
+ * Class ini merupakan representasi dari tabel Transaction
  * @author user
  */
 public class Transaction {

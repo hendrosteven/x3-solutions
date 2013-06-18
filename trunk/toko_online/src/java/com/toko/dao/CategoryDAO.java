@@ -8,7 +8,7 @@ import com.toko.model.Category;
 import java.util.List;
 
 /**
- *
+ * Class ini merupakan interface dao untuk Category
  * @author user
  */
 public interface CategoryDAO {
