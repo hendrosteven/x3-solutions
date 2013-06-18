@@ -5,7 +5,7 @@
 package com.toko.model;
 
 /**
- *
+ * Class ini merupakan representasi dari tabel transaction_detail
  * @author user
  */
 public class TransactionDetail {

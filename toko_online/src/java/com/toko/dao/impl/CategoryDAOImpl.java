@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Class ini merupakan implementasi DAO dari category
  * @author user
  */
 public class CategoryDAOImpl implements CategoryDAO{

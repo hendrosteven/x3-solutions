@@ -5,7 +5,7 @@
 package com.toko.model;
 
 /**
- *
+ * Class ini merupakan representasi dari tabel Customer
  * @author user
  */
 public class Customer {
