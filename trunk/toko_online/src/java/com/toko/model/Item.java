@@ -24,6 +24,10 @@ public class Item {
         this.category = category;
     }
 
+    public Item() {
+        
+    }
+
     /**
      * @return the id
      */
