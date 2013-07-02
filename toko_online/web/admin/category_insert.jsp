@@ -1,3 +1,7 @@
+<%@page import="com.toko.model.Category" %>
+<%@page import="java.util.List" %>
+<%@page import="java.util.ArrayList" %>
+
 <html>
     <head>
         <title>.: Toko Online Admin :.</title>
@@ -18,15 +22,27 @@
                 <td align="left" valign="top" colspan="2">
                     <table width="100%" height="100%" cellpading="2">
                         <tr height="2%">
-                            <td style="color: #000;text-decoration: none">
-                                <!-- menu -->
-                                <jsp:include page="menu.jsp"></jsp:include>
+                            <td style="color: #000;">
+                              <jsp:include page="menu.jsp"></jsp:include>
                             </td>
                         </tr>
                         <tr height="*">
-                            <td align="center" valign="middle">
+                            <td align="left" valign="top">
                                 <!-- kontent -->
-                                Selamat datang...
+                                <br/>
+                                <h4>Input New Category</h4>
+                                <form action="<%= request.getContextPath()%>/save_category" method="post">
+                                    <table cellpadding="4">
+                                        <tr>
+                                            <td>Category Name</td>
+                                            <td>:</td>
+                                            <td><input type="text" name="categoryname" size="60"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><input type="submit" value="Save"/></td>
+                                        </tr>
+                                    </table>
+                                </form>
                             </td>
                         </tr>
                     </table>

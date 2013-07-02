@@ -62,7 +62,7 @@ public class CategoryDAOImpl implements CategoryDAO{
             ps.setInt(2,category.getId());
             result = ps.executeUpdate();
         }catch(Exception ex){
-            throw new Exception("Category gagal disimpan : "+ex.getMessage());
+            throw new Exception("Category gagal diupdate : "+ex.getMessage());
         }
         return result;
     }
@@ -82,7 +82,7 @@ public class CategoryDAOImpl implements CategoryDAO{
             ps.setInt(1, id);
             result = ps.executeUpdate();
         }catch(Exception ex){
-            throw new Exception("Category gagal disimpan : "+ex.getMessage());
+            throw new Exception("Category gagal dihapus : "+ex.getMessage());
         }
         return result;
     }
