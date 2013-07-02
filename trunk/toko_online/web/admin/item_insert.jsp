@@ -23,12 +23,7 @@
                     <table width="100%" height="100%" cellpading="2">
                         <tr height="2%">
                             <td style="color: #000;">
-                                <!-- menu -->
-                                Home | 
-                                Categories |
-                                Items |
-                                Customers |
-                                Orders 
+                              <jsp:include page="menu.jsp"></jsp:include>
                             </td>
                         </tr>
                         <tr height="*">

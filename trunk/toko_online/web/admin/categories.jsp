@@ -1,11 +1,17 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
-<%@page import="com.toko.model.Item" %>
+<%@page import="com.toko.model.Category" %>
 <%@page import="java.util.List" %>
 <%@page import="java.util.ArrayList" %>
 
 <html>
     <head>
         <title>.: Toko Online Admin :.</title>
+        <link rel="stylesheet" href="<%= request.getContextPath()%>/asset/css/jquery-ui.css">
+        <script src="<%= request.getContextPath()%>/asset/js/jquery.js" 
+        type="text/javascript"></script>
+        <script src="<%= request.getContextPath()%>/asset/js/jquery-ui.js"
+        type="text/javascript">  </script>    
+
     </head>
     <body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;
           margin-bottom: 0px;font-family: sans-serif,monospace;
@@ -25,34 +31,31 @@
                         <tr height="2%">
                             <td style="color: #000;">
                                 <!-- menu -->
-                              <jsp:include page="menu.jsp"></jsp:include>
+                                <jsp:include page="menu.jsp"></jsp:include>
                             </td>
                         </tr>
                         <tr height="*">
                             <td align="left" valign="top">
                                 <!-- kontent -->
                                 <br/>
-                                <h4>Daftar Item</h4>
-                                <p><a href="<%= request.getContextPath()%>/insert_item">Insert</a></p>
+                                <h4>Daftar Categories</h4>
+                                <p><a href="<%= request.getContextPath()%>/insert_category">Insert</a></p>
                                 <table cellpadding="4">
                                     <tr>
                                         <td>No</td>
-                                        <td>Name</td>
-                                        <td>Price</td>
-                                        <td>Category</td>
+                                        <td>Name</td>                                        
                                         <td>&nbsp;</td>
                                     </tr>
                                     <%
-                                        List<Item> items = (ArrayList<Item>) request.getAttribute("items");
+                                        List<Category> categories = (ArrayList<Category>) request.getAttribute("categories");
                                         int no = 1;
-                                        for (Item item : items) {
+                                        for (Category categroy : categories) {
                                             out.println("<tr>");
-                                            out.println("<td>"+ no++ +"</td>");
-                                            out.println("<td>"+ item.getName() +"</td>");
-                                            out.println("<td>"+ item.getPrice() +"</td>");
-                                            out.println("<td>"+ item.getCategory().getName() +"</td>");
+                                            out.println("<td>" + no++ + "</td>");
+                                            out.println("<td>" + categroy.getName() + "</td>");
                                             out.println("<td>Edit | "
- + "                                                <a href='"+ request.getContextPath()+"/delete_item?id="+item.getId()+"'/>Delete</a></td>");
+                                                    + "<a href='" + request.getContextPath() + "/delete_category?id=" + categroy.getId() + "'/>Delete</a> | "
+                                                    + "                                                <input type='button' id='delete" + categroy.getId() + "' value='X' onclick='hapus(" + categroy.getId() + ")'></td>");
                                             out.println("</tr>");
                                         }
                                     %>
@@ -67,6 +70,20 @@
                     <small>Training Java &copy; 2013</small>
                 </td>
             </tr>
-        </table>
+        </table>        
     </body>
+    <script>
+        function hapus(_id)
+        {
+            //alert(id);
+            $.get("./delete_category",{id:_id},function(output){
+                if(output=='true'){
+                    alert('data terhapus');
+                }else{
+                    alert('data gagal dihapus');
+                }
+                window.location = "./categories";
+            });
+        }
+    </script>
 </html>

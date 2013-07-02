@@ -24,9 +24,12 @@
                             </td>
                         </tr>
                         <tr height="*">
-                            <td align="center" valign="middle">
+                            <td align="center" valign="top" style="color: #ff3333">
                                 <!-- kontent -->
-                                Selamat datang...
+                            <%
+                                String error = request.getAttribute("error").toString();
+                                out.print(error);
+                            %>
                             </td>
                         </tr>
                     </table>
