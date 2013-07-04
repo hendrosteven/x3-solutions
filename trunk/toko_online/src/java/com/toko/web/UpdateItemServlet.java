@@ -4,9 +4,13 @@
  */
 package com.toko.web;
 
+import com.toko.dao.CategoryDAO;
 import com.toko.dao.DbConnection;
 import com.toko.dao.ItemDAO;
+import com.toko.dao.impl.CategoryDAOImpl;
 import com.toko.dao.impl.ItemDAOImpl;
+import com.toko.model.Category;
+import com.toko.model.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-@WebServlet(name = "DeleteItemServlet", urlPatterns = {"/delete_item"})
-public class DeleteItemServlet extends HttpServlet {
+@WebServlet(name = "UpdateItemServlet", urlPatterns = {"/update_item"})
+public class UpdateItemServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -34,19 +38,28 @@ public class DeleteItemServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
         int id = Integer.valueOf(request.getParameter("id"));
-
+        int categoryId = Integer.valueOf(request.getParameter("category"));
+        double price = Double.valueOf(request.getParameter("price"));
+        String description = request.getParameter("description");
+        String name = request.getParameter("name");
         try {
-            DbConnection conn = new DbConnection();
-            ItemDAO dao = new ItemDAOImpl(conn.getConnection());
-            dao.delete(id);
-            conn.closeConnection();
-            out.print("true");
-        } catch (Exception ex) {
+           DbConnection conn = new DbConnection();
+           CategoryDAO cDao = new CategoryDAOImpl(conn.getConnection());
+           Category cat = cDao.getById(categoryId);
+           Item item = new Item(id, name, description, price, cat);
+           ItemDAO dao = new ItemDAOImpl(conn.getConnection());
+           dao.update(item);
+           conn.closeConnection();
+           out.print("true");
+        }catch(Exception ex){
             ex.printStackTrace();
             out.print("false");
+        } finally {            
+            out.close();
         }
     }
 
