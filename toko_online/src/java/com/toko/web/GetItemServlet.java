@@ -4,9 +4,11 @@
  */
 package com.toko.web;
 
+import com.google.gson.Gson;
 import com.toko.dao.DbConnection;
 import com.toko.dao.ItemDAO;
 import com.toko.dao.impl.ItemDAOImpl;
+import com.toko.model.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-@WebServlet(name = "DeleteItemServlet", urlPatterns = {"/delete_item"})
-public class DeleteItemServlet extends HttpServlet {
+@WebServlet(name = "GetItemServlet", urlPatterns = {"/get_item_by_id"})
+public class GetItemServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -34,19 +36,20 @@ public class DeleteItemServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         int id = Integer.valueOf(request.getParameter("id"));
-
         try {
             DbConnection conn = new DbConnection();
             ItemDAO dao = new ItemDAOImpl(conn.getConnection());
-            dao.delete(id);
-            conn.closeConnection();
-            out.print("true");
-        } catch (Exception ex) {
+            Item item = dao.getById(id);
+            Gson gson = new Gson();
+            String output = gson.toJson(item);
+            out.print(output);
+        }catch(Exception ex){
             ex.printStackTrace();
-            out.print("false");
+        } finally {            
+            out.close();
         }
     }
 

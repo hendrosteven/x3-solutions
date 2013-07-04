@@ -53,9 +53,10 @@
                                             out.println("<tr>");
                                             out.println("<td>" + no++ + "</td>");
                                             out.println("<td>" + categroy.getName() + "</td>");
-                                            out.println("<td>Edit | "
-                                                    + "<a href='" + request.getContextPath() + "/delete_category?id=" + categroy.getId() + "'/>Delete</a> | "
-                                                    + "                                                <input type='button' id='delete" + categroy.getId() + "' value='X' onclick='hapus(" + categroy.getId() + ")'></td>");
+                                            out.println("<td>");
+                                            out.println("<input type='button' id='edit" + categroy.getId() + "' value='E' onclick='edit(" + categroy.getId() + ")'>");
+                                            out.println("<input type='button' id='delete" + categroy.getId() + "' value='X' onclick='hapus(" + categroy.getId() + ")'>");
+                                            out.println("</td>");
                                             out.println("</tr>");
                                         }
                                     %>
@@ -70,12 +71,56 @@
                     <small>Training Java &copy; 2013</small>
                 </td>
             </tr>
-        </table>        
+        </table>     
+
+        <div id="edit-form" title="Edit Category">
+            <p class="validateTips">All form fields are required.</p>
+            <form>
+                <fieldset>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" 
+                           class="text ui-widget-content ui-corner-all" />
+                    <input type="hidden" name="id-category" id="id-category"/>
+                </fieldset>
+            </form>
+        </div>
+
     </body>
     <script>
+        $('#edit-form').dialog({
+            autoOpen : false,
+            height : 230,
+            width : 230,
+            modal : true,
+            buttons : {
+                "Update" : function(){
+                    var _name = $('#name').val();
+                    var _id = $('#id-category').val();
+                    $.post("./update_category",{id:_id,name:_name},function(out){
+                        if(out=='true'){
+                            $('#edit-form').dialog('close');
+                            window.location = "./categories";
+                        }else{
+                            alert('data gagal diupdate');
+                        }
+                    });
+                },
+                "Cancel" : function(){
+                    $(this).dialog('close');
+                }
+            }
+        });
+        
+        function edit(_id){
+            $.get("./get_category_by_id",{id:_id},function(output){
+                $('#name').val(output);
+                $('#id-category').val(_id);
+            });
+            $('#edit-form').dialog('open');
+        }
+        
         function hapus(_id)
-        {
-            //alert(id);
+        {           
             $.get("./delete_category",{id:_id},function(output){
                 if(output=='true'){
                     alert('data terhapus');

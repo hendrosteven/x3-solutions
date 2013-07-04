@@ -9,7 +9,6 @@ import com.toko.dao.DbConnection;
 import com.toko.dao.impl.CategoryDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +44,7 @@ public class DeleteCategoryServlet extends HttpServlet {
             CategoryDAO dao = new CategoryDAOImpl(conn.getConnection());
             dao.delete(id);
             conn.closeConnection();
-            //response.sendRedirect("categories");
+           
             out.print("true");
         } catch (Exception ex) {
 //            RequestDispatcher rd = request.getRequestDispatcher("/admin/error.jsp");

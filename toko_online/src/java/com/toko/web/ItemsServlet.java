@@ -4,9 +4,12 @@
  */
 package com.toko.web;
 
+import com.toko.dao.CategoryDAO;
 import com.toko.dao.DbConnection;
 import com.toko.dao.ItemDAO;
+import com.toko.dao.impl.CategoryDAOImpl;
 import com.toko.dao.impl.ItemDAOImpl;
+import com.toko.model.Category;
 import com.toko.model.Item;
 import java.io.IOException;
 import java.util.List;
@@ -40,8 +43,12 @@ public class ItemsServlet extends HttpServlet {
         try {
             DbConnection conn = new DbConnection();
             ItemDAO dao = new ItemDAOImpl(conn.getConnection());
+            CategoryDAO cDao = new CategoryDAOImpl(conn.getConnection());
             List<Item> items = dao.getAll();
+            List<Category> categories = cDao.getAll();
             request.setAttribute("items", items);
+            request.setAttribute("categories", categories);
+            conn.closeConnection();
             RequestDispatcher rd = request.getRequestDispatcher("/admin/items.jsp");
             rd.forward(request, response);           
         } catch (Exception ex) {
